@@ -1,6 +1,6 @@
-<?
+<?php
 session_start();
-if($_SESSION[ss_status]!="admin"){
+if($_SESSION['ss_status']!="admin"){
 	echo "<script>location='index.php';</script>";
 }
 ?>
@@ -85,32 +85,32 @@ font-size: 13px;
 			<!-- Top Menu Items -->
             <ul class="nav navbar-right top-nav">
                 <li class="dropdown">
-                    <a href="#"> <font color="#FFF"> <i class="fa fa-fw fa-user"></i> <?=$_SESSION[ss_name]?> </font> </a>                    
+                    <a href="#"> <font color="#FFF"> <i class="fa fa-fw fa-user"></i> <?=$_SESSION['ss_name']?> </font> </a>                    
                 </li>
 			</ul>
             <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">					
                     <li>
-                        <a href="admin.php"><i class="fa fa-fw fa-home"></i> หน้าแรก </a>
+                        <a href="admin.php"><i class="fa fa-fw fa-home"></i> หนรก </a>
                     </li>	
 					<li>
-                        <a href="admin_view_staff.php"><i class="fa fa-fw fa-user"></i> จัดการข้อมูลบุคลากร </a>
+                        <a href="admin_view_staff.php"><i class="fa fa-fw fa-user"></i> ัดรขลบุคาก </a>
                     </li>	
 					<li>
-                        <a href="admin_view_control.php"><i class="fa fa-fw fa-tag"></i> ทะเบียนคุมสัญญา พม. </a>
+                        <a href="admin_view_control.php"><i class="fa fa-fw fa-tag"></i> ยนัญ . </a>
                     </li>                    			
                     <li>
-                        <a href="admin_view_work.php"><i class="fa fa-fw fa-desktop"></i> จัดการข้อมูลการปฏิบัติงาน </a>
+                        <a href="admin_view_work.php"><i class="fa fa-fw fa-desktop"></i> ัดรขลกรปิบัติงาน </a>
                     </li>
                     <li>
-                        <a href="admin_view_absent.php"><i class="fa fa-fw fa-edit"></i> จัดการข้อมูลการลา </a>
+                        <a href="admin_view_absent.php"><i class="fa fa-fw fa-edit"></i> ัดรขลก </a>
                     </li>
                     <li>
-                        <a href="admin_report.php"><i class="fa fa-fw fa-table"></i> รายงานผลข้อมูล </a>
+                        <a href="admin_report.php"><i class="fa fa-fw fa-table"></i> ยงานลข </a>
                     </li> 
 					<li>
-                        <a href="logout.php"><i class="fa fa-fw fa-lock"></i> ออกจากระบบ </a>
+                        <a href="logout.php"><i class="fa fa-fw fa-lock"></i> อกากะบ </a>
                     </li>                    
                 </ul>
             </div>
@@ -125,16 +125,16 @@ font-size: 13px;
 
 <!--Header-->
 <div class="page-header">
-        <h3> ระบบฐานข้อมูลการลา มหาวิทยาลัยราชภัฏสงขลา </h3>
+        <h3> ะบานลก ิทาชัฏสง </h3>
 </div>
 
 <table class="table">
 <tr>
 	<th>username</th>
-	<th>ชื่อ - สกุล</th>
-	<th>หน่วยงาน</th>	
+	<th> - สก</th>
+	<th>หนยงาน</th>	
 </tr>
-<?
+<?php
 include"config.php";
 
 $sql="select * from boss A,staff B,department C where A.USERLOGIN=B.USERLOGIN and B.DEPARTMENTID=C.DEPARTMENTID and A.status=2 order by C.DEPARTMENTID";
@@ -142,11 +142,11 @@ $res=mysql_query($sql);
 while($ln=mysql_fetch_array($res)){
 ?>
 <tr>
-	<td><?=$ln[USERLOGIN]?></td>
-	<td><?=$ln[STAFFNAME]?> <?=$ln[STAFFSURNAME]?></td>
-	<td><?=$ln[DEPARTMENTNAME]?></td>	
+	<td><?=$ln['USERLOGIN']?></td>
+	<td><?=$ln['STAFFNAME']?> <?=$ln['STAFFSURNAME']?></td>
+	<td><?=$ln['DEPARTMENTNAME']?></td>	
 </tr>
-<? }?>
+<?php }?>
 </table>
 
 </div>

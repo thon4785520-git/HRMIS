@@ -1,44 +1,44 @@
 <?php
 /**
- * สคริปต์บล็อก IP แบบกำหนดเป็นช่วง (Prefix)
- * ใช้ได้กับ PHP 5+
- * วางไว้บรรทัดที่ 1 ของไฟล์ที่ต้องการป้องกัน
+ * สคิปอก IP แบบหน็นชวง (Prefix)
+ * ับ PHP 5+
+ * างรทัด 1 ององรปองัน
  */
 
-// 1. กำหนดช่วง IP ที่ต้องการบล็อก (ใส่เฉพาะตัวเลขข้างหน้า)
-// ข้อควรระวัง: ควรปิดท้ายด้วยจุด (.) เสมอ เพื่อความแม่นยำ
-// เช่น '40.77.' จะกัน 40.77.x.x ได้ทั้งหมด
+// 1. หนวง IP องรบอก (เฉพะตลขางหน)
+// อคัง: รปิดยดยจุด (.)  อค
+//  '40.77.' ะกัน 40.77.x.x 
 $banned_ranges = array(
-    '40.77.',    // บล็อก Bing (Microsoft) ช่วง 40.77.x.x
-    '207.46.',   // บล็อก Bing ช่วง 207.46.x.x
-    '157.55.',   // บล็อก Bing ช่วง 157.55.x.x
-    '66.249.',   // (ตัวอย่าง) บล็อก Googlebot บางส่วน
+    '40.77.',    // อก Bing (Microsoft) วง 40.77.x.x
+    '207.46.',   // อก Bing วง 207.46.x.x
+    '157.55.',   // อก Bing วง 157.55.x.x
+    '66.249.',   // (าง) อก Googlebot างวน
 	'52.167.'
 );
 
 $visitor_ip = $_SERVER['REMOTE_ADDR'];
 $is_banned = false;
 
-// 2. วนลูปเช็คว่า IP ของคนเข้าเว็บ "ขึ้นต้นด้วย" เลขในรายการหรือไม่
+// 2. วนูป IP อง "้นต้นด" ลขยก
 foreach ($banned_ranges as $range) {
-    // strpos($a, $b) === 0 หมายถึง เจอข้อความ $b อยู่ที่ตำแหน่งแรกสุดของ $a
+    // strpos($a, $b) === 0 ยถึง อขอค $b หนรกุดอง $a
     if (strpos($visitor_ip, $range) === 0) {
         $is_banned = true;
-        break; // ถ้าเจอแล้วว่าแบน ก็หยุดเช็คทันที
+        break; // แบน ุด็คทัน
     }
 }
 
-// 3. ถ้าโดนแบน ให้ดีดออก
+// 3. โดนแบน ีดอก
 if ($is_banned) {
     header('HTTP/1.1 403 Forbidden');
     echo "<h1>Access Denied</h1>";
     echo "Your IP address ($visitor_ip) is blocked from accessing this sensitive page.";
-    exit(); // สำคัญมาก: หยุดการทำงานทันที
+    exit(); // ำคัญาก: ุดรทำงานัน
 }?>
 
-<?
+<?php
 session_start();
-if($_SESSION[ss_status]!="admin"){
+if($_SESSION['ss_status']!="admin"){
 	echo "<script>location='index.php';</script>";
 	exit();
 }
@@ -121,26 +121,26 @@ font-size: 13px;
 			<!-- Top Menu Items -->
             <ul class="nav navbar-right top-nav">
                 <li class="dropdown">
-                    <a href="#"> <font color="#FFF"> <i class="fa fa-fw fa-user"></i> <?=$_SESSION[ss_name]?> </font> </a>                    
+                    <a href="#"> <font color="#FFF"> <i class="fa fa-fw fa-user"></i> <?=$_SESSION['ss_name']?> </font> </a>                    
                 </li>
 			</ul>
             <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">					
                     <li>
-                        <a href="admin.php"><i class="fa fa-fw fa-home"></i> หน้าแรก </a>
+                        <a href="admin.php"><i class="fa fa-fw fa-home"></i> หนรก </a>
                     </li>					
                     <li>
-                        <a href="admin_view_work.php"><i class="fa fa-fw fa-desktop"></i> จัดการข้อมูลการปฏิบัติงาน </a>
+                        <a href="admin_view_work.php"><i class="fa fa-fw fa-desktop"></i> ัดรขลกรปิบัติงาน </a>
                     </li>
                     <li>
-                        <a href="admin_view_absent.php"><i class="fa fa-fw fa-edit"></i> จัดการข้อมูลการลา </a>
+                        <a href="admin_view_absent.php"><i class="fa fa-fw fa-edit"></i> ัดรขลก </a>
                     </li>
                     <li>
-                        <a href="admin_report.php"><i class="fa fa-fw fa-table"></i> รายงานผลข้อมูล </a>
+                        <a href="admin_report.php"><i class="fa fa-fw fa-table"></i> ยงานลข </a>
                     </li> 
 					<li>
-                        <a href="logout.php"><i class="fa fa-fw fa-lock"></i> ออกจากระบบ </a>
+                        <a href="logout.php"><i class="fa fa-fw fa-lock"></i> อกากะบ </a>
                     </li>                    
                 </ul>
             </div>
@@ -158,25 +158,25 @@ font-size: 13px;
         <h3> Process </h3>
 </div>
 
-<?
+<?php
 include"config.php";
 
-$_GET[id]=base64_decode($_GET[id]);
+$_GET['id']=base64_decode($_GET['id']);
 
 // begin log 
 function getIP() {
     $ip_address = '';
-    // 1. เช็คจาก Internet (Shared ISP)
+    // 1. ็คจาก Internet (Shared ISP)
     if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
         $ip_address = $_SERVER['HTTP_CLIENT_IP'];
     }
-    // 2. เช็คจาก Proxy หรือ Load Balancer (เช่น Cloudflare)
+    // 2. ็คจาก Proxy  Load Balancer ( Cloudflare)
     elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
-        // บางครั้งค่าที่ได้อาจมีหลาย IP (IP, Proxy1, Proxy2) ให้เอาตัวแรกสุด
+        // าง้งคาทาจ IP (IP, Proxy1, Proxy2) าตรกุด
         $ip_list = explode(',', $_SERVER['HTTP_X_FORWARDED_FOR']);
         $ip_address = trim($ip_list[0]);
     }
-    // 3. ถ้าไม่มีอะไรเลย ใช้ REMOTE_ADDR ตามปกติ
+    // 3.   REMOTE_ADDR 
     else {
         $ip_address = $_SERVER['REMOTE_ADDR'];
     }
@@ -186,28 +186,28 @@ $date=date("Y-m-d");
 $ip=getIP();
 $agent=$_SERVER['HTTP_USER_AGENT'];
 $sql="INSERT INTO stories (id, username, dated, ip, agents, actions) VALUES
-(null, '$_SESSION[ss_user]', '$date', '$ip', '$agent', 'ลบใบลาเลขที่ $_GET[id]')";
+(null, '{$_SESSION['ss_user']}', '$date', '$ip', '$agent', 'ลบลข {$_GET['id']}')";
 $res=mysql_query($sql);
 // end log
 
-$sql="select * from absent where id=$_GET[id]";
+$sql="select * from absent where id={$_GET['id']}";
 $res=mysql_query($sql);
 $rs=mysql_fetch_array($res);
 $sql="INSERT INTO absent1 (id, STAFFID, dated, date1, date2, amount, reason, type, approve, approve1, advise) 
-VALUES ($_GET[id], $rs[1], '$rs[2]', '$rs[3]', '$rs[4]', $rs[5], '$rs[6]', $rs[7], $rs[8], $rs[9], $rs[10])";
+VALUES ({$_GET['id']}, {$rs[1]}, '{$rs[2]}', '{$rs[3]}', '{$rs[4]}', {$rs[5]}, '{$rs[6]}', {$rs[7]}, {$rs[8]}, {$rs[9]}, {$rs[10]})";
 $res=mysql_query($sql);
 
-$sql="delete from absent where id=$_GET[id]";
+$sql="delete from absent where id={$_GET['id']}";
 $res=mysql_query($sql);
 
 if($res){
 	echo "<div class='alert alert-success'>";
-	echo "<strong>ลบใบลาสำเร็จ</strong><br>";
-	echo "<a href='admin_view_absent.php' class='btn btn-sm btn-info'>กลับหน้าหลัก</a>";
+	echo "<strong>ลบ</strong><br>";
+	echo "<a href='admin_view_absent.php' class='btn btn-sm btn-info'>ับหนัก</a>";
 	echo "</div>";
 }else{
 	echo "<div class='alert alert-danger'>";
-	echo "<strong>ลบใบลาไม่สำเร็จ !</strong> <br>";
+	echo "<strong>ลบ !</strong> <br>";
 	echo "<a href='javascript:history.go(-1)' class='btn btn-sm btn-info'>Back</a>";
 	echo "</div>";
 }

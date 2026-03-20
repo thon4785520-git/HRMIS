@@ -1,9 +1,9 @@
 <?php
-// กำหนด Header ให้เป็น Windows-874 เพื่อรองรับภาษาไทยในระบบเดิม
+// หน Header  Windows-874 องับะบ
 header('Content-Type: text/html; charset=windows-874');
 session_start();
 
-// ตรวจสอบสถานะ Admin
+// วจอบสถาน Admin
 if($_SESSION['ss_status'] != "admin"){
 	echo "<script>location='index.php';</script>";
     exit();
@@ -157,7 +157,7 @@ include "config.php";
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="logout.php">
-                        <i class="fas fa-sign-out-alt"></i> ออกจากระบบ
+                        <i class="fas fa-sign-out-alt"></i> อกากะบ
                     </a>
                 </li>
             </ul>
@@ -171,13 +171,13 @@ include "config.php";
             <div class="col-md-3 col-lg-2 d-md-block sidebar collapse" id="sidebarMenu">
                 <div class="position-sticky">
                     <div class="list-group list-group-flush">
-                        <a href="admin.php"><i class="fas fa-home"></i> หน้าแรก</a>
-                        <a href="admin_view_staff.php" class="active"><i class="fas fa-users"></i> ข้อมูลบุคลากร</a>
-                        <a href="admin_view_control.php"><i class="fas fa-file-contract"></i> ทะเบียนคุมสัญญา พม.</a>
-                        <a href="admin_view_work.php"><i class="fas fa-desktop"></i> ข้อมูลการปฏิบัติงาน</a>
-                        <a href="admin_view_absent.php"><i class="fas fa-edit"></i> จัดการข้อมูลการลา</a>
-                        <a href="admin_report.php"><i class="fas fa-chart-bar"></i> รายงานผลข้อมูล</a>
-                        <a href="logout.php" class="text-danger"><i class="fas fa-lock"></i> ออกจากระบบ</a>
+                        <a href="admin.php"><i class="fas fa-home"></i> หนรก</a>
+                        <a href="admin_view_staff.php" class="active"><i class="fas fa-users"></i> ลบุคาก</a>
+                        <a href="admin_view_control.php"><i class="fas fa-file-contract"></i> ยนัญ .</a>
+                        <a href="admin_view_work.php"><i class="fas fa-desktop"></i> ลกรปิบัติงาน</a>
+                        <a href="admin_view_absent.php"><i class="fas fa-edit"></i> ัดรขลก</a>
+                        <a href="admin_report.php"><i class="fas fa-chart-bar"></i> ยงานลข</a>
+                        <a href="logout.php" class="text-danger"><i class="fas fa-lock"></i> อกากะบ</a>
                     </div>
                 </div>
             </div>
@@ -186,7 +186,7 @@ include "config.php";
             <main class="col-md-9 ml-sm-auto col-lg-10 px-md-4 py-4">
                 
                 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 page-header">
-                    <h1 class="h2"><i class="fas fa-users text-orange"></i> จัดการข้อมูลบุคลากร</h1>
+                    <h1 class="h2"><i class="fas fa-users text-orange"></i> ัดรขลบุคาก</h1>
                 </div>
 
                 <!-- Action Bar & Filter -->
@@ -195,21 +195,21 @@ include "config.php";
                         <div class="row align-items-center">
                             <div class="col-md-6 mb-3 mb-md-0">
                                 <a href="admin_add_staff.php" class="btn btn-success shadow-sm">
-                                    <i class="fas fa-plus-circle"></i> เพิ่มบุคลากรใหม่
+                                    <i class="fas fa-plus-circle"></i> ุคาก
                                 </a>
                             </div>
                             <div class="col-md-6">
                                 <form method="post" action="" class="form-inline justify-content-md-end">
-                                    <label class="mr-2 font-weight-bold text-muted">กรองตามหน่วยงาน:</label>
+                                    <label class="mr-2 font-weight-bold text-muted">องหนยงาน:</label>
                                     <select name="DEPARTMENTID" class="form-control custom-select" style="min-width: 250px;" onChange="this.form.submit()">
-                                        <option value="">--- แสดงทั้งหมด / เลือกหน่วยงาน ---</option>
+                                        <option value="">--- สด / อกหนยงาน ---</option>
                                         <?php
-										if($_POST[DEPARTMENTID]=='')$_POST[DEPARTMENTID]=4;
+										if($_POST['DEPARTMENTID']=='')$_POST['DEPARTMENTID']=4;
                                         $sql_dept="select * from department";
                                         $res_dept=mysql_query($sql_dept);
                                         while($ln_dept=mysql_fetch_array($res_dept)){
                                             $selected = (isset($_POST['DEPARTMENTID']) && $ln_dept[0] == $_POST['DEPARTMENTID']) ? 'selected' : '';
-                                            echo "<option value='$ln_dept[0]' $selected>$ln_dept[1]</option>";
+                                            echo "<option value='{$ln_dept[0]}' $selected>{$ln_dept[1]}</option>";
                                         }
                                         ?>
                                     </select>
@@ -225,7 +225,7 @@ include "config.php";
                 ?>
                 <div class="card card-custom">
                     <div class="card-header card-header-custom">
-                        <i class="fas fa-list"></i> รายชื่อบุคลากร
+                        <i class="fas fa-list"></i> ยชอบุคาก
                     </div>
                     <div class="card-body p-0">
                         <div class="table-responsive">
@@ -233,10 +233,10 @@ include "config.php";
                                 <thead>
                                     <tr>
                                         <th width="5%" class="text-center">ID</th>
-                                        <th width="35%">ชื่อ - สกุล</th>
-                                        <th width="30%">ตำแหน่ง</th>
-                                        <th width="15%" class="text-center">สายปฏิบัติการ</th>
-                                        <th width="15%" class="text-center">จัดการ</th>
+                                        <th width="35%"> - สก</th>
+                                        <th width="30%">หน</th>
+                                        <th width="15%" class="text-center">ยปิบัติก</th>
+                                        <th width="15%" class="text-center">ัด</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -247,9 +247,9 @@ include "config.php";
                                     
                                     if(mysql_num_rows($res) > 0) {
                                         while($ln=mysql_fetch_array($res)){
-                                            // กำหนดสี Badge ตามสายงาน
+                                            // หน Badge ยงาน
                                             $badge_class = ($ln['STAFFGROUP'] == 1) ? 'badge-info' : 'badge-secondary';
-                                            $group_name = ($ln['STAFFGROUP'] == 1) ? 'อาจารย์' : 'สนับสนุน';
+                                            $group_name = ($ln['STAFFGROUP'] == 1) ? 'าจ' : 'สนับสนุน';
                                     ?>
                                     <tr>
                                         <td class="text-center font-weight-bold text-muted"><?php echo $ln['STAFFID']; ?></td>
@@ -261,10 +261,10 @@ include "config.php";
                                             <span class="badge <?php echo $badge_class; ?> p-2"><?php echo $group_name; ?></span>
                                         </td>
                                         <td class="text-center">   
-                                            <a href="admin_edit_staff.php?id=<?php echo base64_encode($ln[0]); ?>" class="btn btn-warning action-btn text-white shadow-sm" title="แก้ไข">
+                                            <a href="admin_edit_staff.php?id=<?php echo base64_encode($ln[0]); ?>" class="btn btn-warning action-btn text-white shadow-sm" title="">
                                                 <i class="fas fa-pencil-alt" style="font-size: 0.8rem;"></i>
                                             </a>
-                                            <a href="admin_del_staff.php?id=<?php echo base64_encode($ln[0]); ?>" class="btn btn-danger action-btn shadow-sm" title="ลบ" onClick="return confirm('ยืนยันการลบข้อมูลนี้หรือไม่? การลบจะไม่สามารถกู้คืนได้');">
+                                            <a href="admin_del_staff.php?id=<?php echo base64_encode($ln[0]); ?>" class="btn btn-danger action-btn shadow-sm" title="ลบ" onClick="return confirm('ืนันลบลน? ลบรถืน');">
                                                 <i class="fas fa-times" style="font-size: 0.8rem;"></i>
                                             </a>
                                         </td>
@@ -272,7 +272,7 @@ include "config.php";
                                     <?php 
                                         } 
                                     } else {
-                                        echo "<tr><td colspan='5' class='text-center py-4 text-muted'>ไม่พบข้อมูลบุคลากรในหน่วยงานนี้</td></tr>";
+                                        echo "<tr><td colspan='5' class='text-center py-4 text-muted'>่พบลบุคากหนยงาน</td></tr>";
                                     }
                                     ?>
                                 </tbody>
@@ -285,8 +285,8 @@ include "config.php";
                 ?>
                     <div class="alert alert-info text-center py-5 shadow-sm" style="border-radius: 10px;">
                         <i class="fas fa-search fa-3x mb-3 text-info"></i><br>
-                        <h4>กรุณาเลือกหน่วยงาน</h4>
-                        <p>เพื่อแสดงรายชื่อบุคลากรในสังกัด</p>
+                        <h4>ุณอกหนยงาน</h4>
+                        <p>สดยชอบุคากังัด</p>
                     </div>
                 <?php
                 }

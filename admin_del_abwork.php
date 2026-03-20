@@ -1,6 +1,6 @@
-<?
+<?php
 session_start();
-if($_SESSION[ss_status]!="admin"){
+if($_SESSION['ss_status']!="admin"){
 	echo "<script>location='index.php';</script>";
 }
 ?>
@@ -82,26 +82,26 @@ font-size: 13px;
 			<!-- Top Menu Items -->
             <ul class="nav navbar-right top-nav">
                 <li class="dropdown">
-                    <a href="#"> <font color="#FFF"> <i class="fa fa-fw fa-user"></i> <?=$_SESSION[ss_name]?> </font> </a>                    
+                    <a href="#"> <font color="#FFF"> <i class="fa fa-fw fa-user"></i> <?=$_SESSION['ss_name']?> </font> </a>                    
                 </li>
 			</ul>
             <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">					
                     <li>
-                        <a href="admin.php"><i class="fa fa-fw fa-home"></i> หน้าแรก </a>
+                        <a href="admin.php"><i class="fa fa-fw fa-home"></i> หนรก </a>
                     </li>					
                     <li>
-                        <a href="admin_view_work.php"><i class="fa fa-fw fa-desktop"></i> จัดการข้อมูลการปฏิบัติงาน </a>
+                        <a href="admin_view_work.php"><i class="fa fa-fw fa-desktop"></i> ัดรขลกรปิบัติงาน </a>
                     </li>
                     <li>
-                        <a href="admin_view_absent.php"><i class="fa fa-fw fa-edit"></i> จัดการข้อมูลการลา </a>
+                        <a href="admin_view_absent.php"><i class="fa fa-fw fa-edit"></i> ัดรขลก </a>
                     </li>
                     <li>
-                        <a href="admin_report.php"><i class="fa fa-fw fa-table"></i> รายงานผลข้อมูล </a>
+                        <a href="admin_report.php"><i class="fa fa-fw fa-table"></i> ยงานลข </a>
                     </li> 
 					<li>
-                        <a href="logout.php"><i class="fa fa-fw fa-lock"></i> ออกจากระบบ </a>
+                        <a href="logout.php"><i class="fa fa-fw fa-lock"></i> อกากะบ </a>
                     </li>                    
                 </ul>
             </div>
@@ -116,13 +116,13 @@ font-size: 13px;
 
 <!--Header-->
 <div class="page-header">
-        <h3> เพิ่มข้อมูลการลา </h3>
+        <h3> ลก </h3>
 </div>
 
-<?
+<?php
 include"config.php";
 
-$sql="delete from abwork where dated='$_GET[id]' ";
+$sql="delete from abwork where dated='{$_GET['id']}' ";
 $res=mysql_query($sql);
 
 if($res){

@@ -1,9 +1,9 @@
 <?php
-// กำหนด Header ให้เป็น Windows-874 เพื่อรองรับภาษาไทยในระบบเดิม
+// หน Header  Windows-874 องับะบ
 header('Content-Type: text/html; charset=windows-874');
 session_start();
 
-// ตรวจสอบสถานะ Admin
+// วจอบสถาน Admin
 if($_SESSION['ss_status'] != "admin"){
 	echo "<script>location='index.php';</script>";
     exit();
@@ -173,7 +173,7 @@ include "config.php";
     });
 
     function thon(i){
-        $('#xxx').html('<div class="text-center text-muted"><i class="fas fa-spinner fa-spin"></i> กำลังโหลด...</div>');
+        $('#xxx').html('<div class="text-center text-muted"><i class="fas fa-spinner fa-spin"></i> ังลด...</div>');
         $('#xxx').load("get_staff.php?id="+i, function(){
             $('#xxx select').addClass('form-control'); // Add bootstrap class to loaded select
         });
@@ -205,7 +205,7 @@ include "config.php";
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="logout.php">
-                        <i class="fas fa-sign-out-alt"></i> ออกจากระบบ
+                        <i class="fas fa-sign-out-alt"></i> อกากะบ
                     </a>
                 </li>
             </ul>
@@ -219,13 +219,13 @@ include "config.php";
             <div class="col-md-3 col-lg-2 d-md-block sidebar collapse" id="sidebarMenu">
                 <div class="position-sticky">
                     <div class="list-group list-group-flush">
-                        <a href="admin.php"><i class="fas fa-home"></i> หน้าแรก</a>
-                        <a href="admin_view_staff.php"><i class="fas fa-users"></i> ข้อมูลบุคลากร</a>
-                        <a href="admin_view_control.php"><i class="fas fa-file-contract"></i> ทะเบียนคุมสัญญา พม.</a>
-                        <a href="admin_view_work.php"><i class="fas fa-desktop"></i> ข้อมูลการปฏิบัติงาน</a>
-                        <a href="admin_view_absent.php"><i class="fas fa-edit"></i> จัดการข้อมูลการลา</a>
-                        <a href="admin_report.php"><i class="fas fa-chart-bar"></i> รายงานผลข้อมูล</a>
-                        <a href="logout.php" class="text-danger"><i class="fas fa-lock"></i> ออกจากระบบ</a>
+                        <a href="admin.php"><i class="fas fa-home"></i> หนรก</a>
+                        <a href="admin_view_staff.php"><i class="fas fa-users"></i> ลบุคาก</a>
+                        <a href="admin_view_control.php"><i class="fas fa-file-contract"></i> ยนัญ .</a>
+                        <a href="admin_view_work.php"><i class="fas fa-desktop"></i> ลกรปิบัติงาน</a>
+                        <a href="admin_view_absent.php"><i class="fas fa-edit"></i> ัดรขลก</a>
+                        <a href="admin_report.php"><i class="fas fa-chart-bar"></i> ยงานลข</a>
+                        <a href="logout.php" class="text-danger"><i class="fas fa-lock"></i> อกากะบ</a>
                     </div>
                 </div>
             </div>
@@ -234,120 +234,120 @@ include "config.php";
             <main class="col-md-9 ml-sm-auto col-lg-10 px-md-4 py-4">
                 
                 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 page-header">
-                    <h1 class="h2"><i class="fas fa-plus-circle text-success"></i> เพิ่มข้อมูลการลา</h1>
+                    <h1 class="h2"><i class="fas fa-plus-circle text-success"></i> ลก</h1>
                 </div>
 
                 <div class="row justify-content-center">
                     <div class="col-lg-10">
                         <div class="card card-custom">
                             <div class="card-header card-header-custom">
-                                <i class="fas fa-file-signature"></i> แบบฟอร์มบันทึกการลา
+                                <i class="fas fa-file-signature"></i> แบบันึก
                             </div>
                             <div class="card-body">
                                 <form method="POST" action="admin_add_absent2.php" id="form1">
                                     
-                                    <div class="form-section-title"><i class="fas fa-user"></i> ข้อมูลผู้ลา</div>
+                                    <div class="form-section-title"><i class="fas fa-user"></i> ลผ</div>
                                     <div class="form-row">
                                         <div class="form-group col-md-6">
-                                            <label>เลือกชื่อหน่วยงาน <span class="text-danger">*</span></label>
+                                            <label>อกหนยงาน <span class="text-danger">*</span></label>
                                             <select name="DEPARTMENTID" class="form-control" onChange="thon(this.value)" required>
-                                                <option value="">--- กรุณาเลือกหน่วยงาน ---</option>
+                                                <option value="">--- ุณอกหนยงาน ---</option>
                                                 <?php
                                                 $sql="select * from department";
                                                 $res=mysql_query($sql);
                                                 while($ln=mysql_fetch_array($res)){
-                                                    echo "<option value='$ln[0]'>$ln[1]</option>";
+                                                    echo "<option value='{$ln[0]}'>{$ln[1]}</option>";
                                                 }
                                                 ?>
                                             </select>
                                         </div>
                                         <div class="form-group col-md-6">
-                                            <label>เลือกชื่อ - สกุล ผู้ลา <span class="text-danger">*</span></label>
+                                            <label>อก - สก  <span class="text-danger">*</span></label>
                                             <span id="xxx">
                                                 <select class="form-control" disabled>
-                                                    <option>กรุณาเลือกหน่วยงานก่อน</option>
+                                                    <option>ุณอกหนยงานอน</option>
                                                 </select>
                                             </span>
                                         </div>
                                     </div>
 
-                                    <div class="form-section-title"><i class="far fa-clock"></i> รายละเอียดวันลา</div>
+                                    <div class="form-section-title"><i class="far fa-clock"></i> ยดัน</div>
                                     <div class="form-row">
                                         <div class="form-group col-md-4">
-                                            <label>วันที่ส่งใบลา</label>
+                                            <label>ัน</label>
                                             <div class="input-group">
                                                 <div class="input-group-prepend"><span class="input-group-text"><i class="fas fa-calendar-day"></i></span></div>
                                                 <input class="form-control required" type="text" name="dated" id="dated" value="<?=Date('Y-m-d')?>" autocomplete="off">
                                             </div>
                                         </div>
                                         <div class="form-group col-md-4">
-                                            <label>ลาตั้งแต่วันที่ <span class="text-danger">*</span></label>
+                                            <label>าตัน <span class="text-danger">*</span></label>
                                             <div class="input-group">
                                                 <div class="input-group-prepend"><span class="input-group-text"><i class="fas fa-calendar-alt"></i></span></div>
-                                                <input class="form-control required" type="text" name="date1" id="date1" autocomplete="off" placeholder="เลือกวันที่เริ่ม">
+                                                <input class="form-control required" type="text" name="date1" id="date1" autocomplete="off" placeholder="อกัน">
                                             </div>
                                         </div>
                                         <div class="form-group col-md-4">
-                                            <label>ถึงวันที่ <span class="text-danger">*</span></label>
+                                            <label>ึงัน <span class="text-danger">*</span></label>
                                             <div class="input-group">
                                                 <div class="input-group-prepend"><span class="input-group-text"><i class="fas fa-calendar-alt"></i></span></div>
-                                                <input class="form-control required" type="text" name="date2" id="date2" autocomplete="off" placeholder="เลือกวันที่สิ้นสุด">
+                                                <input class="form-control required" type="text" name="date2" id="date2" autocomplete="off" placeholder="อกันุด">
                                             </div>
                                         </div>
                                     </div>
                                     <div class="form-row">
                                         <div class="form-group col-md-4">
-                                            <label>จำนวนวันลา (วัน) <span class="text-danger">*</span></label>
-                                            <input class="form-control required number" type="text" name="amount" placeholder="ระบุตัวเลข (เช่น 1, 0.5)">
+                                            <label>ำนวนัน (ัน) <span class="text-danger">*</span></label>
+                                            <input class="form-control required number" type="text" name="amount" placeholder="ะบุตลข ( 1, 0.5)">
                                         </div>
                                     </div>
 
-                                    <div class="form-section-title"><i class="fas fa-tasks"></i> ประเภทและเหตุผล</div>
+                                    <div class="form-section-title"><i class="fas fa-tasks"></i> หตุผ</div>
                                     <div class="form-group">
-                                        <label>ประเภทการลา <span class="text-danger">*</span></label>
+                                        <label> <span class="text-danger">*</span></label>
                                         <div class="card bg-light border-0">
                                             <div class="card-body py-2">
                                                 <div class="row">
                                                     <div class="col-md-4">
                                                         <div class="custom-control custom-radio mb-2">
-                                                            <input type="radio" id="type1" name="type" value="1" class="custom-control-input" checked onClick="xxx('ป่วยเป็นโรค')">
-                                                            <label class="custom-control-label" for="type1">ลาป่วย</label>
+                                                            <input type="radio" id="type1" name="type" value="1" class="custom-control-input" checked onClick="xxx('รค')">
+                                                            <label class="custom-control-label" for="type1">าป</label>
                                                         </div>
                                                         <div class="custom-control custom-radio mb-2">
-                                                            <input type="radio" id="type2" name="type" value="2" class="custom-control-input" onClick="xxx('มีธุระที่')">
-                                                            <label class="custom-control-label" for="type2">ลากิจ</label>
+                                                            <input type="radio" id="type2" name="type" value="2" class="custom-control-input" onClick="xxx('ีธะท')">
+                                                            <label class="custom-control-label" for="type2">ากิจ</label>
                                                         </div>
                                                         <div class="custom-control custom-radio mb-2">
-                                                            <input type="radio" id="type3" name="type" value="3" class="custom-control-input" onClick="xxx('ต้องการพักผ่อน')">
-                                                            <label class="custom-control-label" for="type3">ลาพักผ่อน</label>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-4">
-                                                        <div class="custom-control custom-radio mb-2">
-                                                            <input type="radio" id="type4" name="type" value="4" class="custom-control-input" onClick="xxx('ไปราชการที่')">
-                                                            <label class="custom-control-label" for="type4">ไปราชการ</label>
-                                                        </div>
-                                                        <div class="custom-control custom-radio mb-2">
-                                                            <input type="radio" id="type5" name="type" value="5" class="custom-control-input" onClick="xxx('คลอดบุตร')">
-                                                            <label class="custom-control-label" for="type5">ลาคลอด</label>
-                                                        </div>
-                                                        <div class="custom-control custom-radio mb-2">
-                                                            <input type="radio" id="type6" name="type" value="6" class="custom-control-input" onClick="xxx('อุปสมบท')">
-                                                            <label class="custom-control-label" for="type6">ลาอุปสมบท</label>
+                                                            <input type="radio" id="type3" name="type" value="3" class="custom-control-input" onClick="xxx('องรพักอน')">
+                                                            <label class="custom-control-label" for="type3">าพักอน</label>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-4">
                                                         <div class="custom-control custom-radio mb-2">
-                                                            <input type="radio" id="type7" name="type" value="7" class="custom-control-input" onClick="xxx('ช่วยเหลือภริยาเลี้ยงดูบุตร')">
-                                                            <label class="custom-control-label" for="type7">ช่วยเหลือภริยาเลี้ยงดูบุตร</label>
+                                                            <input type="radio" id="type4" name="type" value="4" class="custom-control-input" onClick="xxx('าชรท')">
+                                                            <label class="custom-control-label" for="type4">าช</label>
                                                         </div>
                                                         <div class="custom-control custom-radio mb-2">
-                                                            <input type="radio" id="type9" name="type" value="9" class="custom-control-input" onClick="xxx('ประกอบพิธีฮัจน์')">
-                                                            <label class="custom-control-label" for="type9">ประกอบพิธีฮัจญ์</label>
+                                                            <input type="radio" id="type5" name="type" value="5" class="custom-control-input" onClick="xxx('อดุต')">
+                                                            <label class="custom-control-label" for="type5">าคอด</label>
                                                         </div>
                                                         <div class="custom-control custom-radio mb-2">
-                                                            <input type="radio" id="type8" name="type" value="8" class="custom-control-input" onClick="xxx('กักตัว (ผู้เสี่ยงโควิด-19)')">
-                                                            <label class="custom-control-label" for="type8">กักตัว (โควิด-19)</label>
+                                                            <input type="radio" id="type6" name="type" value="6" class="custom-control-input" onClick="xxx('ุป')">
+                                                            <label class="custom-control-label" for="type6">ุป</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <div class="custom-control custom-radio mb-2">
+                                                            <input type="radio" id="type7" name="type" value="7" class="custom-control-input" onClick="xxx('ยงูบุต')">
+                                                            <label class="custom-control-label" for="type7">ยงูบุต</label>
+                                                        </div>
+                                                        <div class="custom-control custom-radio mb-2">
+                                                            <input type="radio" id="type9" name="type" value="9" class="custom-control-input" onClick="xxx('ะกอบิธัจ')">
+                                                            <label class="custom-control-label" for="type9">ะกอบิธัจ</label>
+                                                        </div>
+                                                        <div class="custom-control custom-radio mb-2">
+                                                            <input type="radio" id="type8" name="type" value="8" class="custom-control-input" onClick="xxx('ัก (ยงิด-19)')">
+                                                            <label class="custom-control-label" for="type8">ัก (ิด-19)</label>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -356,24 +356,24 @@ include "config.php";
                                     </div>
 
                                     <div class="form-group">
-                                        <label>เหตุผลที่ลา <span class="text-danger">*</span></label>
+                                        <label>หตุผลท <span class="text-danger">*</span></label>
                                         <textarea name="reason" id="reason" rows="3" class="form-control required" required></textarea>
                                     </div>
 
-                                    <div class="form-section-title"><i class="fas fa-check-double"></i> การอนุมัติ (Pre-Approve)</div>
+                                    <div class="form-section-title"><i class="fas fa-check-double"></i> อนัต (Pre-Approve)</div>
                                     
                                     <div class="row">
                                         <div class="col-md-4">
                                             <div class="card border-info mb-3">
-                                                <div class="card-header bg-transparent border-info text-info font-weight-bold p-2 text-center">งานบุคลากร</div>
+                                                <div class="card-header bg-transparent border-info text-info font-weight-bold p-2 text-center">านุคาก</div>
                                                 <div class="card-body p-2">
                                                     <div class="custom-control custom-radio">
                                                         <input type="radio" id="advise1" name="advise" value="1" class="custom-control-input" checked>
-                                                        <label class="custom-control-label text-success" for="advise1">เห็นควรอนุมัติ</label>
+                                                        <label class="custom-control-label text-success" for="advise1">็นคอนัต</label>
                                                     </div>
                                                     <div class="custom-control custom-radio">
                                                         <input type="radio" id="advise2" name="advise" value="2" class="custom-control-input">
-                                                        <label class="custom-control-label text-danger" for="advise2">ไม่เห็นควรอนุมัติ</label>
+                                                        <label class="custom-control-label text-danger" for="advise2">็นคอนัต</label>
                                                     </div>
                                                     <input name="advise" type="radio" value="0" style="display:none"> <!-- Default hidden fallback -->
                                                 </div>
@@ -382,15 +382,15 @@ include "config.php";
                                         
                                         <div class="col-md-4">
                                             <div class="card border-success mb-3">
-                                                <div class="card-header bg-transparent border-success text-success font-weight-bold p-2 text-center">ผู้บังคับบัญชาต้น</div>
+                                                <div class="card-header bg-transparent border-success text-success font-weight-bold p-2 text-center">ังับัญาต</div>
                                                 <div class="card-body p-2">
                                                     <div class="custom-control custom-radio">
                                                         <input type="radio" id="approve1" name="approve" value="1" class="custom-control-input">
-                                                        <label class="custom-control-label text-success" for="approve1">อนุมัติ</label>
+                                                        <label class="custom-control-label text-success" for="approve1">อนัต</label>
                                                     </div>
                                                     <div class="custom-control custom-radio">
                                                         <input type="radio" id="approve2" name="approve" value="2" class="custom-control-input">
-                                                        <label class="custom-control-label text-danger" for="approve2">ไม่อนุมัติ</label>
+                                                        <label class="custom-control-label text-danger" for="approve2">อนัต</label>
                                                     </div>
                                                     <input name="approve" type="radio" value="0" checked style="display:none">
                                                 </div>
@@ -399,15 +399,15 @@ include "config.php";
 
                                         <div class="col-md-4">
                                             <div class="card border-primary mb-3">
-                                                <div class="card-header bg-transparent border-primary text-primary font-weight-bold p-2 text-center">ผู้บังคับบัญชาสูง</div>
+                                                <div class="card-header bg-transparent border-primary text-primary font-weight-bold p-2 text-center">ังับัญูง</div>
                                                 <div class="card-body p-2">
                                                     <div class="custom-control custom-radio">
                                                         <input type="radio" id="approve1_1" name="approve1" value="1" class="custom-control-input">
-                                                        <label class="custom-control-label text-success" for="approve1_1">อนุมัติ</label>
+                                                        <label class="custom-control-label text-success" for="approve1_1">อนัต</label>
                                                     </div>
                                                     <div class="custom-control custom-radio">
                                                         <input type="radio" id="approve1_2" name="approve1" value="2" class="custom-control-input">
-                                                        <label class="custom-control-label text-danger" for="approve1_2">ไม่อนุมัติ</label>
+                                                        <label class="custom-control-label text-danger" for="approve1_2">อนัต</label>
                                                     </div>
                                                     <input name="approve1" type="radio" value="0" checked style="display:none">
                                                 </div>
@@ -416,8 +416,8 @@ include "config.php";
                                     </div>
 
                                     <div class="text-center mt-4">
-                                        <button type="submit" class="btn btn-success btn-lg shadow px-5"><i class="fas fa-save"></i> บันทึกข้อมูล</button>
-                                        <button type="reset" class="btn btn-warning btn-lg shadow px-5 text-white ml-3"><i class="fas fa-undo"></i> รีเซ็ต</button>
+                                        <button type="submit" class="btn btn-success btn-lg shadow px-5"><i class="fas fa-save"></i> ันึก</button>
+                                        <button type="reset" class="btn btn-warning btn-lg shadow px-5 text-white ml-3"><i class="fas fa-undo"></i> </button>
                                     </div>
 
                                 </form>

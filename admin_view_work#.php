@@ -1,6 +1,6 @@
-<?
+<?php
 session_start();
-if($_SESSION[ss_status]!="admin"){
+if($_SESSION['ss_status']!="admin"){
 	echo "<script>location='index.php';</script>";
 }
 ?>
@@ -76,29 +76,29 @@ font-size: 13px;
 			<!-- Top Menu Items -->
             <ul class="nav navbar-right top-nav">
                 <li class="dropdown">
-                    <a href="#"> <font color="#FFF"> <i class="fa fa-fw fa-user"></i> <?=$_SESSION[ss_name]?> </font> </a>                    
+                    <a href="#"> <font color="#FFF"> <i class="fa fa-fw fa-user"></i> <?=$_SESSION['ss_name']?> </font> </a>                    
                 </li>
 			</ul>
             <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">					
                     <li>
-                        <a href="admin.php"><i class="fa fa-fw fa-home"></i> หน้าแรก </a>
+                        <a href="admin.php"><i class="fa fa-fw fa-home"></i> หนรก </a>
                     </li>		
 					<li>
-                        <a href="admin_view_staff.php"><i class="fa fa-fw fa-user"></i> จัดการข้อมูลบุคลากร </a>
+                        <a href="admin_view_staff.php"><i class="fa fa-fw fa-user"></i> ัดรขลบุคาก </a>
                     </li>			
                     <li>
-                        <a href="admin_view_work.php"><i class="fa fa-fw fa-desktop"></i> จัดการข้อมูลการปฏิบัติงาน </a>
+                        <a href="admin_view_work.php"><i class="fa fa-fw fa-desktop"></i> ัดรขลกรปิบัติงาน </a>
                     </li>
                     <li>
-                        <a href="admin_view_absent.php"><i class="fa fa-fw fa-edit"></i> จัดการข้อมูลการลา </a>
+                        <a href="admin_view_absent.php"><i class="fa fa-fw fa-edit"></i> ัดรขลก </a>
                     </li>
                     <li>
-                        <a href="admin_report.php"><i class="fa fa-fw fa-table"></i> รายงานผลข้อมูล </a>
+                        <a href="admin_report.php"><i class="fa fa-fw fa-table"></i> ยงานลข </a>
                     </li> 
 					<li>
-                        <a href="logout.php"><i class="fa fa-fw fa-lock"></i> ออกจากระบบ </a>
+                        <a href="logout.php"><i class="fa fa-fw fa-lock"></i> อกากะบ </a>
                     </li>                    
                 </ul>
             </div>
@@ -113,24 +113,24 @@ font-size: 13px;
 
 <!--Header-->
 <div class="page-header">
-        <h3><i class="fa fa-desktop"></i> จัดการข้อมูลการมาปฏิบัติงาน </h3>
+        <h3><i class="fa fa-desktop"></i> ัดรขลกาปิบัติงาน </h3>
 </div>
 
-<a href="admin_add_work.php" class="btn btn-sm btn-success"><i class="fa fa-plus"></i> ลงชื่อมาปฏิบัติงาน </a> 
-<a href="XLS/" class="btn btn-sm btn-info"><i class="fa fa-upload"></i> นำเข้าไฟล์ excel </a> 
-<a href="admin_search_work.php" class="btn btn-sm btn-primary"><i class="fa fa-search"></i> ค้นหาข้อมูลการมาปฏิบัติงาน</a> <br><br> 
+<a href="admin_add_work.php" class="btn btn-sm btn-success"><i class="fa fa-plus"></i> ลงาปิบัติงาน </a> 
+<a href="XLS/" class="btn btn-sm btn-info"><i class="fa fa-upload"></i>  excel </a> 
+<a href="admin_search_work.php" class="btn btn-sm btn-primary"><i class="fa fa-search"></i> าขลกาปิบัติงาน</a> <br><br> 
 
 <table class="table table-hover">
 <tr class="success">
-	<th>วันที่ปฏิบัติงาน</th>
-	<th>มาปฏิบัติงาน (<font color="green">ปกติ</font>)</th>
-	<th>มาปฏิบัติงาน (<font color="red">สาย</font>)</th>
-	<th>ไม่มาปฏิบัติงาน</th>
-	<th>วันหยุด</th>
-	<th>ไม่เซ็นชื่อกลับ</th>
+	<th>ัน่ปฏิบัติงาน</th>
+	<th>าปิบัติงาน (<font color="green"></font>)</th>
+	<th>าปิบัติงาน (<font color="red"></font>)</th>
+	<th>าปิบัติงาน</th>
+	<th>ันุด</th>
+	<th>็นชอกับ</th>
 	<th width="125">Option</th>
 </tr>
-<?
+<?php
 include"config.php";
 
 //$sql="select * from work group by dated order by dated DESC";
@@ -138,46 +138,46 @@ $sql="select DISTINCT dated from work order by dated DESC";
 $res=mysql_query($sql)or die(mysql_error());
 while($ln=mysql_fetch_array($res)){
 	// count level 1
-	$sql1="select count(*) from work where dated='$ln[dated]' and level=1";
+	$sql1="select count(*) from work where dated='{$ln['dated']}' and level=1";
 	//echo $sql1;
 	$res1=mysql_query($sql1);
 	$ln1=mysql_fetch_array($res1);
 	$y1=$ln1[0];
 	// count level 2
-	$sql1="select count(*) from work where dated='$ln[dated]' and level=2";
+	$sql1="select count(*) from work where dated='{$ln['dated']}' and level=2";
 	$res1=mysql_query($sql1);
 	$ln1=mysql_fetch_array($res1);
 	$y2=$ln1[0];
 	// count level 3
-	$sql1="select count(*) from work where dated='$ln[dated]' and level=3";
+	$sql1="select count(*) from work where dated='{$ln['dated']}' and level=3";
 	$res1=mysql_query($sql1);
 	$ln1=mysql_fetch_array($res1);
 	$y3=$ln1[0];
 	// count level 4
-	$sql1="select count(*) from work where dated='$ln[dated]' and level=4";
+	$sql1="select count(*) from work where dated='{$ln['dated']}' and level=4";
 	$res1=mysql_query($sql1);
 	$ln1=mysql_fetch_array($res1);
 	$y4=$ln1[0];
 	// count level 5
-	$sql1="select count(*) from work where dated='$ln[dated]' and level=5";
+	$sql1="select count(*) from work where dated='{$ln['dated']}' and level=5";
 	$res1=mysql_query($sql1);
 	$ln1=mysql_fetch_array($res1);
 	$y5=$ln1[0];
 ?>
 <tr>
-	<td> <?=DateThai($ln[dated])?> </td>
-	<td><?=$y1?> คน</td>
-	<td><?=$y2?> คน	</td>
-	<td><?=$y3?> คน	</td>
-	<td><?=$y4?> คน	</td>
-	<td><?=$y5?> คน	</td>
+	<td> <?=DateThai($ln['dated'])?> </td>
+	<td><?=$y1?> </td>
+	<td><?=$y2?> 	</td>
+	<td><?=$y3?> 	</td>
+	<td><?=$y4?> 	</td>
+	<td><?=$y5?> 	</td>
 	<td>   
-		<a href="admin_show_work.php?id=<?=$ln[dated]?>" class="btn btn-sm btn-info" title="ดูข้อมูล"><i class="fa fa-file"></i></a>
-		<a href="admin_edit_work.php?id=<?=$ln[dated]?>" class="btn btn-sm btn-warning" title="แก้ไข"><i class="fa fa-pencil"></i></a>
-		<a href="admin_del_work.php?id=<?=$ln[dated]?>" class="btn btn-sm btn-danger" title="ลบ" onClick="return confirm('แน่ใจว่าลบ?')"><i class="fa fa-close"></i></a>
+		<a href="admin_show_work.php?id=<?=$ln['dated']?>" class="btn btn-sm btn-info" title="ูข"><i class="fa fa-file"></i></a>
+		<a href="admin_edit_work.php?id=<?=$ln['dated']?>" class="btn btn-sm btn-warning" title=""><i class="fa fa-pencil"></i></a>
+		<a href="admin_del_work.php?id=<?=$ln['dated']?>" class="btn btn-sm btn-danger" title="ลบ" onClick="return confirm('ลบ?')"><i class="fa fa-close"></i></a>
 	</td>
 </tr>
-<? }?>
+<?php }?>
 </table>
 
 </div>

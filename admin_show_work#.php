@@ -1,6 +1,6 @@
-<?
+<?php
 session_start();
-if($_SESSION[ss_status]!="admin"){
+if($_SESSION['ss_status']!="admin"){
 	echo "<script>location='index.php';</script>";
 }
 include"config.php";
@@ -80,26 +80,26 @@ font-size: 13px;
 			<!-- Top Menu Items -->
             <ul class="nav navbar-right top-nav">
                 <li class="dropdown">
-                    <a href="#"> <font color="#FFF"> <i class="fa fa-fw fa-user"></i> <?=$_SESSION[ss_name]?> </font> </a>                    
+                    <a href="#"> <font color="#FFF"> <i class="fa fa-fw fa-user"></i> <?=$_SESSION['ss_name']?> </font> </a>                    
                 </li>
 			</ul>
             <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">					
                     <li>
-                        <a href="admin.php"><i class="fa fa-fw fa-home"></i> หน้าแรก </a>
+                        <a href="admin.php"><i class="fa fa-fw fa-home"></i> หนรก </a>
                     </li>					
                     <li>
-                        <a href="admin_view_work.php"><i class="fa fa-fw fa-desktop"></i> จัดการข้อมูลการปฏิบัติงาน </a>
+                        <a href="admin_view_work.php"><i class="fa fa-fw fa-desktop"></i> ัดรขลกรปิบัติงาน </a>
                     </li>
                     <li>
-                        <a href="admin_view_absent.php"><i class="fa fa-fw fa-edit"></i> จัดการข้อมูลการลา </a>
+                        <a href="admin_view_absent.php"><i class="fa fa-fw fa-edit"></i> ัดรขลก </a>
                     </li>
                     <li>
-                        <a href="admin_report.php"><i class="fa fa-fw fa-table"></i> รายงานผลข้อมูล </a>
+                        <a href="admin_report.php"><i class="fa fa-fw fa-table"></i> ยงานลข </a>
                     </li> 
 					<li>
-                        <a href="logout.php"><i class="fa fa-fw fa-lock"></i> ออกจากระบบ </a>
+                        <a href="logout.php"><i class="fa fa-fw fa-lock"></i> อกากะบ </a>
                     </li>                    
                 </ul>
             </div>
@@ -114,40 +114,40 @@ font-size: 13px;
 
 <!--Header-->
 <div class="page-header">
-        <h3><i class="fa fa-file"></i> ข้อมูลลงชื่อการมาปฏิบัติงาน </h3>
+        <h3><i class="fa fa-file"></i> ลงอกาปิบัติงาน </h3>
 </div>
 
-<div class="well text-info"><strong>วันที่ <?=DateThai($_GET[id])?></strong></div>
+<div class="well text-info"><strong>ัน <?=DateThai($_GET['id'])?></strong></div>
 
 <table class="table table-hover">
 	<tr class="success">
-		<th>ชื่อ - สกุล </th>
-		<th>หน่วยงาน</th>
-		<th>มาปฏิบัติงาน (<font color="green">ปกติ</font>)</th>
-		<th>มาปฏิบัติงาน (<font color="red">สาย</font>)</th>
-		<th>ไม่มาปฏิบัติงาน</th>
-		<th>ไม่เซ็นชื่อเข้า</th>
-		<th>ไม่เซ็นชื่อกลับ</th>
+		<th> - สก </th>
+		<th>หนยงาน</th>
+		<th>าปิบัติงาน (<font color="green"></font>)</th>
+		<th>าปิบัติงาน (<font color="red"></font>)</th>
+		<th>าปิบัติงาน</th>
+		<th>็นช</th>
+		<th>็นชอกับ</th>
 	</tr>
-<?
-$sql="select * from work1 where dated='$_GET[id]' order by depart";
+<?php
+$sql="select * from work1 where dated='{$_GET['id']}' order by depart";
 $res=mysql_query($sql);
 $i=0;
 while($ln=@mysql_fetch_array($res)){
 	$i++;
 ?>
 	<tr>
-		<td><?=$ln[name]?></td>
+		<td><?=$ln['name']?></td>
 		<td>
-			<?=$ln[depart]?>
+			<?=$ln['depart']?>
 		</td>
-		<td><? if(Timing($ln[timein]) != 0 && Timing($ln[timein]) < 8.31) echo "<img src='images/tick.png'>";?></td>
-		<td><? if(Timing($ln[timein]) != 0 && Timing($ln[timein]) > 8.30) echo "<img src='images/tick.png'>";?></td>
-		<td><? if(Timing($ln[timein]) == 0 && Timing($ln[timeout]) == 0) echo "<img src='images/tick.png'>";?></td>
-		<td><? if(Timing($ln[timein]) == 0 && Timing($ln[timeout]) != 0) echo "<img src='images/tick.png'>";?></td>
-		<td><? if(Timing($ln[timein]) > 0 && Timing($ln[timeout])== 0) echo "<img src='images/tick.png'>";?></td>
+		<td><?php if(Timing($ln['timein']) != 0 && Timing($ln['timein']) < 8.31) echo "<img src='images/tick.png'>";?></td>
+		<td><?php if(Timing($ln['timein']) != 0 && Timing($ln['timein']) > 8.30) echo "<img src='images/tick.png'>";?></td>
+		<td><?php if(Timing($ln['timein']) == 0 && Timing($ln['timeout']) == 0) echo "<img src='images/tick.png'>";?></td>
+		<td><?php if(Timing($ln['timein']) == 0 && Timing($ln['timeout']) != 0) echo "<img src='images/tick.png'>";?></td>
+		<td><?php if(Timing($ln['timein']) > 0 && Timing($ln['timeout'])== 0) echo "<img src='images/tick.png'>";?></td>
 	</tr>
-<? }?>
+<?php }?>
 </table>
 
 

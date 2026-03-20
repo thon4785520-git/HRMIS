@@ -1,9 +1,9 @@
 <?php
-// กำหนด Header ให้เป็น Windows-874 เพื่อรองรับภาษาไทยในระบบเดิม
+// หน Header  Windows-874 องับะบ
 header('Content-Type: text/html; charset=windows-874');
 session_start();
 
-// ตรวจสอบสถานะ Admin
+// วจอบสถาน Admin
 if($_SESSION['ss_status'] != "admin"){
 	echo "<script>location='index.php';</script>";
     exit();
@@ -11,7 +11,7 @@ if($_SESSION['ss_status'] != "admin"){
 
 include "config.php"; 
 
-// ดึงวันที่จาก GET
+// ึงันาก GET
 $date_show = isset($_GET['id']) ? $_GET['id'] : date('Y-m-d');
 ?>
 <!DOCTYPE html>
@@ -163,7 +163,7 @@ $date_show = isset($_GET['id']) ? $_GET['id'] : date('Y-m-d');
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="logout.php">
-                        <i class="fas fa-sign-out-alt"></i> ออกจากระบบ
+                        <i class="fas fa-sign-out-alt"></i> อกากะบ
                     </a>
                 </li>
             </ul>
@@ -177,12 +177,12 @@ $date_show = isset($_GET['id']) ? $_GET['id'] : date('Y-m-d');
             <div class="col-md-3 col-lg-2 d-md-block sidebar collapse" id="sidebarMenu">
                 <div class="position-sticky">
                     <div class="list-group list-group-flush">
-                        <a href="admin.php"><i class="fas fa-home"></i> หน้าแรก</a>
-                        <a href="admin_view_staff.php"><i class="fas fa-users"></i> ข้อมูลบุคลากร</a>
-                        <a href="admin_view_work.php"><i class="fas fa-desktop"></i> ข้อมูลการปฏิบัติงาน</a>
-                        <a href="admin_view_absent.php"><i class="fas fa-edit"></i> จัดการข้อมูลการลา</a>
-                        <a href="admin_report.php"><i class="fas fa-chart-bar"></i> รายงานผลข้อมูล</a>
-                        <a href="logout.php" class="text-danger"><i class="fas fa-lock"></i> ออกจากระบบ</a>
+                        <a href="admin.php"><i class="fas fa-home"></i> หนรก</a>
+                        <a href="admin_view_staff.php"><i class="fas fa-users"></i> ลบุคาก</a>
+                        <a href="admin_view_work.php"><i class="fas fa-desktop"></i> ลกรปิบัติงาน</a>
+                        <a href="admin_view_absent.php"><i class="fas fa-edit"></i> ัดรขลก</a>
+                        <a href="admin_report.php"><i class="fas fa-chart-bar"></i> ยงานลข</a>
+                        <a href="logout.php" class="text-danger"><i class="fas fa-lock"></i> อกากะบ</a>
                     </div>
                 </div>
             </div>
@@ -191,23 +191,23 @@ $date_show = isset($_GET['id']) ? $_GET['id'] : date('Y-m-d');
             <main class="col-md-9 ml-sm-auto col-lg-10 px-md-4 py-4">
                 
                 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 page-header">
-                    <h1 class="h2"><i class="fas fa-file-alt text-info"></i> ข้อมูลลงชื่อการมาปฏิบัติงาน</h1>
+                    <h1 class="h2"><i class="fas fa-file-alt text-info"></i> ลงอกาปิบัติงาน</h1>
                 </div>
 
                 <div class="card card-custom">
                     <div class="card-header card-header-custom">
-                        <span><i class="fas fa-calendar-day"></i> ประจำวันที่ <span class="text-primary"><?php echo DateThai($date_show); ?></span></span>
-                        <a href="admin_view_work.php" class="btn btn-sm btn-outline-secondary"><i class="fas fa-arrow-left"></i> ย้อนกลับ</a>
+                        <span><i class="fas fa-calendar-day"></i> ะจัน <span class="text-primary"><?php echo DateThai($date_show); ?></span></span>
+                        <a href="admin_view_work.php" class="btn btn-sm btn-outline-secondary"><i class="fas fa-arrow-left"></i> อนับ</a>
                     </div>
                     <div class="card-body p-0">
                         <div class="table-responsive">
                             <table class="table table-hover mb-0">
                                 <thead>
                                     <tr>
-                                        <th width="30%">ชื่อ - สกุล</th>
-                                        <th width="25%">หน่วยงาน</th>
-                                        <th width="20%">วันที่/เวลา</th>
-                                        <th width="25%">สถานะ</th>
+                                        <th width="30%"> - สก</th>
+                                        <th width="25%">หนยงาน</th>
+                                        <th width="20%">ัน/</th>
+                                        <th width="25%">สถาน</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -231,18 +231,18 @@ $date_show = isset($_GET['id']) ? $_GET['id'] : date('Y-m-d');
                                         <td>
                                             <?php 
                                             // Status Badge Logic
-                                            if($ln['level']==1) echo "<span class='badge badge-status badge-soft-success'><i class='fas fa-check-circle'></i> มาปกติ</span>";
-                                            if($ln['level']==2) echo "<span class='badge badge-status badge-soft-danger'><i class='fas fa-exclamation-circle'></i> มาสาย</span>";
-                                            if($ln['level']==3) echo "<span class='badge badge-status badge-soft-secondary'><i class='fas fa-times-circle'></i> ไม่มาปฏิบัติงาน</span>";
-                                            if($ln['level']==5) echo "<span class='badge badge-status badge-soft-info'><i class='fas fa-question-circle'></i> ไม่เซ็นชื่อเข้า</span>";
+                                            if($ln['level']==1) echo "<span class='badge badge-status badge-soft-success'><i class='fas fa-check-circle'></i> าป</span>";
+                                            if($ln['level']==2) echo "<span class='badge badge-status badge-soft-danger'><i class='fas fa-exclamation-circle'></i> </span>";
+                                            if($ln['level']==3) echo "<span class='badge badge-status badge-soft-secondary'><i class='fas fa-times-circle'></i> าปิบัติงาน</span>";
+                                            if($ln['level']==5) echo "<span class='badge badge-status badge-soft-info'><i class='fas fa-question-circle'></i> ็นช</span>";
                                             
                                             // Check Absent Record
-                                            $sql1="select * from absent where STAFFID=$ln[STAFFID] and '$date_show' between date1 and date2";
+                                            $sql1="select * from absent where STAFFID={$ln['STAFFID']} and '$date_show' between date1 and date2";
                                             $res1=mysql_query($sql1);
                                             $rows=mysql_num_rows($res1);
                                             
                                             if($rows > 0) {
-                                                echo "<div class='mt-1'><span class='badge badge-status badge-soft-purple'><i class='fas fa-briefcase'></i> ลา/ราชการ</span></div>";
+                                                echo "<div class='mt-1'><span class='badge badge-status badge-soft-purple'><i class='fas fa-briefcase'></i> /าช</span></div>";
                                             }
                                             
                                             if($ln['reason'] != "") {
@@ -254,7 +254,7 @@ $date_show = isset($_GET['id']) ? $_GET['id'] : date('Y-m-d');
                                     <?php 
                                         } 
                                     } else {
-                                        echo "<tr><td colspan='4' class='text-center py-4 text-muted'>ไม่พบข้อมูลการลงเวลาในวันที่นี้</td></tr>";
+                                        echo "<tr><td colspan='4' class='text-center py-4 text-muted'>่พบลกลงัน</td></tr>";
                                     }
                                     ?>
                                 </tbody>

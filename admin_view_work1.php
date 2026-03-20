@@ -1,9 +1,9 @@
 <?php
-// กำหนด Header ให้เป็น Windows-874 เพื่อรองรับภาษาไทยในระบบเดิม
+// หน Header  Windows-874 องับะบ
 header('Content-Type: text/html; charset=windows-874');
 session_start();
 
-// ตรวจสอบสถานะ Admin
+// วจอบสถาน Admin
 if($_SESSION['ss_status'] != "admin"){
 	echo "<script>location='index.php';</script>";
     exit();
@@ -167,7 +167,7 @@ include "config.php";
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="logout.php">
-                        <i class="fas fa-sign-out-alt"></i> ออกจากระบบ
+                        <i class="fas fa-sign-out-alt"></i> อกากะบ
                     </a>
                 </li>
             </ul>
@@ -181,13 +181,13 @@ include "config.php";
             <div class="col-md-3 col-lg-2 d-md-block sidebar collapse" id="sidebarMenu">
                 <div class="position-sticky">
                     <div class="list-group list-group-flush">
-                        <a href="admin.php"><i class="fas fa-home"></i> หน้าแรก</a>
-                        <a href="admin_view_staff.php"><i class="fas fa-users"></i> ข้อมูลบุคลากร</a>
-                        <a href="admin_view_control.php"><i class="fas fa-file-contract"></i> ทะเบียนคุมสัญญา พม.</a>
-                        <a href="admin_view_work.php" class="active"><i class="fas fa-desktop"></i> ข้อมูลการปฏิบัติงาน</a>
-                        <a href="admin_view_absent.php"><i class="fas fa-edit"></i> จัดการข้อมูลการลา</a>
-                        <a href="admin_report.php"><i class="fas fa-chart-bar"></i> รายงานผลข้อมูล</a>
-                        <a href="logout.php" class="text-danger"><i class="fas fa-lock"></i> ออกจากระบบ</a>
+                        <a href="admin.php"><i class="fas fa-home"></i> หนรก</a>
+                        <a href="admin_view_staff.php"><i class="fas fa-users"></i> ลบุคาก</a>
+                        <a href="admin_view_control.php"><i class="fas fa-file-contract"></i> ยนัญ .</a>
+                        <a href="admin_view_work.php" class="active"><i class="fas fa-desktop"></i> ลกรปิบัติงาน</a>
+                        <a href="admin_view_absent.php"><i class="fas fa-edit"></i> ัดรขลก</a>
+                        <a href="admin_report.php"><i class="fas fa-chart-bar"></i> ยงานลข</a>
+                        <a href="logout.php" class="text-danger"><i class="fas fa-lock"></i> อกากะบ</a>
                     </div>
                 </div>
             </div>
@@ -196,7 +196,7 @@ include "config.php";
             <main class="col-md-9 ml-sm-auto col-lg-10 px-md-4 py-4">
                 
                 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 page-header">
-                    <h1 class="h2"><i class="fas fa-desktop text-primary"></i> จัดการข้อมูลการมาปฏิบัติงาน</h1>
+                    <h1 class="h2"><i class="fas fa-desktop text-primary"></i> ัดรขลกาปิบัติงาน</h1>
                 </div>
 
                 <!-- Action Toolbar -->
@@ -204,20 +204,20 @@ include "config.php";
                     <div class="card-body">
                         <div class="row align-items-center">
                             <div class="col-lg-8 btn-custom-group">
-                                <span class="text-muted mr-2 font-weight-bold">นำเข้าข้อมูล:</span>
+                                <span class="text-muted mr-2 font-weight-bold">าข:</span>
                                 <a href="XLS/1.php" class="btn btn-warning text-white shadow-sm" target="_blank">
-                                    <i class="fas fa-file-excel"></i> ตรวจสอบ Excel
+                                    <i class="fas fa-file-excel"></i> วจอบ Excel
                                 </a>  
                                 <a href="XLS/" class="btn btn-info shadow-sm" target="_blank">
-                                    <i class="fas fa-cloud-upload-alt"></i> นำเข้า Excel เดิม
+                                    <i class="fas fa-cloud-upload-alt"></i>  Excel 
                                 </a> 
                                 <a href="XLS/3.php" class="btn btn-success shadow-sm" target="_blank">
-                                    <i class="fas fa-fingerprint"></i> นำเข้า Excel เครื่องสแกน
+                                    <i class="fas fa-fingerprint"></i>  Excel องแกน
                                 </a> 
                             </div>
                             <div class="col-lg-4 text-lg-right mt-3 mt-lg-0">
                                 <a href="admin_search_work.php" class="btn btn-primary btn-block shadow-sm">
-                                    <i class="fas fa-search"></i> ค้นหาประวัติรายบุคคล
+                                    <i class="fas fa-search"></i> าปัตยบุค
                                 </a>
                             </div>
                         </div>
@@ -230,16 +230,16 @@ include "config.php";
                     <div class="col-md-4">
                         <div class="card card-custom">
                             <div class="card-header card-header-custom">
-                                <i class="fas fa-calendar-alt"></i> เลือกวันที่ต้องการดู
+                                <i class="fas fa-calendar-alt"></i> อกันองรด
                             </div>
                             <div class="card-body">
                                 <form method="post" action="">
                                     <div class="form-group">
-                                        <label for="dated" class="font-weight-bold">วันที่:</label>
+                                        <label for="dated" class="font-weight-bold">ัน:</label>
                                         <input type="date" name="dated" id="dated" class="form-control" required value="<?php echo isset($_POST['dated']) ? $_POST['dated'] : ''; ?>">
                                     </div>
                                     <button type="submit" class="btn btn-success btn-block shadow-sm">
-                                        <i class="fas fa-eye"></i> แสดงข้อมูล
+                                        <i class="fas fa-eye"></i> สด
                                     </button>
                                 </form>
                             </div>
@@ -250,40 +250,40 @@ include "config.php";
                     <div class="col-md-8">
                         <div class="card card-custom">
                             <div class="card-header card-header-custom">
-                                <i class="fas fa-list-alt"></i> สรุปข้อมูลการปฏิบัติงาน
+                                <i class="fas fa-list-alt"></i> ุปลกรปิบัติงาน
                             </div>
                             <div class="card-body p-0">
                                 <div class="table-responsive">
                                     <table class="table table-hover mb-0">
                                         <thead>
                                             <tr>
-                                                <th>วันที่</th>
-                                                <th class="text-center text-success">ปกติ</th>
-                                                <th class="text-center text-danger">สาย</th>
-                                                <th class="text-center">ขาด/ไม่เซ็น</th>
-                                                <th class="text-center">ไม่เซ็นเข้า</th>
-                                                <th class="text-center">ไม่เซ็นออก</th>
-                                                <th class="text-center">จัดการ</th>
+                                                <th>ัน</th>
+                                                <th class="text-center text-success"></th>
+                                                <th class="text-center text-danger"></th>
+                                                <th class="text-center">าด/</th>
+                                                <th class="text-center"></th>
+                                                <th class="text-center">อก</th>
+                                                <th class="text-center">ัด</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <?php
                                             if(isset($_POST['dated']) && $_POST['dated'] != "") {
                                                 $selected_date = mysql_real_escape_string($_POST['dated']);
-                                                // Query หลัก
+                                                // Query ัก
                                                 $sql="select distinct dated from work1 where dated='$selected_date' order by dated DESC";
                                                 $res=mysql_query($sql); //or die(mysql_error());
                                                 
                                                 if(mysql_num_rows($res) > 0) {
                                                     while($ln=mysql_fetch_array($res)){
                                                         // Calculate Stats
-                                                        $sql1="select * from work1 where dated = '$ln[dated]' ";
+                                                        $sql1="select * from work1 where dated = '{$ln['dated']}' ";
                                                         $res1=mysql_query($sql1);
-                                                        $y1=0; // ปกติ
-                                                        $y2=0; // สาย
-                                                        $y3=0; // ไม่เซ็นชื่อ
-                                                        $y4=0; // ไม่เซ็นเข้า
-                                                        $y5=0; // ไม่เซ็นออก
+                                                        $y1=0; // 
+                                                        $y2=0; // 
+                                                        $y3=0; // ็นช
+                                                        $y4=0; // 
+                                                        $y5=0; // อก
                                                         
                                                         while($ln1=mysql_fetch_array($res1)){
                                                             if(Timing($ln1['timein']) != 0 && Timing($ln1['timein']) < 8.31) $y1++;
@@ -301,16 +301,16 @@ include "config.php";
                                                 <td class="text-center"><span class="stat-val text-warning"><?php echo $y4; ?></span></td>
                                                 <td class="text-center"><span class="stat-val text-warning"><?php echo $y5; ?></span></td>
                                                 <td class="text-center">   
-                                                    <a href="admin_show_works.php?id=<?php echo $ln['dated']; ?>" class="btn btn-success action-btn shadow-sm" title="สายวิชาการ" target="_blank">
+                                                    <a href="admin_show_works.php?id=<?php echo $ln['dated']; ?>" class="btn btn-success action-btn shadow-sm" title="ิชาก" target="_blank">
                                                         <i class="fas fa-chalkboard-teacher" style="font-size: 0.8rem;"></i>
                                                     </a> 
-                                                    <a href="admin_show_work.php?id=<?php echo $ln['dated']; ?>" class="btn btn-info action-btn shadow-sm" title="สายสนับสนุน" target="_blank">
+                                                    <a href="admin_show_work.php?id=<?php echo $ln['dated']; ?>" class="btn btn-info action-btn shadow-sm" title="สนับสนุน" target="_blank">
                                                         <i class="fas fa-user-cog" style="font-size: 0.8rem;"></i>
                                                     </a>
-                                                    <a href="admin_edit_work.php?id=<?php echo $ln['dated']; ?>" class="btn btn-warning action-btn text-white shadow-sm" title="แก้ไข" target="_blank">
+                                                    <a href="admin_edit_work.php?id=<?php echo $ln['dated']; ?>" class="btn btn-warning action-btn text-white shadow-sm" title="" target="_blank">
                                                         <i class="fas fa-pencil-alt" style="font-size: 0.8rem;"></i>
                                                     </a>
-                                                    <a href="admin_del_work.php?id=<?php echo $ln['dated']; ?>" class="btn btn-danger action-btn shadow-sm" title="ลบ" onClick="return confirm('ยืนยันการลบข้อมูลวันที่นี้? การกระทำนี้ไม่สามารถย้อนกลับได้');">
+                                                    <a href="admin_del_work.php?id=<?php echo $ln['dated']; ?>" class="btn btn-danger action-btn shadow-sm" title="ลบ" onClick="return confirm('ืนันลบัน? รกะทำนรถอนับ');">
                                                         <i class="fas fa-times" style="font-size: 0.8rem;"></i>
                                                     </a>
                                                 </td>
@@ -318,10 +318,10 @@ include "config.php";
                                             <?php 
                                                     }
                                                 } else {
-                                                    echo "<tr><td colspan='7' class='text-center py-4 text-muted'>ไม่พบข้อมูลการปฏิบัติงานในวันที่เลือก</td></tr>";
+                                                    echo "<tr><td colspan='7' class='text-center py-4 text-muted'>่พบลกรปิบัติงานันอก</td></tr>";
                                                 }
                                             } else {
-                                                echo "<tr><td colspan='7' class='text-center py-5 text-muted'><i class='fas fa-arrow-left fa-2x mb-2'></i><br>กรุณาเลือกวันที่ทางด้านซ้ายเพื่อแสดงข้อมูล</td></tr>";
+                                                echo "<tr><td colspan='7' class='text-center py-5 text-muted'><i class='fas fa-arrow-left fa-2x mb-2'></i><br>ุณอกันางานสด</td></tr>";
                                             }
                                             ?>
                                         </tbody>

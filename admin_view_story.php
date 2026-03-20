@@ -1,9 +1,9 @@
 <?php
-// กำหนด Header ให้เป็น Windows-874 เพื่อรองรับภาษาไทยในระบบเดิม
+// หน Header  Windows-874 องับะบ
 header('Content-Type: text/html; charset=windows-874');
 session_start();
 
-// ตรวจสอบสถานะ Admin
+// วจอบสถาน Admin
 if($_SESSION['ss_status'] != "admin"){
 	echo "<script>location='index.php';</script>";
     exit();
@@ -143,7 +143,7 @@ include "config.php";
             margin: 0 3px;
             width: 36px;
             height: 36px;
-            line-height: 36px; /* ปรับให้ตัวเลขอยู่กลางแนวตั้ง */
+            line-height: 36px; /* ับลขางวต */
             text-align: center;
             padding: 0;
             border: none;
@@ -191,7 +191,7 @@ include "config.php";
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="logout.php">
-                        <i class="fas fa-sign-out-alt"></i> ออกจากระบบ
+                        <i class="fas fa-sign-out-alt"></i> อกากะบ
                     </a>
                 </li>
             </ul>
@@ -205,12 +205,12 @@ include "config.php";
             <div class="col-md-3 col-lg-2 d-md-block sidebar collapse" id="sidebarMenu">
                 <div class="position-sticky">
                     <div class="list-group list-group-flush">
-                        <a href="admin.php"><i class="fas fa-home"></i> หน้าแรก</a>
-                        <a href="admin_view_staff.php"><i class="fas fa-users"></i> ข้อมูลบุคลากร</a>
-                        <a href="admin_view_work.php"><i class="fas fa-desktop"></i> ข้อมูลการปฏิบัติงาน</a>
-                        <a href="admin_view_absent.php"><i class="fas fa-edit"></i> จัดการข้อมูลการลา</a>
-                        <a href="admin_report.php" class="active"><i class="fas fa-chart-bar"></i> รายงานผลข้อมูล</a>
-                        <a href="logout.php" class="text-danger"><i class="fas fa-lock"></i> ออกจากระบบ</a>
+                        <a href="admin.php"><i class="fas fa-home"></i> หนรก</a>
+                        <a href="admin_view_staff.php"><i class="fas fa-users"></i> ลบุคาก</a>
+                        <a href="admin_view_work.php"><i class="fas fa-desktop"></i> ลกรปิบัติงาน</a>
+                        <a href="admin_view_absent.php"><i class="fas fa-edit"></i> ัดรขลก</a>
+                        <a href="admin_report.php" class="active"><i class="fas fa-chart-bar"></i> ยงานลข</a>
+                        <a href="logout.php" class="text-danger"><i class="fas fa-lock"></i> อกากะบ</a>
                     </div>
                 </div>
             </div>
@@ -219,13 +219,13 @@ include "config.php";
             <main class="col-md-9 ml-sm-auto col-lg-10 px-md-4 py-4">
                 
                 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 page-header">
-                    <h1 class="h2"><i class="fas fa-desktop text-info"></i> ประวัติการใช้งานระบบ</h1>
+                    <h1 class="h2"><i class="fas fa-desktop text-info"></i> ัติกานะบ</h1>
                 </div>
 
                   <!-- Data Table -->
                 <div class="card card-custom">
                     <div class="card-header card-header-custom">
-                        <i class="fas fa-list-ul"></i> รายการข้อมูลการลาล่าสุด
+                        <i class="fas fa-list-ul"></i> ยกรขลกุด
                     </div>
                     <div class="card-body p-0">
                         <div class="table-responsive">
@@ -239,24 +239,24 @@ include "config.php";
                                         <th>Action</th>
                                     </tr>
                                 </thead>
-<?
+<?php
 $sql="select * from stories where username != '' order by id DESC";
 $res=mysql_query($sql);
 while($ln=mysql_fetch_array($res)){
 ?>								
                                 <tbody>
-  										<td><?=$ln[username]?></td>
-  										<td><?=$ln[dated]?></td>
-  										<td><?=$ln[ip]?></td>
-  										<td><?=$ln[agents]?></td>
+  										<td><?=$ln['username']?></td>
+  										<td><?=$ln['dated']?></td>
+  										<td><?=$ln['ip']?></td>
+  										<td><?=$ln['agents']?></td>
   										<td>
-										<?
-										if($ln[username]!="thanapat.je")echo $ln[actions];
+										<?php
+										if($ln['username']!="thanapat.je")echo $ln['actions'];
 										else echo "";
 										?>
 										</td>										
                                 </tbody>
-<? }?>								
+<?php }?>								
                             </table>
                         </div>
                     </div>

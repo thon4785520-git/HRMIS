@@ -1,6 +1,6 @@
-<?
+<?php
 session_start();
-if($_SESSION[ss_status]!="admin"){
+if($_SESSION['ss_status']!="admin"){
 	echo "<script>location='index.php';</script>";
 }
 ?>
@@ -79,29 +79,29 @@ font-size: 13px;
 			<!-- Top Menu Items -->
             <ul class="nav navbar-right top-nav">
                 <li class="dropdown">
-                    <a href="#"> <font color="#FFF"> <i class="fa fa-fw fa-user"></i> <?=$_SESSION[ss_name]?> </font> </a>                    
+                    <a href="#"> <font color="#FFF"> <i class="fa fa-fw fa-user"></i> <?=$_SESSION['ss_name']?> </font> </a>                    
                 </li>
 			</ul>
             <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">					
                     <li>
-                        <a href="admin.php"><i class="fa fa-fw fa-home"></i> หน้าแรก </a>
+                        <a href="admin.php"><i class="fa fa-fw fa-home"></i> หนรก </a>
                     </li>	
 					<li>
-                        <a href="admin_view_staff.php"><i class="fa fa-fw fa-user"></i> จัดการข้อมูลบุคลากร </a>
+                        <a href="admin_view_staff.php"><i class="fa fa-fw fa-user"></i> ัดรขลบุคาก </a>
                     </li>				
                     <li>
-                        <a href="admin_view_work.php"><i class="fa fa-fw fa-desktop"></i> จัดการข้อมูลการปฏิบัติงาน </a>
+                        <a href="admin_view_work.php"><i class="fa fa-fw fa-desktop"></i> ัดรขลกรปิบัติงาน </a>
                     </li>
                     <li>
-                        <a href="admin_view_absent.php"><i class="fa fa-fw fa-edit"></i> จัดการข้อมูลการลา </a>
+                        <a href="admin_view_absent.php"><i class="fa fa-fw fa-edit"></i> ัดรขลก </a>
                     </li>
                     <li>
-                        <a href="admin_report.php"><i class="fa fa-fw fa-table"></i> รายงานผลข้อมูล </a>
+                        <a href="admin_report.php"><i class="fa fa-fw fa-table"></i> ยงานลข </a>
                     </li> 
 					<li>
-                        <a href="logout.php"><i class="fa fa-fw fa-lock"></i> ออกจากระบบ </a>
+                        <a href="logout.php"><i class="fa fa-fw fa-lock"></i> อกากะบ </a>
                     </li>                    
                 </ul>
             </div>
@@ -116,45 +116,45 @@ font-size: 13px;
 
 <!--Header-->
 <div class="page-header">
-        <h3><i class="fa fa-plus"></i> ลงชื่อการมาปฏิบัติงาน </h3>
+        <h3><i class="fa fa-plus"></i> ลงอกาปิบัติงาน </h3>
 </div>
 
-<?
-if($_POST[date1]=="")
-	$_POST[date1]=date("d")."-" . date("m") . "-" . (date("Y")+543);
+<?php
+if($_POST['date1']=="")
+	$_POST['date1']=date("d")."-" . date("m") . "-" . (date("Y")+543);
 ?>
 
 <!-- form -->
 <FORM METHOD="POST" ACTION="" id="form1">
-ประเภทของบุคลากร
+องุคาก
 <select name="STAFFTYPE">
-	<option value="0" <? if($_POST[STAFFTYPE]==0)echo "selected";?>> * ทั้งหมด *</option>
-	<option value="1" <? if($_POST[STAFFTYPE]==1)echo "selected";?>> ข้าราชการ </option>
-	<option value="2" <? if($_POST[STAFFTYPE]==2)echo "selected";?>> ลูกจ้างประจำ </option>
-	<option value="3" <? if($_POST[STAFFTYPE]==3)echo "selected";?>> พนักงานราชการ </option>
-	<option value="4" <? if($_POST[STAFFTYPE]==4)echo "selected";?>> พนักงานมหาวิทยาลัย </option>
-	<option value="5" <? if($_POST[STAFFTYPE]==5)echo "selected";?>> พนักงานประจำตามสัญญา </option>
+	<option value="0" <?php if($_POST['STAFFTYPE']==0)echo "selected";?>> *  *</option>
+	<option value="1" <?php if($_POST['STAFFTYPE']==1)echo "selected";?>> าช </option>
+	<option value="2" <?php if($_POST['STAFFTYPE']==2)echo "selected";?>> ูกางะจ </option>
+	<option value="3" <?php if($_POST['STAFFTYPE']==3)echo "selected";?>> ักานาช </option>
+	<option value="4" <?php if($_POST['STAFFTYPE']==4)echo "selected";?>> ักานิท </option>
+	<option value="5" <?php if($_POST['STAFFTYPE']==5)echo "selected";?>> ักานะจำตัญ </option>
 </select>
-หน่วยงาน 
+หนยงาน 
 <select name="DEPARTMENTID" style="width:200px;">
-	<?
+	<?php
 	include"config.php";
 	$sql="select * from department";
 	$res=mysql_query($sql);
 	while($ln=mysql_fetch_array($res)){
-		if($_POST[DEPARTMENTID]==$ln[0])
-			echo "<option value='$ln[0]' selected>$ln[1]";
+		if($_POST['DEPARTMENTID']==$ln[0])
+			echo "<option value='{$ln[0]}' selected>{$ln[1]}";
 		else
-			echo "<option value='$ln[0]'>$ln[1]";
+			echo "<option value='{$ln[0]}'>{$ln[1]}";
 	}
 	?>
 </select>
-สายปฏิบัติการ
+ยปิบัติก
 <select name="STAFFGROUP">
-	<option value="2" <? if($_POST[STAFFGROUP]==2)echo "selected";?>> สายสนับสนุน </option>
-	<option value="1" <? if($_POST[STAFFGROUP]==1)echo "selected";?>> สายวิชาการ </option>
+	<option value="2" <?php if($_POST['STAFFGROUP']==2)echo "selected";?>> สนับสนุน </option>
+	<option value="1" <?php if($_POST['STAFFGROUP']==1)echo "selected";?>> ิชาก </option>
 </select>
-วันที่ปฏิบัติงาน <input type="text" name="date1" id="date1" size="7" class="required" title=" * " value="<?=$_POST[date1]?>"> &nbsp;&nbsp;
+ัน่ปฏิบัติงาน <input type="text" name="date1" id="date1" size="7" class="required" title=" * " value="<?=$_POST['date1']?>"> &nbsp;&nbsp;
 
 <!-- js datepicker -->  
 <script src="jquery.datetimepicker.full.js" charset="utf-8"></script>
@@ -203,36 +203,36 @@ $(function(){
 
 <!-- form -->
 <FORM METHOD="POST" ACTION="admin_add_work2.php" id="form2" name="form2">
-<input type="hidden" name="dated" value="<?=$_POST[date1]?>">
+<input type="hidden" name="dated" value="<?=$_POST['date1']?>">
 <br>
 <table class="table table-hover">
 	<tr class="success">
-		<th>ชื่อ - สกุล </th>
-		<th>ประเภทบุคลากร</th>
-		<th>มาปฏิบัติงาน (<font color="green">ปกติ</font>)</th>
-		<th>มาปฏิบัติงาน (<font color="red">สาย</font>)</th>
-		<th>ไม่มาปฏิบัติงาน</th>
-		<th>วันหยุด</th>
-		<th>ไม่เซ็นชื่อกลับ</th>
+		<th> - สก </th>
+		<th>ุคาก</th>
+		<th>าปิบัติงาน (<font color="green"></font>)</th>
+		<th>าปิบัติงาน (<font color="red"></font>)</th>
+		<th>าปิบัติงาน</th>
+		<th>ันุด</th>
+		<th>็นชอกับ</th>
 	</tr>
-<?
-if($_POST[STAFFTYPE] != 0)
-	$sql="select * from staff where STAFFTYPE=$_POST[STAFFTYPE] and DEPARTMENTID=$_POST[DEPARTMENTID] and STAFFGROUP=$_POST[STAFFGROUP] order by STAFFNAME";
+<?php
+if($_POST['STAFFTYPE'] != 0)
+	$sql="select * from staff where STAFFTYPE={$_POST['STAFFTYPE']} and DEPARTMENTID={$_POST['DEPARTMENTID']} and STAFFGROUP={$_POST['STAFFGROUP']} order by STAFFNAME";
 else
-	$sql="select * from staff where DEPARTMENTID=$_POST[DEPARTMENTID] and STAFFGROUP=$_POST[STAFFGROUP] order by STAFFNAME";
+	$sql="select * from staff where DEPARTMENTID={$_POST['DEPARTMENTID']} and STAFFGROUP={$_POST['STAFFGROUP']} order by STAFFNAME";
 
 $res=mysql_query($sql);
 $i=0;
 while($ln=@mysql_fetch_array($res)){
 	$i++;
 ?>
-	<input type="hidden" name="STAFFID[<?=$i?>]" value="<?=$ln[STAFFID]?>">
+	<input type="hidden" name="STAFFID[<?=$i?>]" value="<?=$ln['STAFFID']?>">
 	<tr>
-		<td><?=$ln[STAFFNAME]?> <?=$ln[STAFFSURNAME]?></td>
+		<td><?=$ln['STAFFNAME']?> <?=$ln['STAFFSURNAME']?></td>
 		<td>
-			<?
-			$x=array("","ข้าราชการ","ลูกจ้างประจำ","พนักงานราชการ","พนักงานมหาวิทยาลัย","พนักงานประจำตามสัญญา");
-			echo $x[$ln[STAFFTYPE]];
+			<?php
+			$x=array("","าช","ูกางะจ","ักานาช","ักานิท","ักานะจำตัญ");
+			echo $x[$ln['STAFFTYPE']];
 			?>
 		</td>
 		<td><input type="radio" name="level[<?=$i?>]" value="1" checked="checked"></td>
@@ -241,7 +241,7 @@ while($ln=@mysql_fetch_array($res)){
 		<td><input type="radio" name="level[<?=$i?>]" value="4"></td>
 		<td><input type="radio" name="level[<?=$i?>]" value="5"></td>
 	</tr>
-<? }?>
+<?php }?>
 </table>
 
 <INPUT TYPE="submit" class="btn btn-success" value="Save">

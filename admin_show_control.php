@@ -1,6 +1,6 @@
-<?
+<?php
 session_start();
-if($_SESSION[ss_status]!="admin"){
+if($_SESSION['ss_status']!="admin"){
 	echo "<script>location='index.php';</script>";
 }
 ?>
@@ -76,32 +76,32 @@ font-size: 13px;
 			<!-- Top Menu Items -->
             <ul class="nav navbar-right top-nav">
                 <li class="dropdown">
-                    <a href="#"> <font color="#FFF"> <i class="fa fa-fw fa-user"></i> <?=$_SESSION[ss_name]?> </font> </a>                    
+                    <a href="#"> <font color="#FFF"> <i class="fa fa-fw fa-user"></i> <?=$_SESSION['ss_name']?> </font> </a>                    
                 </li>
 			</ul>
             <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">					
                     <li>
-                        <a href="admin.php"><i class="fa fa-fw fa-home"></i> หน้าแรก </a>
+                        <a href="admin.php"><i class="fa fa-fw fa-home"></i> หนรก </a>
                     </li>	
 					<li>
-                        <a href="admin_view_staff.php"><i class="fa fa-fw fa-user"></i> จัดการข้อมูลบุคลากร </a>
+                        <a href="admin_view_staff.php"><i class="fa fa-fw fa-user"></i> ัดรขลบุคาก </a>
                     </li>	
 					<li>
-                        <a href="admin_view_control.php"><i class="fa fa-fw fa-tag"></i> ทะเบียนคุมสัญญา พม. </a>
+                        <a href="admin_view_control.php"><i class="fa fa-fw fa-tag"></i> ยนัญ . </a>
                     </li>                    			
                     <li>
-                        <a href="admin_view_work.php"><i class="fa fa-fw fa-desktop"></i> จัดการข้อมูลการปฏิบัติงาน </a>
+                        <a href="admin_view_work.php"><i class="fa fa-fw fa-desktop"></i> ัดรขลกรปิบัติงาน </a>
                     </li>
                     <li>
-                        <a href="admin_view_absent.php"><i class="fa fa-fw fa-edit"></i> จัดการข้อมูลการลา </a>
+                        <a href="admin_view_absent.php"><i class="fa fa-fw fa-edit"></i> ัดรขลก </a>
                     </li>
                     <li>
-                        <a href="admin_report.php"><i class="fa fa-fw fa-table"></i> รายงานผลข้อมูล </a>
+                        <a href="admin_report.php"><i class="fa fa-fw fa-table"></i> ยงานลข </a>
                     </li> 
 					<li>
-                        <a href="logout.php"><i class="fa fa-fw fa-lock"></i> ออกจากระบบ </a>
+                        <a href="logout.php"><i class="fa fa-fw fa-lock"></i> อกากะบ </a>
                     </li>                    
                 </ul>
             </div>
@@ -116,15 +116,15 @@ font-size: 13px;
 
 <!--Header-->
 <div class="page-header">
-        <h3><i class="fa fa-fw fa-tag"></i> ข้อมูลทะเบียนคุมสัญญา พนักงานมหาวิทยาลัย </h3>
+        <h3><i class="fa fa-fw fa-tag"></i> ลทยนัญ ักานิท </h3>
 </div>
 
-<?
+<?php
 include"config.php";
 
-$_GET[id]=base64_decode($_GET[id]);
+$_GET['id']=base64_decode($_GET['id']);
 
-$sql="select * from staff A,department B where A.DEPARTMENTID=B.DEPARTMENTID and A.STAFFID=$_GET[id]";
+$sql="select * from staff A,department B where A.DEPARTMENTID=B.DEPARTMENTID and A.STAFFID={$_GET['id']}";
 //echo"$sql"; 
 $res=mysql_query($sql);
 $ln=mysql_fetch_array($res);
@@ -132,35 +132,35 @@ $ln=mysql_fetch_array($res);
 <!-- panel -->
 <div class="panel panel-green">
        <div class="panel-heading">
-              <h3 class="panel-title"> ข้อมูลส่วนตัว </h3>
+              <h3 class="panel-title"> วน </h3>
        </div>
         <div class="panel-body">
               <table class="table">
               <tr>
-              	<td bgcolor="#EEE" width="200">ชื่อ- สกุล</td>
-                <td><?=$ln[STAFFNAME]?> <?=$ln[STAFFSURNAME]?></td>
+              	<td bgcolor="#EEE" width="200">- สก</td>
+                <td><?=$ln['STAFFNAME']?> <?=$ln['STAFFSURNAME']?></td>
               </tr>
-              	<td bgcolor="#EEE">ตำแหน่ง</td>
-                <td><?=$ln[POSITIONNAME]?></td> 
+              	<td bgcolor="#EEE">หน</td>
+                <td><?=$ln['POSITIONNAME']?></td> 
               </tr>              
-              	<td bgcolor="#EEE">หน่วยงาน</td>
-                <td><?=$ln[DEPARTMENTNAME]?></td>
+              	<td bgcolor="#EEE">หนยงาน</td>
+                <td><?=$ln['DEPARTMENTNAME']?></td>
               </tr>                                   
-              	<td bgcolor="#EEE">กลุ่มบุคลากร</td>
+              	<td bgcolor="#EEE">ุคาก</td>
                 <td>
    
                 </td>   
               </tr>                               
-              	<td bgcolor="#EEE">เลขบัตรประชาชน</td>
+              	<td bgcolor="#EEE">ลขัตรปะชาช</td>
                 <td></td>  
               </tr>                               
-              	<td bgcolor="#EEE">เลขที่ตำแหน่ง</td>
+              	<td bgcolor="#EEE">ลขหน</td>
                 <td></td>    
               </tr>                               
-              	<td bgcolor="#EEE">วันที่เริ่มทำงาน</td>
+              	<td bgcolor="#EEE">ันำงาน</td>
                 <td></td>   
               </tr>                              
-              	<td bgcolor="#EEE">วันที่บรรจุ</td>
+              	<td bgcolor="#EEE">ันรจ</td>
                 <td></td>                
               </tr>              
           </table>

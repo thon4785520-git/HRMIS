@@ -1,6 +1,6 @@
-<?
+<?php
 session_start();
-if($_SESSION[ss_status]!="admin"){
+if($_SESSION['ss_status']!="admin"){
 	echo "<script>location='index.php';</script>";
 }
 ?>
@@ -87,32 +87,32 @@ font-size: 13px;
 			<!-- Top Menu Items -->
             <ul class="nav navbar-right top-nav">
                 <li class="dropdown">
-                    <a href="#"> <font color="#FFF"> <i class="fa fa-fw fa-user"></i> <?=$_SESSION[ss_name]?> </font> </a>                    
+                    <a href="#"> <font color="#FFF"> <i class="fa fa-fw fa-user"></i> <?=$_SESSION['ss_name']?> </font> </a>                    
                 </li>
 			</ul>
             <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">					
                     <li>
-                        <a href="admin.php"><i class="fa fa-fw fa-home"></i> หน้าแรก </a>
+                        <a href="admin.php"><i class="fa fa-fw fa-home"></i> หนรก </a>
                     </li>	
 					<li>
-                        <a href="admin_view_staff.php"><i class="fa fa-fw fa-user"></i> จัดการข้อมูลบุคลากร </a>
+                        <a href="admin_view_staff.php"><i class="fa fa-fw fa-user"></i> ัดรขลบุคาก </a>
                     </li>	
 					<li>
-                        <a href="admin_view_control.php"><i class="fa fa-fw fa-tag"></i> ทะเบียนคุมสัญญา พม. </a>
+                        <a href="admin_view_control.php"><i class="fa fa-fw fa-tag"></i> ยนัญ . </a>
                     </li>                    			
                     <li>
-                        <a href="admin_view_work.php"><i class="fa fa-fw fa-desktop"></i> จัดการข้อมูลการปฏิบัติงาน </a>
+                        <a href="admin_view_work.php"><i class="fa fa-fw fa-desktop"></i> ัดรขลกรปิบัติงาน </a>
                     </li>
                     <li>
-                        <a href="admin_view_absent.php"><i class="fa fa-fw fa-edit"></i> จัดการข้อมูลการลา </a>
+                        <a href="admin_view_absent.php"><i class="fa fa-fw fa-edit"></i> ัดรขลก </a>
                     </li>
                     <li>
-                        <a href="admin_report.php"><i class="fa fa-fw fa-table"></i> รายงานผลข้อมูล </a>
+                        <a href="admin_report.php"><i class="fa fa-fw fa-table"></i> ยงานลข </a>
                     </li> 
 					<li>
-                        <a href="logout.php"><i class="fa fa-fw fa-lock"></i> ออกจากระบบ </a>
+                        <a href="logout.php"><i class="fa fa-fw fa-lock"></i> อกากะบ </a>
                     </li>                    
                 </ul>
             </div>
@@ -127,27 +127,27 @@ font-size: 13px;
 
 <!--Header-->
 <div class="page-header">
-        <h3><i class="fa fa-fw fa-tag"></i> ทะเบียนคุมสัญญา พนักงานมหาวิทยาลัย </h3>
+        <h3><i class="fa fa-fw fa-tag"></i> ยนัญ ักานิท </h3>
 </div>
 
-<a href="admin_view_alert.php" class="btn btn-sm btn-primary"><i class="fa fa-info"></i> แจ้งเตือนสัญญา</a> 
+<a href="admin_view_alert.php" class="btn btn-sm btn-primary"><i class="fa fa-info"></i> อนัญ</a> 
 <br><br>
 
 <!-- form -->
 <FORM METHOD="POST" ACTION="" id="form1" class="well jumbotron">
 
-กรุณาเลือกหน่วยงาน 
+ุณอกหนยงาน 
 <select name="DEPARTMENTID">
-<option value="4785520"> * ทั้งหมด *
-	<?
+<option value="4785520"> *  *
+	<?php
 	include"config.php";
 	$sql="select * from department";
 	$res=mysql_query($sql);
 	while($ln=mysql_fetch_array($res)){
-		if($_POST[DEPARTMENTID]==$ln[0])
-			echo "<option value=$ln[0] selected>$ln[1]";
+		if($_POST['DEPARTMENTID']==$ln[0])
+			echo "<option value={$ln[0]} selected>{$ln[1]}";
 		else
-			echo "<option value=$ln[0] >$ln[1]";		
+			echo "<option value={$ln[0]} >{$ln[1]}";		
 	}
 	?>
 </select>
@@ -158,49 +158,49 @@ font-size: 13px;
 
 <table class="table table-hover">
 <tr class="success">
-	<th>เลขที่ตำแหน่ง</th>
-	<th>ชื่อ - สกุล</th>
-	<th>ตำแหน่ง</th>
+	<th>ลขหน</th>
+	<th> - สก</th>
+	<th>หน</th>
 	<th width="160">Manage 1</th>
 	<th width="160"> </th>    
 </tr>
-<?
+<?php
 //include"config.php";
-if($_POST[DEPARTMENTID]==4785520)
+if($_POST['DEPARTMENTID']==4785520)
 	$sql="select * from staff where STAFFTYPE=4 order by STAFFNAME";
 else
-	$sql="select * from staff where DEPARTMENTID=$_POST[DEPARTMENTID] and STAFFTYPE=4 order by STAFFNAME";
+	$sql="select * from staff where DEPARTMENTID={$_POST['DEPARTMENTID']} and STAFFTYPE=4 order by STAFFNAME";
 $res=mysql_query($sql);
 while($ln=mysql_fetch_array($res)){
 	
 ?>
 <tr>
-	<td><?=$ln[STAFFNO]?> </td>
-	<td> <?=$ln[PREFIXNAME]?><?=$ln[STAFFNAME]?> <?=$ln[STAFFSURNAME]?> </td>
-	<td><?=$ln[POSITIONNAME]?> </td>
+	<td><?=$ln['STAFFNO']?> </td>
+	<td> <?=$ln['PREFIXNAME']?><?=$ln['STAFFNAME']?> <?=$ln['STAFFSURNAME']?> </td>
+	<td><?=$ln['POSITIONNAME']?> </td>
 	<td>   
 	<a class="jax" href="admin_edit_personnel.php?id=<?=base64_encode($ln[0])?>"><i class="fa fa-fw fa-edit" style="color:deeppink"></i> 
-    ข้อมูลส่วนตัว</a><br>
+    วน</a><br>
 	<a class="jax" href="admin_edit_control1.php?id=<?=base64_encode($ln[0])?>"><i class="fa fa-fw fa-edit" style="color:darkviolet"></i> 
-    6 เดือนครั้งที่ 1</a><br>
+    6 อน้งท 1</a><br>
 	<a class="jax" href="admin_edit_control2.php?id=<?=base64_encode($ln[0])?>"><i class="fa fa-fw fa-edit" style="color:green"></i> 
-    6 เดือนครั้งที่ 2</a><br>
+    6 อน้งท 2</a><br>
 	<a class="jax" href="admin_edit_control3.php?id=<?=base64_encode($ln[0])?>"><i class="fa fa-fw fa-edit" style="color:orangered"></i> 
-    ระยะการจ้างครั้งที่ 2</a><br>
+    ะกรจาง้งท 2</a><br>
 	<a class="jax" href="admin_edit_control4.php?id=<?=base64_encode($ln[0])?>"><i class="fa fa-fw fa-edit" style="color:blue"></i> 
-    ระยะการจ้างครั้งที่ 3</a><br>
+    ะกรจาง้งท 3</a><br>
 	</td>
 	<td>   
 	<a class="jax" href="admin_edit_control5.php?id=<?=base64_encode($ln[0])?>"><i class="fa fa-fw fa-edit" style="color:darkviolet"></i> 
-    ระยะการจ้างครั้งที่ 4</a><br>
+    ะกรจาง้งท 4</a><br>
 	<a class="jax" href="admin_edit_control6.php?id=<?=base64_encode($ln[0])?>"><i class="fa fa-fw fa-edit" style="color:maroon"></i> 
-    ระยะการจ้างครั้งที่ 5</a><br>
+    ะกรจาง้งท 5</a><br>
 	<a class="jax" href="admin_edit_control7.php?id=<?=base64_encode($ln[0])?>"><i class="fa fa-fw fa-edit" style="color:steelblue"></i> 
-    ระยะการจ้างครั้งที่ 6</a><br>            
+    ะกรจาง้งท 6</a><br>            
 	</td>
     
 </tr>
-<? }?>
+<?php }?>
 </table>
 	
 	</div>

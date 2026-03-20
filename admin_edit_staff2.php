@@ -1,6 +1,6 @@
-<?
+<?php
 session_start();
-if($_SESSION[ss_status]!="admin"){
+if($_SESSION['ss_status']!="admin"){
 	echo "<script>location='index.php';</script>";
 }
 ?>
@@ -76,29 +76,29 @@ font-size: 13px;
 			<!-- Top Menu Items -->
             <ul class="nav navbar-right top-nav">
                 <li class="dropdown">
-                    <a href="#"> <font color="#FFF"> <i class="fa fa-fw fa-user"></i> <?=$_SESSION[ss_name]?> </font> </a>                    
+                    <a href="#"> <font color="#FFF"> <i class="fa fa-fw fa-user"></i> <?=$_SESSION['ss_name']?> </font> </a>                    
                 </li>
 			</ul>
             <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">					
                      <li>
-                        <a href="admin.php"><i class="fa fa-fw fa-home"></i> หน้าแรก </a>
+                        <a href="admin.php"><i class="fa fa-fw fa-home"></i> หนรก </a>
                     </li>	
 					<li>
-                        <a href="admin_view_staff.php"><i class="fa fa-fw fa-user"></i> จัดการข้อมูลบุคลากร </a>
+                        <a href="admin_view_staff.php"><i class="fa fa-fw fa-user"></i> ัดรขลบุคาก </a>
                     </li>				
                     <li>
-                        <a href="admin_view_work.php"><i class="fa fa-fw fa-desktop"></i> จัดการข้อมูลการปฏิบัติงาน </a>
+                        <a href="admin_view_work.php"><i class="fa fa-fw fa-desktop"></i> ัดรขลกรปิบัติงาน </a>
                     </li>
                     <li>
-                        <a href="admin_view_absent.php"><i class="fa fa-fw fa-edit"></i> จัดการข้อมูลการลา </a>
+                        <a href="admin_view_absent.php"><i class="fa fa-fw fa-edit"></i> ัดรขลก </a>
                     </li>
                     <li>
-                        <a href="admin_report.php"><i class="fa fa-fw fa-table"></i> รายงานผลข้อมูล </a>
+                        <a href="admin_report.php"><i class="fa fa-fw fa-table"></i> ยงานลข </a>
                     </li> 
 					<li>
-                        <a href="logout.php"><i class="fa fa-fw fa-lock"></i> ออกจากระบบ </a>
+                        <a href="logout.php"><i class="fa fa-fw fa-lock"></i> อกากะบ </a>
                     </li>                  
                 </ul>
             </div>
@@ -116,21 +116,21 @@ font-size: 13px;
         <h3><i class="fa fa-cog fa-spin"></i> Process </h3>
 </div>
 
-<?
+<?php
 include"config.php";
 
-$sql="REPLACE INTO staff (STAFFID, USERLOGIN, PREFIXNAME, STAFFNAME, STAFFSURNAME, DEPARTMENTID, STAFFTYPE, POSITIONNAME, STAFFGROUP) VALUES ($_POST[STAFFID], '$_POST[USERLOGIN]', '$_POST[PREFIXNAME]', '$_POST[STAFFNAME]', '$_POST[STAFFSURNAME]', $_POST[DEPARTMENTID], '$_POST[STAFFTYPE]', '$_POST[POSITIONNAME]', '$_POST[STAFFGROUP]')";
+$sql="REPLACE INTO staff (STAFFID, USERLOGIN, PREFIXNAME, STAFFNAME, STAFFSURNAME, DEPARTMENTID, STAFFTYPE, POSITIONNAME, STAFFGROUP) VALUES ({$_POST['STAFFID']}, '{$_POST['USERLOGIN']}', '{$_POST['PREFIXNAME']}', '{$_POST['STAFFNAME']}', '{$_POST['STAFFSURNAME']}', {$_POST['DEPARTMENTID']}, '{$_POST['STAFFTYPE']}', '{$_POST['POSITIONNAME']}', '{$_POST['STAFFGROUP']}')";
 //echo "$sql";
 $res=mysql_query($sql)or die(mysql_error());
 
 if($res){
 	echo "<div class='alert alert-success'>";
-	echo "<strong>เเก้ไขข้อมูลสำเร็จ</strong><br>";
-	echo "<a href='admin_view_staff.php' class='btn btn-sm btn-info'>กลับหน้าหลัก</a>";
+	echo "<strong>ไขข</strong><br>";
+	echo "<a href='admin_view_staff.php' class='btn btn-sm btn-info'>ับหนัก</a>";
 	echo "</div>";
 }else{   
 	echo "<div class='alert alert-danger'>";
-	echo "<strong>แก้ไขข้อมูลไม่สำเร็จ !</strong> <br>";
+	echo "<strong>ไขข !</strong> <br>";
 	echo "<a href='javascript:history.go(-1)' class='btn btn-sm btn-info'>Back</a>";
 	echo "</div>";
 }

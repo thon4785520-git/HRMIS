@@ -1,9 +1,9 @@
 <?php
-// กำหนด Header ให้เป็น Windows-874 เพื่อรองรับภาษาไทยในระบบเดิม
+// หน Header  Windows-874 องับะบ
 header('Content-Type: text/html; charset=windows-874');
 session_start();
 
-// ตรวจสอบสถานะ Admin
+// วจอบสถาน Admin
 if($_SESSION['ss_status'] != "admin"){
 	echo "<script>location='index.php';</script>";
     exit();
@@ -19,8 +19,8 @@ if(isset($_POST['date1']) && isset($_POST['date2'])) {
     
     // Check to prevent error if date is empty
     if(count($d1) == 3 && count($d2) == 3) {
-        $_POST['date1'] = ($d1[2] - 543) . "-$d1[1]-$d1[0]";
-        $_POST['date2'] = ($d2[2] - 543) . "-$d2[1]-$d2[0]";
+        $_POST['date1'] = ($d1[2] - 543) . "-{$d1[1]}-{$d1[0]}";
+        $_POST['date2'] = ($d2[2] - 543) . "-{$d2[1]}-{$d2[0]}";
     }
 }
 ?>
@@ -176,7 +176,7 @@ if(isset($_POST['date1']) && isset($_POST['date2'])) {
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="logout.php">
-                        <i class="fas fa-sign-out-alt"></i> ออกจากระบบ
+                        <i class="fas fa-sign-out-alt"></i> อกากะบ
                     </a>
                 </li>
             </ul>
@@ -190,13 +190,13 @@ if(isset($_POST['date1']) && isset($_POST['date2'])) {
             <div class="col-md-3 col-lg-2 d-md-block sidebar collapse" id="sidebarMenu">
                 <div class="position-sticky">
                     <div class="list-group list-group-flush">
-                        <a href="admin.php"><i class="fas fa-home"></i> หน้าแรก</a>
-                        <a href="admin_view_staff.php"><i class="fas fa-users"></i> ข้อมูลบุคลากร</a>
-                        <a href="admin_view_control.php"><i class="fas fa-file-contract"></i> ทะเบียนคุมสัญญา พม.</a>
-                        <a href="admin_view_work.php"><i class="fas fa-desktop"></i> ข้อมูลการปฏิบัติงาน</a>
-                        <a href="admin_view_absent.php"><i class="fas fa-edit"></i> จัดการข้อมูลการลา</a>
-                        <a href="admin_report.php" class="active"><i class="fas fa-chart-bar"></i> รายงานผลข้อมูล</a>
-                        <a href="logout.php" class="text-danger"><i class="fas fa-lock"></i> ออกจากระบบ</a>
+                        <a href="admin.php"><i class="fas fa-home"></i> หนรก</a>
+                        <a href="admin_view_staff.php"><i class="fas fa-users"></i> ลบุคาก</a>
+                        <a href="admin_view_control.php"><i class="fas fa-file-contract"></i> ยนัญ .</a>
+                        <a href="admin_view_work.php"><i class="fas fa-desktop"></i> ลกรปิบัติงาน</a>
+                        <a href="admin_view_absent.php"><i class="fas fa-edit"></i> ัดรขลก</a>
+                        <a href="admin_report.php" class="active"><i class="fas fa-chart-bar"></i> ยงานลข</a>
+                        <a href="logout.php" class="text-danger"><i class="fas fa-lock"></i> อกากะบ</a>
                     </div>
                 </div>
             </div>
@@ -205,15 +205,15 @@ if(isset($_POST['date1']) && isset($_POST['date2'])) {
             <main class="col-md-9 ml-sm-auto col-lg-10 px-md-4 py-4">
                 
                 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 page-header">
-                    <h1 class="h2"><i class="fas fa-file-alt text-secondary"></i> รายงานสรุปผลข้อมูล</h1>
+                    <h1 class="h2"><i class="fas fa-file-alt text-secondary"></i> ยงานุปลข</h1>
                 </div>
 
                 <div class="card card-custom">
                     <div class="card-body">
                         <div class="text-center mb-4">
-                            <h5 class="font-weight-bold">แบบรายงานข้อมูลการมาทำงาน และการลาต่าง ๆ</h5>
+                            <h5 class="font-weight-bold">แบบยงานลกาทำงาน ะกาตาง </h5>
                             <p class="mb-1">
-                                <strong>สังกัด:</strong> 
+                                <strong>ังัด:</strong> 
                                 <?php
                                 if($_POST['DEPARTMENTID'] != 4785520){
                                     $sql="select * from department where DEPARTMENTID=" . mysql_real_escape_string($_POST['DEPARTMENTID']);
@@ -221,57 +221,57 @@ if(isset($_POST['date1']) && isset($_POST['date2'])) {
                                     $ln=mysql_fetch_array($res);
                                     echo "<span class='text-primary'>" . $ln[1] . "</span>";
                                 } else {
-                                    echo "<span class='text-primary'>มหาวิทยาลัยราชภัฏสงขลา</span>";
+                                    echo "<span class='text-primary'>ิทาชัฏสง</span>";
                                 }
                                 ?>
                             </p>
                             <p class="mb-1">
-                                <strong>เรื่อง:</strong> รายงานสรุปการมาปฏิบัติราชการของข้าราชการ พนักงานมหาวิทยาลัย พนักงานราชการ ลูกจ้างประจำ และพนักงานประจำตามสัญญา
+                                <strong>อง:</strong> ยงานุปาปิบัตาชรของาช ักานิท ักานาช ูกางะจ ะพักานะจำตัญ
                             </p>
                             <p class="mb-1">
-                                <strong>ตั้งแต่วันที่:</strong> <span class="text-info"><?php echo DateThai($_POST['date1']); ?></span> 
-                                <strong>ถึง</strong> <span class="text-info"><?php echo DateThai($_POST['date2']); ?></span>
+                                <strong>ัน:</strong> <span class="text-info"><?php echo DateThai($_POST['date1']); ?></span> 
+                                <strong>ึง</strong> <span class="text-info"><?php echo DateThai($_POST['date2']); ?></span>
                             </p>
-                            <p class="mb-0"><strong>เรียน:</strong> อธิการบดี</p>
+                            <p class="mb-0"><strong>ยน:</strong> อธิกรบ</p>
                         </div>
 
                         <div class="table-responsive">
                             <table class="table table-bordered table-striped table-hover table-report">
                                 <thead class="bg-header-light">
                                     <tr>
-                                        <th rowspan="2" width="3%">ที่</th>
-                                        <th rowspan="2" width="15%">ชื่อ-สกุล</th>
-                                        <th colspan="6">ประเภทบุคลากร</th>
-                                        <th rowspan="2" width="10%">ตำแหน่ง</th>
-                                        <th rowspan="2" class="text-danger">มาสาย</th>
-                                        <th colspan="2">ลากิจ</th>
-                                        <th colspan="2">ลาป่วย</th>
-                                        <th colspan="2">ลาพักผ่อน</th>
-                                        <th rowspan="2" class="text-warning">ไม่เซ็นเข้า</th>
-                                        <th rowspan="2" class="text-warning">ไม่เซ็นกลับ</th>
-                                        <th colspan="2">ไปราชการ</th>
-                                        <th colspan="2">ลาคลอด</th>
-                                        <th colspan="2">ลาอุปสมบท</th>
+                                        <th rowspan="2" width="3%"></th>
+                                        <th rowspan="2" width="15%">-สก</th>
+                                        <th colspan="6">ุคาก</th>
+                                        <th rowspan="2" width="10%">หน</th>
+                                        <th rowspan="2" class="text-danger"></th>
+                                        <th colspan="2">ากิจ</th>
+                                        <th colspan="2">าป</th>
+                                        <th colspan="2">าพักอน</th>
+                                        <th rowspan="2" class="text-warning"></th>
+                                        <th rowspan="2" class="text-warning">็นกับ</th>
+                                        <th colspan="2">าช</th>
+                                        <th colspan="2">าคอด</th>
+                                        <th colspan="2">ุป</th>
                                     </tr>
                                     <tr>
-                                        <th>ขร.</th>
-                                        <th>พม.</th>
-                                        <th>พร.</th>
-                                        <th>พส.</th>
+                                        <th>.</th>
+                                        <th>.</th>
+                                        <th>.</th>
+                                        <th>.</th>
                                         <th>ลจ.</th>
-                                        <th>พบ.</th>
-                                        <th>ครั้ง</th>
-                                        <th>วัน</th>
-                                        <th>ครั้ง</th>
-                                        <th>วัน</th>
-                                        <th>ครั้ง</th>
-                                        <th>วัน</th>
-                                        <th>ครั้ง</th>
-                                        <th>วัน</th>
-                                        <th>ครั้ง</th>
-                                        <th>วัน</th>
-                                        <th>ครั้ง</th>
-                                        <th>วัน</th>
+                                        <th>.</th>
+                                        <th></th>
+                                        <th>ัน</th>
+                                        <th></th>
+                                        <th>ัน</th>
+                                        <th></th>
+                                        <th>ัน</th>
+                                        <th></th>
+                                        <th>ัน</th>
+                                        <th></th>
+                                        <th>ัน</th>
+                                        <th></th>
+                                        <th>ัน</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -430,13 +430,13 @@ if(isset($_POST['date1']) && isset($_POST['date2'])) {
 
                         <div class="mt-4 text-center btn-print-hide">
                             <a href="admin_report.php" class="btn btn-secondary shadow-sm">
-                                <i class="fas fa-arrow-left"></i> กลับหน้าเลือกรายงาน
+                                <i class="fas fa-arrow-left"></i> ับหนอกยงาน
                             </a> 
                             <a href="doc_report1.php?date1=<?php echo $_POST['date1']; ?>&date2=<?php echo $_POST['date2']; ?>&id=<?php echo $_POST['DEPARTMENTID']; ?>&type=<?php echo $_POST['STAFFTYPE']; ?>" class="btn btn-success shadow-sm ml-2">
-                                <i class="fas fa-file-word"></i> ส่งออกไฟล์ WORD
+                                <i class="fas fa-file-word"></i> อก WORD
                             </a>
                             <button onClick="window.print()" class="btn btn-info shadow-sm ml-2">
-                                <i class="fas fa-print"></i> พิมพ์รายงาน
+                                <i class="fas fa-print"></i> ยงาน
                             </button>
                         </div>
 

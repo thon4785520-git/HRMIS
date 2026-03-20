@@ -1,9 +1,9 @@
 <?php
-// กำหนด Header ให้เป็น Windows-874 เพื่อรองรับภาษาไทยในระบบเดิม
+// หน Header  Windows-874 องับะบ
 header('Content-Type: text/html; charset=windows-874');
 session_start();
 
-// ตรวจสอบสถานะ Admin
+// วจอบสถาน Admin
 if($_SESSION['ss_status'] != "admin"){
 	echo "<script>location='index.php';</script>";
     exit();
@@ -211,7 +211,7 @@ include "config.php";
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="logout.php">
-                        <i class="fas fa-sign-out-alt"></i> ออกจากระบบ
+                        <i class="fas fa-sign-out-alt"></i> อกากะบ
                     </a>
                 </li>
             </ul>
@@ -225,13 +225,13 @@ include "config.php";
             <div class="col-md-3 col-lg-2 d-md-block sidebar collapse" id="sidebarMenu">
                 <div class="position-sticky">
                     <div class="list-group list-group-flush">
-                        <a href="admin.php"><i class="fas fa-home"></i> หน้าแรก</a>
-                        <a href="admin_view_staff.php"><i class="fas fa-users"></i> ข้อมูลบุคลากร</a>
-                        <a href="admin_view_control.php"><i class="fas fa-file-contract"></i> ทะเบียนคุมสัญญา พม.</a>
-                        <a href="admin_view_work.php"><i class="fas fa-desktop"></i> ข้อมูลการปฏิบัติงาน</a>
-                        <a href="admin_view_absent.php"><i class="fas fa-edit"></i> จัดการข้อมูลการลา</a>
-                        <a href="admin_report.php" class="active"><i class="fas fa-chart-bar"></i> รายงานผลข้อมูล</a>
-                        <a href="logout.php" class="text-danger"><i class="fas fa-lock"></i> ออกจากระบบ</a>
+                        <a href="admin.php"><i class="fas fa-home"></i> หนรก</a>
+                        <a href="admin_view_staff.php"><i class="fas fa-users"></i> ลบุคาก</a>
+                        <a href="admin_view_control.php"><i class="fas fa-file-contract"></i> ยนัญ .</a>
+                        <a href="admin_view_work.php"><i class="fas fa-desktop"></i> ลกรปิบัติงาน</a>
+                        <a href="admin_view_absent.php"><i class="fas fa-edit"></i> ัดรขลก</a>
+                        <a href="admin_report.php" class="active"><i class="fas fa-chart-bar"></i> ยงานลข</a>
+                        <a href="logout.php" class="text-danger"><i class="fas fa-lock"></i> อกากะบ</a>
                     </div>
                 </div>
             </div>
@@ -240,7 +240,7 @@ include "config.php";
             <main class="col-md-9 ml-sm-auto col-lg-10 px-md-4 py-4">
                 
                 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 page-header">
-                    <h1 class="h2"><i class="fas fa-chart-pie text-secondary"></i> ระบบรายงานผลข้อมูล</h1>
+                    <h1 class="h2"><i class="fas fa-chart-pie text-secondary"></i> ะบยงานลข</h1>
                 </div>
 
                 <div class="row">
@@ -248,32 +248,32 @@ include "config.php";
                     <div class="col-lg-6">
                         <div class="card card-custom">
                             <div class="card-header card-header-blue">
-                                <i class="fas fa-file-alt"></i> รายงานข้อมูลการลา
+                                <i class="fas fa-file-alt"></i> ยงานลก
                             </div>
                             <div class="card-body">
                                 <form method="POST" action="admin_report2.php" id="form1" target="_blank">
                                     <div class="form-group">
-                                        <label class="font-weight-bold">ประเภทบุคลากร</label>
+                                        <label class="font-weight-bold">ุคาก</label>
                                         <select name="STAFFTYPE" class="form-control">
-                                            <option value="0">--- แสดงทั้งหมด ---</option>
-                                            <option value="1">ข้าราชการ</option>
-                                            <option value="2">ลูกจ้างประจำ</option>
-                                            <option value="3">พนักงานราชการ</option>
-                                            <option value="4">พนักงานมหาวิทยาลัย</option>
-                                            <option value="5">พนักงานประจำตามสัญญา</option>
-                                            <option value="6">พนักงานจ้างเหมาบริการ</option>	
+                                            <option value="0">--- สด ---</option>
+                                            <option value="1">าช</option>
+                                            <option value="2">ูกางะจ</option>
+                                            <option value="3">ักานาช</option>
+                                            <option value="4">ักานิท</option>
+                                            <option value="5">ักานะจำตัญ</option>
+                                            <option value="6">ักานางาบิก</option>	
                                         </select>
                                     </div>
 
                                     <div class="form-group">
-                                        <label class="font-weight-bold">หน่วยงาน</label>
+                                        <label class="font-weight-bold">หนยงาน</label>
                                         <select name="DEPARTMENTID" class="form-control">
-                                            <option value="4785520">--- แสดงทั้งหมด ---</option>
+                                            <option value="4785520">--- สด ---</option>
                                             <?php
                                             $sql_dept="select * from department";
                                             $res_dept=mysql_query($sql_dept);
                                             while($ln_dept=mysql_fetch_array($res_dept)){
-                                                echo "<option value='$ln_dept[0]'>$ln_dept[1]</option>";
+                                                echo "<option value='{$ln_dept[0]}'>{$ln_dept[1]}</option>";
                                             }
                                             ?>
                                         </select>
@@ -281,28 +281,28 @@ include "config.php";
 
                                     <div class="form-row">
                                         <div class="form-group col-md-6">
-                                            <label class="font-weight-bold">ตั้งแต่วันที่</label>
+                                            <label class="font-weight-bold">ัน</label>
                                             <div class="input-group">
                                                 <div class="input-group-prepend">
                                                     <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
                                                 </div>
-                                                <input type="text" name="date1" id="date1" class="form-control required" autocomplete="off" placeholder="วว-ดด-ปปปป">
+                                                <input type="text" name="date1" id="date1" class="form-control required" autocomplete="off" placeholder="--">
                                             </div>
                                         </div>
                                         <div class="form-group col-md-6">
-                                            <label class="font-weight-bold">ถึงวันที่</label>
+                                            <label class="font-weight-bold">ึงัน</label>
                                             <div class="input-group">
                                                 <div class="input-group-prepend">
                                                     <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
                                                 </div>
-                                                <input type="text" name="date2" id="date2" class="form-control required" autocomplete="off" placeholder="วว-ดด-ปปปป">
+                                                <input type="text" name="date2" id="date2" class="form-control required" autocomplete="off" placeholder="--">
                                             </div>
                                         </div>
                                     </div>
 
                                     <div class="mt-3">
-                                        <button type="submit" class="btn btn-primary btn-custom shadow-sm"><i class="fas fa-search"></i> ดูรายงาน</button>
-                                        <button type="reset" class="btn btn-secondary btn-custom shadow-sm ml-2"><i class="fas fa-undo"></i> ล้างค่า</button>
+                                        <button type="submit" class="btn btn-primary btn-custom shadow-sm"><i class="fas fa-search"></i> ยงาน</button>
+                                        <button type="reset" class="btn btn-secondary btn-custom shadow-sm ml-2"><i class="fas fa-undo"></i> าง</button>
                                     </div>
                                 </form>
                             </div>
@@ -313,38 +313,38 @@ include "config.php";
                     <div class="col-lg-6">
                         <div class="card card-custom">
                             <div class="card-header card-header-green">
-                                <i class="fas fa-clock"></i> รายงานข้อมูลการมาปฏิบัติงาน
+                                <i class="fas fa-clock"></i> ยงานลกาปิบัติงาน
                             </div>
                             <div class="card-body">
                                 <form method="POST" action="admin_report3.php" id="form2" target="_blank">
                                     <div class="alert alert-light border mb-4">
-                                        <i class="fas fa-info-circle text-success"></i> เลือกช่วงเวลาที่ต้องการตรวจสอบประวัติการลงเวลา
+                                        <i class="fas fa-info-circle text-success"></i> อกวงาทองรตวจอบัติกลง
                                     </div>
 
                                     <div class="form-row">
                                         <div class="form-group col-md-6">
-                                            <label class="font-weight-bold">ตั้งแต่วันที่</label>
+                                            <label class="font-weight-bold">ัน</label>
                                             <div class="input-group">
                                                 <div class="input-group-prepend">
                                                     <span class="input-group-text"><i class="far fa-calendar-check"></i></span>
                                                 </div>
-                                                <input type="text" name="date1" id="date3" class="form-control required" autocomplete="off" placeholder="วว-ดด-ปปปป">
+                                                <input type="text" name="date1" id="date3" class="form-control required" autocomplete="off" placeholder="--">
                                             </div>
                                         </div>
                                         <div class="form-group col-md-6">
-                                            <label class="font-weight-bold">ถึงวันที่</label>
+                                            <label class="font-weight-bold">ึงัน</label>
                                             <div class="input-group">
                                                 <div class="input-group-prepend">
                                                     <span class="input-group-text"><i class="far fa-calendar-check"></i></span>
                                                 </div>
-                                                <input type="text" name="date2" id="date4" class="form-control required" autocomplete="off" placeholder="วว-ดด-ปปปป">
+                                                <input type="text" name="date2" id="date4" class="form-control required" autocomplete="off" placeholder="--">
                                             </div>
                                         </div>
                                     </div>
 
                                     <div class="mt-3 pt-4">
-                                        <button type="submit" class="btn btn-success btn-custom shadow-sm"><i class="fas fa-search"></i> ดูรายงาน</button>
-                                        <button type="reset" class="btn btn-secondary btn-custom shadow-sm ml-2"><i class="fas fa-undo"></i> ล้างค่า</button>
+                                        <button type="submit" class="btn btn-success btn-custom shadow-sm"><i class="fas fa-search"></i> ยงาน</button>
+                                        <button type="reset" class="btn btn-secondary btn-custom shadow-sm ml-2"><i class="fas fa-undo"></i> าง</button>
                                     </div>
                                 </form>
                             </div>

@@ -1,6 +1,6 @@
-<?
+<?php
 session_start();
-if($_SESSION[ss_status]!="admin"){
+if($_SESSION['ss_status']!="admin"){
 	echo "<script>location='index.php';</script>";
 }
 ?>
@@ -88,26 +88,26 @@ window.onload = function () {
 			<!-- Top Menu Items -->
             <ul class="nav navbar-right top-nav">
                 <li class="dropdown">
-                    <a href="#"> <font color="#FFF"> <i class="fa fa-fw fa-user"></i> <?=$_SESSION[ss_name]?> </font> </a>                    
+                    <a href="#"> <font color="#FFF"> <i class="fa fa-fw fa-user"></i> <?=$_SESSION['ss_name']?> </font> </a>                    
                 </li>
 			</ul>
             <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">					
                     <li>
-                        <a href="admin.php"><i class="fa fa-fw fa-home"></i> หน้าแรก </a>
+                        <a href="admin.php"><i class="fa fa-fw fa-home"></i> หนรก </a>
                     </li>					
                     <li>
-                        <a href="admin_view_work.php"><i class="fa fa-fw fa-desktop"></i> จัดการข้อมูลการปฏิบัติงาน </a>
+                        <a href="admin_view_work.php"><i class="fa fa-fw fa-desktop"></i> ัดรขลกรปิบัติงาน </a>
                     </li>
                     <li>
-                        <a href="admin_view_absent.php"><i class="fa fa-fw fa-edit"></i> จัดการข้อมูลการลา </a>
+                        <a href="admin_view_absent.php"><i class="fa fa-fw fa-edit"></i> ัดรขลก </a>
                     </li>
                     <li>
-                        <a href="admin_report.php"><i class="fa fa-fw fa-table"></i> รายงานผลข้อมูล </a>
+                        <a href="admin_report.php"><i class="fa fa-fw fa-table"></i> ยงานลข </a>
                     </li> 
 					<li>
-                        <a href="logout.php"><i class="fa fa-fw fa-lock"></i> ออกจากระบบ </a>
+                        <a href="logout.php"><i class="fa fa-fw fa-lock"></i> อกากะบ </a>
                     </li>                    
                 </ul>
             </div>
@@ -122,26 +122,26 @@ window.onload = function () {
 
 <!--Header-->
 <div class="page-header">
-        <h3> เเก้ไขข้อมูลการลา </h3>
+        <h3> ไขขลก </h3>
 </div>
 
-<?
+<?php
 include"config.php";
 
 // begin log 
 function getIP() {
     $ip_address = '';
-    // 1. เช็คจาก Internet (Shared ISP)
+    // 1. ็คจาก Internet (Shared ISP)
     if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
         $ip_address = $_SERVER['HTTP_CLIENT_IP'];
     }
-    // 2. เช็คจาก Proxy หรือ Load Balancer (เช่น Cloudflare)
+    // 2. ็คจาก Proxy  Load Balancer ( Cloudflare)
     elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
-        // บางครั้งค่าที่ได้อาจมีหลาย IP (IP, Proxy1, Proxy2) ให้เอาตัวแรกสุด
+        // าง้งคาทาจ IP (IP, Proxy1, Proxy2) าตรกุด
         $ip_list = explode(',', $_SERVER['HTTP_X_FORWARDED_FOR']);
         $ip_address = trim($ip_list[0]);
     }
-    // 3. ถ้าไม่มีอะไรเลย ใช้ REMOTE_ADDR ตามปกติ
+    // 3.   REMOTE_ADDR 
     else {
         $ip_address = $_SERVER['REMOTE_ADDR'];
     }
@@ -151,22 +151,22 @@ $date=date("Y-m-d");
 $ip=getIP();
 $agent=$_SERVER['HTTP_USER_AGENT'];
 $sql="INSERT INTO stories (id, username, dated, ip, agents, actions) VALUES
-(null, '$_SESSION[ss_user]', '$date', '$ip', '$agent', 'อัปเดตใบลาเลขที่ $_POST[id]')";
+(null, '{$_SESSION['ss_user']}', '$date', '$ip', '$agent', 'ัปเดตลข {$_POST['id']}')";
 $res=mysql_query($sql);
 // end log
 
 
-$sql="REPLACE INTO absent (id, STAFFID, dated, date1, date2, amount, reason, type, approve, approve1, advise) VALUES ($_POST[id], $_POST[STAFFID], '$_POST[dated]', '$_POST[date1]', '$_POST[date2]', $_POST[amount], '$_POST[reason]', $_POST[type], $_POST[approve], $_POST[approve1], $_POST[advise])";
+$sql="REPLACE INTO absent (id, STAFFID, dated, date1, date2, amount, reason, type, approve, approve1, advise) VALUES ({$_POST['id']}, {$_POST['STAFFID']}, '{$_POST['dated']}', '{$_POST['date1']}', '{$_POST['date2']}', {$_POST['amount']}, '{$_POST['reason']}', {$_POST['type']}, {$_POST['approve']}, {$_POST['approve1']}, {$_POST['advise']})";
 $res=mysql_query($sql);
 
 if($res){
 	echo "<div class='alert alert-success'>";
-	echo "<strong>แก้ไขใบลาสำเร็จ</strong><br>";
-	echo "<a href='admin_view_absent.php' class='btn btn-sm btn-info'>กลับหน้าหลัก</a>";
+	echo "<strong></strong><br>";
+	echo "<a href='admin_view_absent.php' class='btn btn-sm btn-info'>ับหนัก</a>";
 	echo "</div>";
 }else{
 	echo "<div class='alert alert-danger'>";
-	echo "<strong>แก้ไขใบลาไม่สำเร็จ !</strong> <br>";
+	echo "<strong> !</strong> <br>";
 	echo "<a href='javascript:history.go(-1)' class='btn btn-sm btn-info'>Back</a>";
 	echo "</div>";
 }

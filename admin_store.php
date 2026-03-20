@@ -1,6 +1,6 @@
-<?
+<?php
 session_start();
-if($_SESSION[ss_status]!="admin"){
+if($_SESSION['ss_status']!="admin"){
 	echo "<script>location='index.php';</script>";
 	exit();
 }
@@ -83,26 +83,26 @@ font-size: 13px;
 			<!-- Top Menu Items -->
             <ul class="nav navbar-right top-nav">
                 <li class="dropdown">
-                    <a href="#"> <font color="#FFF"> <i class="fa fa-fw fa-user"></i> <?=$_SESSION[ss_name]?> </font> </a>                    
+                    <a href="#"> <font color="#FFF"> <i class="fa fa-fw fa-user"></i> <?=$_SESSION['ss_name']?> </font> </a>                    
                 </li>
 			</ul>
             <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">					
                     <li>
-                        <a href="admin.php"><i class="fa fa-fw fa-home"></i> หน้าแรก </a>
+                        <a href="admin.php"><i class="fa fa-fw fa-home"></i> หนรก </a>
                     </li>					
                     <li>
-                        <a href="admin_view_work.php"><i class="fa fa-fw fa-desktop"></i> จัดการข้อมูลการปฏิบัติงาน </a>
+                        <a href="admin_view_work.php"><i class="fa fa-fw fa-desktop"></i> ัดรขลกรปิบัติงาน </a>
                     </li>
                     <li>
-                        <a href="admin_view_absent.php"><i class="fa fa-fw fa-edit"></i> จัดการข้อมูลการลา </a>
+                        <a href="admin_view_absent.php"><i class="fa fa-fw fa-edit"></i> ัดรขลก </a>
                     </li>
                     <li>
-                        <a href="admin_report.php"><i class="fa fa-fw fa-table"></i> รายงานผลข้อมูล </a>
+                        <a href="admin_report.php"><i class="fa fa-fw fa-table"></i> ยงานลข </a>
                     </li> 
 					<li>
-                        <a href="logout.php"><i class="fa fa-fw fa-lock"></i> ออกจากระบบ </a>
+                        <a href="logout.php"><i class="fa fa-fw fa-lock"></i> อกากะบ </a>
                     </li>                    
                 </ul>
             </div>
@@ -120,16 +120,16 @@ font-size: 13px;
         <h3> Process </h3>
 </div>
 
-<?
+<?php
 include"config.php";
 
-$_GET[id]=base64_decode($_GET[id]);
+$_GET['id']=base64_decode($_GET['id']);
 
-$sql="select * from absent1 where id=$_GET[id]";
+$sql="select * from absent1 where id={$_GET['id']}";
 $res=mysql_query($sql);
 $rs=mysql_fetch_array($res);
 $sql="INSERT INTO absent (id, STAFFID, dated, date1, date2, amount, reason, type, approve, approve1, advise) 
-VALUES ($_GET[id], $rs[1], '$rs[2]', '$rs[3]', '$rs[4]', $rs[5], '$rs[6]', $rs[7], $rs[8], $rs[9], $rs[10])";
+VALUES ({$_GET['id']}, {$rs[1]}, '{$rs[2]}', '{$rs[3]}', '{$rs[4]}', {$rs[5]}, '{$rs[6]}', {$rs[7]}, {$rs[8]}, {$rs[9]}, {$rs[10]})";
 $res=mysql_query($sql);
 
 //$sql="delete from absent where id=$_GET[id]";
@@ -137,12 +137,12 @@ $res=mysql_query($sql);
 
 if($res){
 	echo "<div class='alert alert-success'>";
-	echo "<strong>รีสโตร์สำเร็จ</strong><br>";
-	echo "<a href='admin_view_keep.php' class='btn btn-sm btn-info'>กลับหน้าหลัก</a>";
+	echo "<strong></strong><br>";
+	echo "<a href='admin_view_keep.php' class='btn btn-sm btn-info'>ับหนัก</a>";
 	echo "</div>";
 }else{
 	echo "<div class='alert alert-danger'>";
-	echo "<strong>รีสโตร์ไม่สำเร็จ !</strong> <br>";
+	echo "<strong> !</strong> <br>";
 	echo "<a href='javascript:history.go(-1)' class='btn btn-sm btn-info'>Back</a>";
 	echo "</div>";
 }
