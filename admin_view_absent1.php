@@ -1,0 +1,207 @@
+<?
+session_start();
+if($_SESSION[ss_status]!="admin"){
+	echo "<script>location='index.php';</script>";
+}
+?>
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+
+    <meta charset="windows-874">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Absent Database System</title>
+
+    <!-- jQuery -->
+   <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+	<!-- Bootstrap Theme CSS -->
+    <link href="css/united.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/sb-admin.css" rel="stylesheet">
+	
+	<!-- Data Table -->
+	<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+	<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap.min.js"></script>
+	<link href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap.min.css" rel="stylesheet">
+	<script>
+	$(document).ready(function() {
+    	$('#datatable').DataTable();
+	} );
+	</script>
+
+<!--begin validate-->
+<script type="text/javascript" src="js/jquery.validate.js" charset="utf-8"></script>
+<style type="text/css">
+label.error{
+color: red;
+font-weight:bold;
+font-size: 13px;
+}
+</style>
+  <script>
+  $(document).ready(function(){
+    $("#form1").validate();
+  });
+  </script>
+<!--end validate-->
+
+    <!-- Custom Fonts -->
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+
+<div id="wrapper">
+
+        <!-- Navigation -->
+        <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="admin.php"><b>Absent Database System</b></a>
+            </div>
+			<!-- Top Menu Items -->
+            <ul class="nav navbar-right top-nav">
+                <li class="dropdown">
+                    <a href="#"> <font color="#FFF"> <i class="fa fa-fw fa-user"></i> <?=$_SESSION[ss_name]?> </font> </a>                    
+                </li>
+			</ul>
+            <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
+                <ul class="nav navbar-nav side-nav">					
+                    <li>
+                        <a href="admin.php"><i class="fa fa-fw fa-home"></i> หน้าแรก </a>
+                    </li>	
+					<li>
+                        <a href="admin_view_staff.php"><i class="fa fa-fw fa-user"></i> จัดการข้อมูลบุคลากร </a>
+                    </li>				
+                    <li>
+                        <a href="admin_view_work.php"><i class="fa fa-fw fa-desktop"></i> จัดการข้อมูลการปฏิบัติงาน </a>
+                    </li>
+                    <li>
+                        <a href="admin_view_absent.php"><i class="fa fa-fw fa-edit"></i> จัดการข้อมูลการลา </a>
+                    </li>
+                    <li>
+                        <a href="admin_report.php"><i class="fa fa-fw fa-table"></i> รายงานผลข้อมูล </a>
+                    </li> 
+					<li>
+                        <a href="logout.php"><i class="fa fa-fw fa-lock"></i> ออกจากระบบ </a>
+                    </li>                    
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </nav>
+
+        <div id="page-wrapper">
+
+<div class="container-fluid">
+
+<!-- ***** Content This Here ***** -->
+
+<!--Header-->
+<div class="page-header">
+        <h3> <i class="fa fa-edit"></i> จัดการข้อมูลการลา </h3>
+</div>
+
+<a href="admin_add_absent.php" class="btn btn-sm btn-success"><i class="fa fa-plus"></i> เพิ่มข้อมูลการลา</a> 
+<a href="admin_search_absent.php" class="btn btn-sm btn-primary"><i class="fa fa-search"></i> ค้นหาข้อมูลการลา</a> <br><br> 
+
+<table class="table table-hover" id="datatable">
+<tr class="success">
+	<th>ชื่อ - สกุล</th>
+	<th>วันที่ลา</th>
+	<th>ประเภทการลา</th>
+	<th>สถานะ</th>
+	<th width="100">Option</th>
+</tr>
+<?
+include"config.php";
+
+if($_GET[start]==''){
+	$start=0;
+}else{
+	$start=$_GET[start];
+}
+
+$sql="select * from absent A,staff B where A.STAFFID=B.STAFFID order by date1 DESC";
+$res=mysql_query($sql);
+$rows=mysql_num_rows($res);
+
+//$sql="select * from absent A,staff B where A.STAFFID=B.STAFFID order by date1 DESC limit $start, 70";
+$res=mysql_query($sql);
+while($ln=mysql_fetch_array($res)){
+?>
+<tr>
+	<td> <?=$ln[PREFIXNAME]?><?=$ln[STAFFNAME]?> <?=$ln[STAFFSURNAME]?> </td>
+	<td> <?=DateThai($ln[date1])?> - <?=DateThai($ln[date2])?> </td>
+	<td> 
+		<?
+			$x=array("","ลาป่วย","ลากิจ","ลาพักผ่อน","ไปราชการ","ลาคลอด","ลาอุปสมบท","ช่วยเหลือภริยาเลี้ยงดูบุตร");
+			echo $x[$ln[type]];
+		?> 
+	</td>
+	<td>
+		<?
+		if($ln[approve]==1) echo "<p class='text-success'>อนุมัติ (ผู้บังคับบัญชาระดับต้น)</p>";
+		if($ln[approve]==2) echo "<p class='text-danger'>ไม่อนุมัติ (ผู้บังคับบัญชาระดับต้น)</p>";
+		?>
+		<?
+		if($ln[approve1]==1) echo "<p class='text-info'>อนุมัติ (ผู้บังคับบัญชาระดับสูง)</p>";
+		if($ln[approve1]==2) echo "<p class='text-danger'>ไม่อนุมัติ (ผู้บังคับบัญชาระดับสูง)</p>";
+		?>
+	</td>
+	<td> 
+		<a href="form1.php?id=<?=$ln[id]?>" class="btn btn-xs btn-info" title="ส่งออกแบบฟอร์ม" target="_blank"><i class="fa fa-file-text"></i></a>  
+		<a href="admin_edit_absent.php?id=<?=base64_encode($ln[id])?>" class="btn btn-xs btn-warning" title="แก้ไข"><i class="fa fa-pencil"></i></a>
+		<a href="admin_del_absent.php?id=<?=base64_encode($ln[id])?>" class="btn btn-xs btn-danger" title="ลบ" onClick="return confirm('แน่ใจว่ายกเลิก?')"><i class="fa fa-close"></i></a>
+	</td>
+</tr>
+<? }?>
+</table>
+
+Page
+<?
+	for($i=0;$i<=$rows;$i+=70){
+		$c++;
+		if($start==$i)
+			echo " <font color=green><b> $c </b></font> ";
+		else
+			echo " <a href='admin_view_absent.php?start=$i'>$c</a> ";
+	}
+?>
+
+</div>
+            <!-- /.container-fluid -->
+
+</div>
+        <!-- /#page-wrapper -->
+
+</div>
+    <!-- /#wrapper -->
+
+</body>
+
+</html>
