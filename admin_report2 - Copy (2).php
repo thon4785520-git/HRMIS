@@ -1,15 +1,15 @@
-<?
+<?php
 session_start();
-if($_SESSION[ss_status]!="admin"){
+if($_SESSION['ss_status']!="admin"){
 	echo "<script>location='index.php';</script>";
 }
 include"config.php";
 
 // convert day
-$d1=explode("-",$_POST[date1]);
-$d2=explode("-",$_POST[date2]);
-$_POST[date1]=$d1[2]-543 ."-$d1[1]-$d1[0]";
-$_POST[date2]=$d2[2]-543 . "-$d2[1]-$d2[0]";
+$d1=explode("-",$_POST['date1']);
+$d2=explode("-",$_POST['date2']);
+$_POST['date1']=$d1[2]-543 ."-{$d1[1]}-{$d1[0]}";
+$_POST['date2']=$d2[2]-543 . "-{$d2[1]}-{$d2[0]}";
 ?>
 <!DOCTYPE html>
 <html lang="th">
@@ -84,26 +84,26 @@ font-size: 13px;
 			<!-- Top Menu Items -->
             <ul class="nav navbar-right top-nav">
                 <li class="dropdown">
-                    <a href="#"> <font color="#FFF"> <i class="fa fa-fw fa-user"></i> <?=$_SESSION[ss_name]?> </font> </a>                    
+                    <a href="#"> <font color="#FFF"> <i class="fa fa-fw fa-user"></i> <?=$_SESSION['ss_name']?> </font> </a>                    
                 </li>
 			</ul>
             <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">					
                     <li>
-                        <a href="admin.php"><i class="fa fa-fw fa-home"></i> หน้าแรก </a>
+                        <a href="admin.php"><i class="fa fa-fw fa-home"></i> หนรก </a>
                     </li>					
                     <li>
-                        <a href="admin_view_work.php"><i class="fa fa-fw fa-desktop"></i> จัดการข้อมูลการปฏิบัติงาน </a>
+                        <a href="admin_view_work.php"><i class="fa fa-fw fa-desktop"></i> ัดรขลกรปิบัติงาน </a>
                     </li>
                     <li>
-                        <a href="admin_view_absent.php"><i class="fa fa-fw fa-edit"></i> จัดการข้อมูลการลา </a>
+                        <a href="admin_view_absent.php"><i class="fa fa-fw fa-edit"></i> ัดรขลก </a>
                     </li>
                     <li>
-                        <a href="admin_report.php"><i class="fa fa-fw fa-table"></i> รายงานผลข้อมูล </a>
+                        <a href="admin_report.php"><i class="fa fa-fw fa-table"></i> ยงานลข </a>
                     </li> 
 					<li>
-                        <a href="logout.php"><i class="fa fa-fw fa-lock"></i> ออกจากระบบ </a>
+                        <a href="logout.php"><i class="fa fa-fw fa-lock"></i> อกากะบ </a>
                     </li>                    
                 </ul>
             </div>
@@ -116,62 +116,62 @@ font-size: 13px;
 
 <!-- ***** Content This Here ***** -->
 <div id="zzz">
-<strong>แบบรายงานข้อมูลการมาทำงาน และการลาต่าง ๆ</strong><br>
-สังกัด 
-<?
-$sql="select * from department where DEPARTMENTID=$_POST[DEPARTMENTID]";
+<strong>แบบยงานลกาทำงาน ะกาตาง </strong><br>
+ังัด 
+<?php
+$sql="select * from department where DEPARTMENTID={$_POST['DEPARTMENTID']}";
 $res=mysql_query($sql);
 $ln=mysql_fetch_array($res);
 echo $ln[1]
 ?> <br>
-<strong>เรื่อง</strong> รายงานสรุปการมาปฏิบัติราชการของข้าราชการ พนักงานมหาวิทยาลัย พนักงานราชการ ลูกจ้างประจำ และพนักงานประจำตามสัญญา
-ตั้งแต่วันที่ <?=DateThai($_POST[date1])?> ถึง <?=DateThai($_POST[date2])?>
+<strong>อง</strong> ยงานุปาปิบัตาชรของาช ักานิท ักานาช ูกางะจ ะพักานะจำตัญ
+ัน <?=DateThai($_POST['date1'])?> ึง <?=DateThai($_POST['date2'])?>
 <br>
-<strong>เรียน</strong> อธิการบดี
+<strong>ยน</strong> อธิกรบ
 <br>
 <table width="100%" border="1" cellpadding="5" cellspacing="0" bordercolor="#000000">
   <tr>
-    <th rowspan="2"><div align="center">ที่</div></th>
-    <th rowspan="2"><div align="center">ชื่อ-สกุล</div></th>
-    <th colspan="5"><div align="center">ประเภทบุคลากร</div></th>
-    <th rowspan="2"><div align="center">ตำแหน่ง</div></th>
-    <th><div align="center">มาสาย</div></th>
-    <th colspan="2"><div align="center">ลากิจ</div></th>
-    <th colspan="2"><div align="center">ลาป่วย</div></th>
-    <th colspan="2"><div align="center">ลาพักผ่อน</div></th>
-    <th><div align="center">ไม่เซ็นเข้า</div></th>
-    <th><div align="center">ไม่เซ็นกลับ</div></th>
-    <th colspan="2"><div align="center">ไปราชการ </div></th>
-	<th colspan="2"><div align="center">ลาคลอด </div></th>
-	<th colspan="2"><div align="center">ลาอุุปสมบท </div></th>
+    <th rowspan="2"><div align="center"></div></th>
+    <th rowspan="2"><div align="center">-สก</div></th>
+    <th colspan="5"><div align="center">ุคาก</div></th>
+    <th rowspan="2"><div align="center">หน</div></th>
+    <th><div align="center"></div></th>
+    <th colspan="2"><div align="center">ากิจ</div></th>
+    <th colspan="2"><div align="center">าป</div></th>
+    <th colspan="2"><div align="center">าพักอน</div></th>
+    <th><div align="center"></div></th>
+    <th><div align="center">็นกับ</div></th>
+    <th colspan="2"><div align="center">าช </div></th>
+	<th colspan="2"><div align="center">าคอด </div></th>
+	<th colspan="2"><div align="center">ุป </div></th>
     </tr>
   <tr>
-    <th><div align="center">ขร.</div></th>
-    <th><div align="center">พม.</div></th>
-    <th><div align="center">พร.</div></th>
-    <th><div align="center">พส.</div></th>
+    <th><div align="center">.</div></th>
+    <th><div align="center">.</div></th>
+    <th><div align="center">.</div></th>
+    <th><div align="center">.</div></th>
     <th><div align="center">ลจ.</div></th>
-    <th><div align="center">ครั้ง</div></th>
-    <th><div align="center">ครั้ง</div></th>
-    <th><div align="center">วัน</div></th>
-    <th><div align="center">ครั้ง</div></th>
-    <th><div align="center">วัน</div></th>
-    <th><div align="center">ครั้ง</div></th>
-    <th><div align="center">วัน</div></th>
-    <th><div align="center">ครั้ง</div></th>
-    <th><div align="center">ครั้ง</div></th>
-    <th><div align="center">ครั้ง</div></th>
-    <th><div align="center">วัน</div></th>
-	<th><div align="center">ครั้ง</div></th>
-    <th><div align="center">วัน</div></th>
-	<th><div align="center">ครั้ง</div></th>
-    <th><div align="center">วัน</div></th>
+    <th><div align="center"></div></th>
+    <th><div align="center"></div></th>
+    <th><div align="center">ัน</div></th>
+    <th><div align="center"></div></th>
+    <th><div align="center">ัน</div></th>
+    <th><div align="center"></div></th>
+    <th><div align="center">ัน</div></th>
+    <th><div align="center"></div></th>
+    <th><div align="center"></div></th>
+    <th><div align="center"></div></th>
+    <th><div align="center">ัน</div></th>
+	<th><div align="center"></div></th>
+    <th><div align="center">ัน</div></th>
+	<th><div align="center"></div></th>
+    <th><div align="center">ัน</div></th>
     </tr>
- <?
-if($_POST[STAFFTYPE]==0)
-	$sql="select * from staff where DEPARTMENTID=$_POST[DEPARTMENTID] order by STAFFNAME";
+ <?php
+if($_POST['STAFFTYPE']==0)
+	$sql="select * from staff where DEPARTMENTID={$_POST['DEPARTMENTID']} order by STAFFNAME";
 else
-	$sql="select * from staff where DEPARTMENTID=$_POST[DEPARTMENTID] and STAFFTYPE=$_POST[STAFFTYPE] order by STAFFNAME";
+	$sql="select * from staff where DEPARTMENTID={$_POST['DEPARTMENTID']} and STAFFTYPE={$_POST['STAFFTYPE']} order by STAFFNAME";
 	
 $res=mysql_query($sql);
 $j=0;
@@ -180,26 +180,26 @@ while($ln=mysql_fetch_array($res)){
 ?>
   <tr>
     <td><?=$i?></td>
-    <td><?=$ln[PREFIXNAME]?><?=$ln[STAFFNAME]?> <?=$ln[STAFFSURNAME]?></td>
-    <td><? if($ln[STAFFTYPE]==1)echo "<img src='images/tick.png'>";?></td>
-	<td><? if($ln[STAFFTYPE]==4)echo "<img src='images/tick.png'>";?></td>
-	<td><? if($ln[STAFFTYPE]==3)echo "<img src='images/tick.png'>";?></td>
-	<td><? if($ln[STAFFTYPE]==5)echo "<img src='images/tick.png'>";?></td>
-	<td><? if($ln[STAFFTYPE]==2)echo "<img src='images/tick.png'>";?></td>
-    <td><?=$ln[POSITIONNAME]?></td>
+    <td><?=$ln['PREFIXNAME']?><?=$ln['STAFFNAME']?> <?=$ln['STAFFSURNAME']?></td>
+    <td><?php if($ln['STAFFTYPE']==1)echo "<img src='images/tick.png'>";?></td>
+	<td><?php if($ln['STAFFTYPE']==4)echo "<img src='images/tick.png'>";?></td>
+	<td><?php if($ln['STAFFTYPE']==3)echo "<img src='images/tick.png'>";?></td>
+	<td><?php if($ln['STAFFTYPE']==5)echo "<img src='images/tick.png'>";?></td>
+	<td><?php if($ln['STAFFTYPE']==2)echo "<img src='images/tick.png'>";?></td>
+    <td><?=$ln['POSITIONNAME']?></td>
     <td>
-		<?
-		$sql1="select * from work1 where STAFFID=$ln[STAFFID] and dated between '$_POST[date1]' and '$_POST[date2]' and timein > '8:30' ";
+		<?php
+		$sql1="select * from work1 where STAFFID={$ln['STAFFID']} and dated between '{$_POST['date1']}' and '{$_POST['date2']}' and timein > '8:30' ";
 		$res1=mysql_query($sql1);
 		$rows1=mysql_num_rows($res1);
 		// chk mid day /////////////////////////////////////////////////////////////////
 		$x=0;
 		$y=0;
-		$sql2="select * from absent where STAFFID=$ln[0] and date1 between '$_POST[date1]' and '$_POST[date2]' and amount=0.5";
+		$sql2="select * from absent where STAFFID={$ln[0]} and date1 between '{$_POST['date1']}' and '{$_POST['date2']}' and amount=0.5";
 		$res2=mysql_query($sql2);
 		while($ln2=mysql_fetch_array($res2)){
 			$x++;
-			$y+=$ln2[amount];
+			$y+=$ln2['amount'];
 		}		
 		$rows1=$rows1-$y;
 		if($rows1<0)$rows1=0;
@@ -207,100 +207,100 @@ while($ln=mysql_fetch_array($res)){
 		echo "<center>$rows1</center>";
 		?>	</td>
     <td>
-	<?
+	<?php
 	$x=0;
 	$y=0;
-	$sql1="select * from absent where STAFFID=$ln[0] and type=2 and date1 between '$_POST[date1]' and '$_POST[date2]' and approve=1";
+	$sql1="select * from absent where STAFFID={$ln[0]} and type=2 and date1 between '{$_POST['date1']}' and '{$_POST['date2']}' and approve=1";
 	$res1=mysql_query($sql1);
 	while($ln1=mysql_fetch_array($res1)){
 		$x++;
-		$y+=$ln1[amount];
+		$y+=$ln1['amount'];
 	}
 	echo "<center>".$x."</center>";
 	?></td>
     <td><center><?=$y?></center></td>
     <td>
-	<?
+	<?php
 	$x=0;
 	$y=0;
-	$sql1="select * from absent where STAFFID=$ln[0] and type=1 and date1 between '$_POST[date1]' and '$_POST[date2]' and approve=1";
+	$sql1="select * from absent where STAFFID={$ln[0]} and type=1 and date1 between '{$_POST['date1']}' and '{$_POST['date2']}' and approve=1";
 	$res1=mysql_query($sql1);
 	while($ln1=mysql_fetch_array($res1)){
 		$x++;
-		$y+=$ln1[amount];
+		$y+=$ln1['amount'];
 	}
 	echo "<center>".$x."</center>";
 	?></td>
     <td><center><?=$y?></center></td>
     <td>
-	<?
+	<?php
 	$x=0;
 	$y=0;
-	$sql1="select * from absent where STAFFID=$ln[0] and type=3 and date1 between '$_POST[date1]' and '$_POST[date2]' and approve=1";
+	$sql1="select * from absent where STAFFID={$ln[0]} and type=3 and date1 between '{$_POST['date1']}' and '{$_POST['date2']}' and approve=1";
 	$res1=mysql_query($sql1);
 	while($ln1=mysql_fetch_array($res1)){
 		$x++;
-		$y+=$ln1[amount];
+		$y+=$ln1['amount'];
 	}
 	echo "<center>".$x."</center>";
 	?></td>
     <td><center><?=$y?></center></td>
     <td>
-		<?
-		$sql1="select * from work1 where STAFFID=$ln[STAFFID] and dated between '$_POST[date1]' and '$_POST[date2]' and timein = '00:00' and timeout != '00:00' and reason = '' ";
+		<?php
+		$sql1="select * from work1 where STAFFID={$ln['STAFFID']} and dated between '{$_POST['date1']}' and '{$_POST['date2']}' and timein = '00:00' and timeout != '00:00' and reason = '' ";
 		$res1=mysql_query($sql1);
 		$rows1=mysql_num_rows($res1);
 		echo "<center>$rows1</center>";
 		?></td>
     <td>
-		<?
-		$sql1="select * from work1 where STAFFID=$ln[STAFFID] and dated between '$_POST[date1]' and '$_POST[date2]' and timein > '00:00' and timeout = '00:00' and reason = '' ";
+		<?php
+		$sql1="select * from work1 where STAFFID={$ln['STAFFID']} and dated between '{$_POST['date1']}' and '{$_POST['date2']}' and timein > '00:00' and timeout = '00:00' and reason = '' ";
 		$res1=mysql_query($sql1);
 		$rows1=mysql_num_rows($res1);
 		echo "<center>$rows1</center>";
 		?>
 		</td>
     <td>
-	<?
+	<?php
 	$x=0;
 	$y=0;
-	$sql1="select * from absent where STAFFID=$ln[0] and type=4 and date1 between '$_POST[date1]' and '$_POST[date2]' and approve=1";
+	$sql1="select * from absent where STAFFID={$ln[0]} and type=4 and date1 between '{$_POST['date1']}' and '{$_POST['date2']}' and approve=1";
 	$res1=mysql_query($sql1);
 	while($ln1=mysql_fetch_array($res1)){
 		$x++;
-		$y+=$ln1[amount];
+		$y+=$ln1['amount'];
 	}
 	echo "<center>".$x."</center>";
 	?></td>
     <td><center><?=$y?></center></td>
 	<td>
-	<?
+	<?php
 	$x=0;
 	$y=0;
-	$sql1="select * from absent where STAFFID=$ln[0] and type=5 and date1 between '$_POST[date1]' and '$_POST[date2]' and approve=1";
+	$sql1="select * from absent where STAFFID={$ln[0]} and type=5 and date1 between '{$_POST['date1']}' and '{$_POST['date2']}' and approve=1";
 	$res1=mysql_query($sql1);
 	while($ln1=mysql_fetch_array($res1)){
 		$x++;
-		$y+=$ln1[amount];
+		$y+=$ln1['amount'];
 	}
 	echo "<center>".$x."</center>";
 	?></td>
     <td><center><?=$y?></center></td>
 	<td>
-	<?
+	<?php
 	$x=0;
 	$y=0;
-	$sql1="select * from absent where STAFFID=$ln[0] and type=6 and date1 between '$_POST[date1]' and '$_POST[date2]' and approve=1";
+	$sql1="select * from absent where STAFFID={$ln[0]} and type=6 and date1 between '{$_POST['date1']}' and '{$_POST['date2']}' and approve=1";
 	$res1=mysql_query($sql1);
 	while($ln1=mysql_fetch_array($res1)){
 		$x++;
-		$y+=$ln1[amount];
+		$y+=$ln1['amount'];
 	}
 	echo "<center>".$x."</center>";
 	?></td>
     <td><center><?=$y?></center></td>
     </tr>
-<? }?>
+<?php }?>
 </table>
 </div>
 <form name="form1" method="post" action="PDF/index.php">
@@ -309,8 +309,8 @@ while($ln=mysql_fetch_array($res)){
 
 <br>
 <a href="javascript:history.go(-1)" class="btn btn-sm btn-primary"><i class="fa fa-arrow-left"></i> Back</a> 
-<a href="doc_report1.php?date1=<?=$_POST[date1]?>&date2=<?=$_POST[date2]?>&id=<?=$_POST[DEPARTMENTID]?>&type=<?=$_POST[STAFFTYPE]?>" class="btn btn-sm btn-success">
-ส่งออกไฟล์ WORD <i class="fa fa-arrow-down"></i></a></div>
+<a href="doc_report1.php?date1=<?=$_POST['date1']?>&date2=<?=$_POST['date2']?>&id=<?=$_POST['DEPARTMENTID']?>&type=<?=$_POST['STAFFTYPE']?>" class="btn btn-sm btn-success">
+อก WORD <i class="fa fa-arrow-down"></i></a></div>
             <!-- /.container-fluid -->
 
 </div>

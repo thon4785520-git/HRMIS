@@ -1,6 +1,6 @@
-<?
+<?php
 session_start();
-if($_SESSION[ss_status]!="admin"){
+if($_SESSION['ss_status']!="admin"){
 	echo "<script>location='index.php';</script>";
 }
 ?>
@@ -88,26 +88,26 @@ window.onload = function () {
 			<!-- Top Menu Items -->
             <ul class="nav navbar-right top-nav">
                 <li class="dropdown">
-                    <a href="#"> <font color="#FFF"> <i class="fa fa-fw fa-user"></i> <?=$_SESSION[ss_name]?> </font> </a>                    
+                    <a href="#"> <font color="#FFF"> <i class="fa fa-fw fa-user"></i> <?=$_SESSION['ss_name']?> </font> </a>                    
                 </li>
 			</ul>
             <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">					
                     <li>
-                        <a href="admin.php"><i class="fa fa-fw fa-home"></i> หน้าแรก </a>
+                        <a href="admin.php"><i class="fa fa-fw fa-home"></i> หนรก </a>
                     </li>					
                     <li>
-                        <a href="admin_view_work.php"><i class="fa fa-fw fa-desktop"></i> จัดการข้อมูลการปฏิบัติงาน </a>
+                        <a href="admin_view_work.php"><i class="fa fa-fw fa-desktop"></i> ัดรขลกรปิบัติงาน </a>
                     </li>
                     <li>
-                        <a href="admin_view_absent.php"><i class="fa fa-fw fa-edit"></i> จัดการข้อมูลการลา </a>
+                        <a href="admin_view_absent.php"><i class="fa fa-fw fa-edit"></i> ัดรขลก </a>
                     </li>
                     <li>
-                        <a href="admin_report.php"><i class="fa fa-fw fa-table"></i> รายงานผลข้อมูล </a>
+                        <a href="admin_report.php"><i class="fa fa-fw fa-table"></i> ยงานลข </a>
                     </li> 
 					<li>
-                        <a href="logout.php"><i class="fa fa-fw fa-lock"></i> ออกจากระบบ </a>
+                        <a href="logout.php"><i class="fa fa-fw fa-lock"></i> อกากะบ </a>
                     </li>                    
                 </ul>
             </div>
@@ -122,53 +122,53 @@ window.onload = function () {
 
 <!--Header-->
 <div class="page-header">
-        <h3> <i class="fa fa-plus"></i> เพิ่มข้อมูลการลา </h3>
+        <h3> <i class="fa fa-plus"></i> ลก </h3>
 </div>
 
 <!-- form -->
 <FORM METHOD="POST" ACTION="admin_add_absent2.php" id="form1">
 
 <div class="form-group">
-         <label>เลือกชื่อ - สกุล ผู้ลา </label>
+         <label>อก - สก  </label>
          <select name="STAFFID" class="form-control">
-		 	<?
+		 	<?php
 			include"config.php";
 			$sql="select * from staff order by STAFFNAME";
 			$res=mysql_query($sql);
 			while($ln=mysql_fetch_array($res)){
-				echo "<option value=$ln[0]>$ln[3] $ln[4]";
+				echo "<option value={$ln[0]}>{$ln[3]} {$ln[4]}";
 			}
 			?>
 		 </select>
 </div>
 <div class="form-group">
-         <label>วันที่ส่งใบลา</label>
-         <input class="form-control required" type="text" name="dated" id="dated" value="<?=Date('Y-m-d')?>" title="* วันที่ทำใบลา">
+         <label>ัน</label>
+         <input class="form-control required" type="text" name="dated" id="dated" value="<?=Date('Y-m-d')?>" title="* ัน">
 </div>
 <div class="form-group">
-         <label>ลาตั้งแต่วันที่</label>
-         <input class="form-control required" type="text" name="date1" id="date1" title="* กรอกวันที่"> 
+         <label>าตัน</label>
+         <input class="form-control required" type="text" name="date1" id="date1" title="* อกัน"> 
 </div>
 <div class="form-group">
-         <label>ถึงวันที่</label>
-         <input class="form-control required" type="text" name="date2" id="date2" title="* กรอกวันที่">
+         <label>ึงัน</label>
+         <input class="form-control required" type="text" name="date2" id="date2" title="* อกัน">
 </div>
 <div class="form-group">
-         <label>จำนวนวันลา</label>
-         <input class="form-control required number" type="text" name="amount" title="* กรอกจำนวนวันลา">
+         <label>ำนวนัน</label>
+         <input class="form-control required number" type="text" name="amount" title="* อกำนวนัน">
 </div>
 <div class="form-group">
-         <label>เหตุผลที่ลา</label>
-         <TEXTAREA NAME="reason" ROWS="" COLS="" class="form-control required" title="* กรอกเหตุผล"></TEXTAREA>
+         <label>หตุผลท</label>
+         <TEXTAREA NAME="reason" ROWS="" COLS="" class="form-control required" title="* อกหตุผ"></TEXTAREA>
 </div>
 <div class="form-group">
-         <label>ประเภทการลา</label><br>
-         <input name="type" type="radio" value="1" checked> ลาป่วย  <br>
-		 <input name="type" type="radio" value="2" > ลากิจ <br>
-		 <input name="type" type="radio" value="3" > ลาพักผ่อน <br>
-		 <input name="type" type="radio" value="4" > ไปราชการ <br>
-		 <input name="type" type="radio" value="5" > ลาคลอด <br>
-		 <input name="type" type="radio" value="6" > ลาบวช
+         <label></label><br>
+         <input name="type" type="radio" value="1" checked> าป  <br>
+		 <input name="type" type="radio" value="2" > ากิจ <br>
+		 <input name="type" type="radio" value="3" > าพักอน <br>
+		 <input name="type" type="radio" value="4" > าช <br>
+		 <input name="type" type="radio" value="5" > าคอด <br>
+		 <input name="type" type="radio" value="6" > าบวช
 </div>
 
 <INPUT TYPE="submit" class="btn btn-success" value="Save">

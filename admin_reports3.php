@@ -1,9 +1,9 @@
 <?php
-// กำหนด Header ให้เป็น Windows-874 เพื่อรองรับภาษาไทยในระบบเดิม
+// หน Header  Windows-874 องับะบ
 header('Content-Type: text/html; charset=windows-874');
 session_start();
 
-// ตรวจสอบสถานะ Admin
+// วจอบสถาน Admin
 if($_SESSION['ss_status'] != "admin"){
 	echo "<script>location='index.php';</script>";
     exit();
@@ -19,8 +19,8 @@ if(isset($_POST['date1']) && isset($_POST['date2'])) {
     
     // Check to prevent error if date is empty
     if(count($d1) == 3 && count($d2) == 3) {
-        $db_date1 = ($d1[2] - 543) . "-$d1[1]-$d1[0]";
-        $db_date2 = ($d2[2] - 543) . "-$d2[1]-$d2[0]";
+        $db_date1 = ($d1[2] - 543) . "-{$d1[1]}-{$d1[0]}";
+        $db_date2 = ($d2[2] - 543) . "-{$d2[1]}-{$d2[0]}";
     } else {
         $db_date1 = date('Y-m-d');
         $db_date2 = date('Y-m-d');
@@ -160,7 +160,7 @@ if(isset($_POST['date1']) && isset($_POST['date2'])) {
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="logout.php">
-                        <i class="fas fa-sign-out-alt"></i> ออกจากระบบ
+                        <i class="fas fa-sign-out-alt"></i> อกากะบ
                     </a>
                 </li>
             </ul>
@@ -174,13 +174,13 @@ if(isset($_POST['date1']) && isset($_POST['date2'])) {
             <div class="col-md-3 col-lg-2 d-md-block sidebar collapse" id="sidebarMenu">
                 <div class="position-sticky">
                     <div class="list-group list-group-flush">
-                        <a href="admin.php"><i class="fas fa-home"></i> หน้าแรก</a>
-                        <a href="admin_view_staff.php"><i class="fas fa-users"></i> ข้อมูลบุคลากร</a>
-                        <a href="admin_view_control.php"><i class="fas fa-file-contract"></i> ทะเบียนคุมสัญญา พม.</a>
-                        <a href="admin_view_work.php"><i class="fas fa-desktop"></i> ข้อมูลการปฏิบัติงาน</a>
-                        <a href="admin_view_absent.php"><i class="fas fa-edit"></i> จัดการข้อมูลการลา</a>
-                        <a href="admin_report.php" class="active"><i class="fas fa-chart-bar"></i> รายงานผลข้อมูล</a>
-                        <a href="logout.php" class="text-danger"><i class="fas fa-lock"></i> ออกจากระบบ</a>
+                        <a href="admin.php"><i class="fas fa-home"></i> หนรก</a>
+                        <a href="admin_view_staff.php"><i class="fas fa-users"></i> ลบุคาก</a>
+                        <a href="admin_view_control.php"><i class="fas fa-file-contract"></i> ยนัญ .</a>
+                        <a href="admin_view_work.php"><i class="fas fa-desktop"></i> ลกรปิบัติงาน</a>
+                        <a href="admin_view_absent.php"><i class="fas fa-edit"></i> ัดรขลก</a>
+                        <a href="admin_report.php" class="active"><i class="fas fa-chart-bar"></i> ยงานลข</a>
+                        <a href="logout.php" class="text-danger"><i class="fas fa-lock"></i> อกากะบ</a>
                     </div>
                 </div>
             </div>
@@ -189,27 +189,27 @@ if(isset($_POST['date1']) && isset($_POST['date2'])) {
             <main class="col-md-9 ml-sm-auto col-lg-10 px-md-4 py-4">
                 
                 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 page-header btn-print-hide">
-                    <h1 class="h2"><i class="fas fa-chart-line text-success"></i> รายงานการมาปฏิบัติงาน</h1>
+                    <h1 class="h2"><i class="fas fa-chart-line text-success"></i> ยงานาปิบัติงาน</h1>
                 </div>
 
                 <div class="card card-custom">
                     <div class="card-body">
                         
                         <div class="text-center mb-4">
-                            <h4 class="font-weight-bold text-dark">รายงานข้อมูลการมาปฏิบัติงาน</h4>
-                            <h5 class="text-muted">ระหว่างวันที่ <span class="text-primary"><?php echo isset($_POST['date1']) ? $_POST['date1'] : '-'; ?></span> ถึง <span class="text-primary"><?php echo isset($_POST['date2']) ? $_POST['date2'] : '-'; ?></span></h5>
+                            <h4 class="font-weight-bold text-dark">ยงานลกาปิบัติงาน</h4>
+                            <h5 class="text-muted">างัน <span class="text-primary"><?php echo isset($_POST['date1']) ? $_POST['date1'] : '-'; ?></span> ึง <span class="text-primary"><?php echo isset($_POST['date2']) ? $_POST['date2'] : '-'; ?></span></h5>
                         </div>
 
                         <div class="table-responsive">
                             <table class="table table-bordered table-striped table-hover">
                                 <thead class="thead-light">
                                     <tr>
-                                        <th width="25%">ชื่อ - สกุล</th>
-                                        <th width="25%">หน่วยงาน</th>
-                                        <th width="15%">ประเภทบุคลากร</th>
-                                        <th width="10%" class="text-success">ปกติ</th>
-                                        <th width="10%" class="text-danger">สาย</th>
-                                        <th width="15%" class="text-secondary">ไม่มา/ไม่เซ็น</th>
+                                        <th width="25%"> - สก</th>
+                                        <th width="25%">หนยงาน</th>
+                                        <th width="15%">ุคาก</th>
+                                        <th width="10%" class="text-success"></th>
+                                        <th width="10%" class="text-danger"></th>
+                                        <th width="15%" class="text-secondary">/</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -222,7 +222,7 @@ if(isset($_POST['date1']) && isset($_POST['date2'])) {
                                         while($ln = mysql_fetch_array($res)){
                                             $a=0; $b=0; $c=0; $d=0; $e=0;
                                             
-                                            $sql1 = "select * from work1 where STAFFID=$ln[STAFFID] and dated between '$db_date1' and '$db_date2' ";
+                                            $sql1 = "select * from work1 where STAFFID={$ln['STAFFID']} and dated between '$db_date1' and '$db_date2' ";
                                             $res1 = mysql_query($sql1);
                                             while($ln1 = mysql_fetch_array($res1)){
                                                 // Using Timing function logic
@@ -235,7 +235,7 @@ if(isset($_POST['date1']) && isset($_POST['date2'])) {
 
                                             // Check Half-day leave to adjust late count
                                             $x=0; $y=0;
-                                            $sql2 = "select * from absent where STAFFID=$ln[STAFFID] and date1 between '$db_date1' and '$db_date2' and amount=0.5";
+                                            $sql2 = "select * from absent where STAFFID={$ln['STAFFID']} and date1 between '$db_date1' and '$db_date2' and amount=0.5";
                                             $res2 = mysql_query($sql2);
                                             while($ln2 = mysql_fetch_array($res2)){
                                                 $y += $ln2['amount'];
@@ -253,12 +253,12 @@ if(isset($_POST['date1']) && isset($_POST['date2'])) {
                                         <td>
                                             <?php
                                             $types = [
-                                                1 => "ข้าราชการ",
-                                                2 => "ลูกจ้างประจำ",
-                                                3 => "พนักงานราชการ",
-                                                4 => "พนักงานมหาวิทยาลัย",
-                                                5 => "พนักงานตามสัญญา",
-                                                6 => "จ้างเหมาบริการ"
+                                                1 => "าช",
+                                                2 => "ูกางะจ",
+                                                3 => "ักานาช",
+                                                4 => "ักานิท",
+                                                5 => "ักานัญ",
+                                                6 => "างาบิก"
                                             ];
                                             echo isset($types[$ln['STAFFTYPE']]) ? $types[$ln['STAFFTYPE']] : "-";
                                             ?>
@@ -270,14 +270,14 @@ if(isset($_POST['date1']) && isset($_POST['date2'])) {
                                             $miss = $c + $d + $e;
                                             echo $miss > 0 ? $miss : "-"; 
                                             ?>
-                                            <?php if($d > 0) echo "<small class='d-block text-warning'>ไม่เซ็นเข้า: $d</small>"; ?>
-                                            <?php if($e > 0) echo "<small class='d-block text-warning'>ไม่เซ็นกลับ: $e</small>"; ?>
+                                            <?php if($d > 0) echo "<small class='d-block text-warning'>: $d</small>"; ?>
+                                            <?php if($e > 0) echo "<small class='d-block text-warning'>็นกับ: $e</small>"; ?>
                                         </td>
                                     </tr>
                                     <?php 
                                         }
                                     } else {
-                                        echo "<tr><td colspan='6' class='text-center py-4 text-muted'>ไม่พบข้อมูลบุคลากร</td></tr>";
+                                        echo "<tr><td colspan='6' class='text-center py-4 text-muted'>่พบลบุคาก</td></tr>";
                                     }
                                     ?>
                                 </tbody>
@@ -286,10 +286,10 @@ if(isset($_POST['date1']) && isset($_POST['date2'])) {
 
                         <div class="mt-4 text-center btn-print-hide">
                             <a href="admin_report.php" class="btn btn-secondary shadow-sm">
-                                <i class="fas fa-arrow-left"></i> กลับหน้าเลือกรายงาน
+                                <i class="fas fa-arrow-left"></i> ับหนอกยงาน
                             </a>
                             <button onClick="window.print()" class="btn btn-info shadow-sm ml-2">
-                                <i class="fas fa-print"></i> พิมพ์รายงาน
+                                <i class="fas fa-print"></i> ยงาน
                             </button>
                         </div>
 

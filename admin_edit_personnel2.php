@@ -1,6 +1,6 @@
-<?
+<?php
 session_start();
-if($_SESSION[ss_status]!="admin"){
+if($_SESSION['ss_status']!="admin"){
 	echo "<script>location='index.php';</script>";
 }
 ?>
@@ -64,10 +64,10 @@ font-size: 13px;
         <h3> <i class="fa fa-cog text-success"></i> Process </h3>
 </div>
 
-<?
+<?php
 include"config.php";
 
-$sql="update staff set CITIZENID='$_POST[CITIZENID]', STAFFNO='$_POST[STAFFNO]', STARTDATE='$_POST[STARTDATE]', PACKDATE='$_POST[PACKDATE]' where STAFFID=$_POST[STAFFID] ";
+$sql="update staff set CITIZENID='{$_POST['CITIZENID']}', STAFFNO='{$_POST['STAFFNO']}', STARTDATE='{$_POST['STARTDATE']}', PACKDATE='{$_POST['PACKDATE']}' where STAFFID={$_POST['STAFFID']} ";
 $res=mysql_query($sql);
 if($res){
 	echo "<div class='alert alert-success'>";

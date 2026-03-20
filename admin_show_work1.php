@@ -1,6 +1,6 @@
-<?
+<?php
 session_start();
-if($_SESSION[ss_status]!="admin"){
+if($_SESSION['ss_status']!="admin"){
 	echo "<script>location='index.php';</script>";
 }
 include"config.php";
@@ -80,26 +80,26 @@ font-size: 13px;
 			<!-- Top Menu Items -->
             <ul class="nav navbar-right top-nav">
                 <li class="dropdown">
-                    <a href="#"> <font color="#FFF"> <i class="fa fa-fw fa-user"></i> <?=$_SESSION[ss_name]?> </font> </a>                    
+                    <a href="#"> <font color="#FFF"> <i class="fa fa-fw fa-user"></i> <?=$_SESSION['ss_name']?> </font> </a>                    
                 </li>
 			</ul>
             <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">					
                     <li>
-                        <a href="admin.php"><i class="fa fa-fw fa-home"></i> หน้าแรก </a>
+                        <a href="admin.php"><i class="fa fa-fw fa-home"></i> หนรก </a>
                     </li>					
                     <li>
-                        <a href="admin_view_work.php"><i class="fa fa-fw fa-desktop"></i> จัดการข้อมูลการปฏิบัติงาน </a>
+                        <a href="admin_view_work.php"><i class="fa fa-fw fa-desktop"></i> ัดรขลกรปิบัติงาน </a>
                     </li>
                     <li>
-                        <a href="admin_view_absent.php"><i class="fa fa-fw fa-edit"></i> จัดการข้อมูลการลา </a>
+                        <a href="admin_view_absent.php"><i class="fa fa-fw fa-edit"></i> ัดรขลก </a>
                     </li>
                     <li>
-                        <a href="admin_report.php"><i class="fa fa-fw fa-table"></i> รายงานผลข้อมูล </a>
+                        <a href="admin_report.php"><i class="fa fa-fw fa-table"></i> ยงานลข </a>
                     </li> 
 					<li>
-                        <a href="logout.php"><i class="fa fa-fw fa-lock"></i> ออกจากระบบ </a>
+                        <a href="logout.php"><i class="fa fa-fw fa-lock"></i> อกากะบ </a>
                     </li>                    
                 </ul>
             </div>
@@ -114,53 +114,53 @@ font-size: 13px;
 
 <!--Header-->
 <div class="page-header">
-        <h3><i class="fa fa-file"></i> ข้อมูลลงชื่อการมาปฏิบัติงาน </h3>
+        <h3><i class="fa fa-file"></i> ลงอกาปิบัติงาน </h3>
 </div>
 
-<div class="well text-info"><strong>วันที่ <?=DateThai($_GET[id])?></strong></div>
+<div class="well text-info"><strong>ัน <?=DateThai($_GET['id'])?></strong></div>
 
 <table class="table table-hover">
 	<tr class="success">
-		<th>ชื่อ - สกุล </th>
-		<th>หน่วยงาน</th>
-		<th>วันที่/เวลา ปฏิบัติงาน</th>
-		<th>สถานะ</th>
+		<th> - สก </th>
+		<th>หนยงาน</th>
+		<th>ัน/ ิบัติงาน</th>
+		<th>สถาน</th>
 	</tr>
-<?
-$sql="select * from work1 A,staff B,department C where A.STAFFID=B.STAFFID and B.DEPARTMENTID=C.DEPARTMENTID and A.dated='$_GET[id]' ";
+<?php
+$sql="select * from work1 A,staff B,department C where A.STAFFID=B.STAFFID and B.DEPARTMENTID=C.DEPARTMENTID and A.dated='{$_GET['id']}' ";
 $res=mysql_query($sql);
 $i=0;
 while($ln=@mysql_fetch_array($res)){
 	$i++;
 ?>
 	<tr>
-		<td><?=$ln[STAFFNAME]?> <?=$ln[STAFFSURNAME]?></td>
+		<td><?=$ln['STAFFNAME']?> <?=$ln['STAFFSURNAME']?></td>
 		<td>
-			<?=$ln[DEPARTMENTNAME]?> 
-			<a href="admin_del_work1.php?dated=<?=$_GET[id]?>&STAFFID=<?=$ln[STAFFID]?>">x
+			<?=$ln['DEPARTMENTNAME']?> 
+			<a href="admin_del_work1.php?dated=<?=$_GET['id']?>&STAFFID=<?=$ln['STAFFID']?>">x
 			</td>
-		<td><h5 class="bg-info"><?=$ln[dated]?></h5> <h5><?=$ln[timein]?> - <?=$ln[timeout]?></h5>
+		<td><h5 class="bg-info"><?=$ln['dated']?></h5> <h5><?=$ln['timein']?> - <?=$ln['timeout']?></h5>
 		</td>
 		<td>
-			<? if(Timing($ln[timein]) != 0 && Timing($ln[timein]) < 8.31) echo  "<font color=green>มาปกติ</font>  ";?>
-			<? if(Timing($ln[timein]) != 0 && Timing($ln[timein]) > 8.30) echo  "<font color=red>มาสาย</font>  ";?>
-			<? if(Timing($ln[timein]) == 0 && Timing($ln[timeout]) == 0) echo  "<font color=maroon>ไม่มาปฏิบัติงาน</font>  ";?>
-			<? if(Timing($ln[timein]) == 0 && Timing($ln[timeout]) != 0) echo  "<font color=blue>ไม่เซ็นชื่อเข้า</font>  ";?>
-			<? if(Timing($ln[timein]) > 0 && Timing($ln[timeout])== 0) echo  "<font color=blue>ไม่เซ็นชื่อกลับ</font>  ";?>
-			<?
+			<?php if(Timing($ln['timein']) != 0 && Timing($ln['timein']) < 8.31) echo  "<font color=green>าป</font>  ";?>
+			<?php if(Timing($ln['timein']) != 0 && Timing($ln['timein']) > 8.30) echo  "<font color=red></font>  ";?>
+			<?php if(Timing($ln['timein']) == 0 && Timing($ln['timeout']) == 0) echo  "<font color=maroon>าปิบัติงาน</font>  ";?>
+			<?php if(Timing($ln['timein']) == 0 && Timing($ln['timeout']) != 0) echo  "<font color=blue>็นช</font>  ";?>
+			<?php if(Timing($ln['timein']) > 0 && Timing($ln['timeout'])== 0) echo  "<font color=blue>็นชอกับ</font>  ";?>
+			<?php
 			//chk absent 
-			$sql1="select * from absent where STAFFID=$ln[STAFFID] and '$_GET[id]' between date1 and date2";
+			$sql1="select * from absent where STAFFID={$ln['STAFFID']} and '{$_GET['id']}' between date1 and date2";
 			//echo $sql1;
 			$res1=mysql_query($sql1);
 			$rows=mysql_num_rows($res1);
 			//echo $rows;
 			if($rows>0)
-				echo "<br><font color=#9955ff>(เนื่องจากลา/ไปราชการ)</font>";
-			echo "<br><font color=darkpink><u>$ln[reason]</ul></font>";
+				echo "<br><font color=#9955ff>(องาก/าช)</font>";
+			echo "<br><font color=darkpink><u>{$ln['reason']}</ul></font>";
 			?>
 		</td>
 	</tr>
-<? }?>
+<?php }?>
 </table>
 
 

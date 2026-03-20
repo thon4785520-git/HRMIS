@@ -1,6 +1,6 @@
-<?
+<?php
 session_start();
-if($_SESSION[ss_status]!="admin"){
+if($_SESSION['ss_status']!="admin"){
 	echo "<script>location='index.php';</script>";
 }
 ?>
@@ -64,29 +64,29 @@ font-size: 13px;
         <h3> <i class="fa fa-cog text-success"></i> Process </h3>
 </div>
 
-<?
+<?php
 include"config.php";
 
-$sql="INSERT INTO controls (STAFFID, ch1, ch2, ch3, ch4, ch5, ch6, ch7, ch8, ch9, ch10, ch11, ch12, ch13, ch14, ch15, ch16, ch17, ch18) VALUES ($_POST[id], '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '')";
+$sql="INSERT INTO controls (STAFFID, ch1, ch2, ch3, ch4, ch5, ch6, ch7, ch8, ch9, ch10, ch11, ch12, ch13, ch14, ch15, ch16, ch17, ch18) VALUES ({$_POST['id']}, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '')";
 //echo "$sql";
 $res=@mysql_query($sql);
 
-if($_FILES[ch25][name]!=""){
+if($_FILES['ch25'][name]!=""){
 	$rand=rand(100001,999999) . ".pdf";
-	@move_uploaded_file($_FILES[ch25][tmp_name],"file/$rand.pdf");
+	@move_uploaded_file($_FILES['ch25'][tmp_name],"file/$rand.pdf");
 }else{
-	$rand=$_POST[old];
+	$rand=$_POST['old'];
 }
 
-for($i=0;$i<count($_POST[ch24]);$i++){
-	$x .= $_POST[ch24][$i] . ",";
+for($i=0;$i<count($_POST['ch24']);$i++){
+	$x .= $_POST['ch24'][$i] . ",";
 }
 
-for($i=0;$i<count($_POST[ch26]);$i++){
-	$y .= $_POST[ch26][$i] . ",";
+for($i=0;$i<count($_POST['ch26']);$i++){
+	$y .= $_POST['ch26'][$i] . ",";
 }
 
-$sql="update controls set ch19='$_POST[ch19]', ch20='$_POST[ch20]', ch21='$_POST[ch21]', ch22='$_POST[ch22]', ch23='$_POST[ch23]', ch24='$x', ch28='$rand', ch26='$y' where STAFFID=$_POST[id] ";
+$sql="update controls set ch19='{$_POST['ch19']}', ch20='{$_POST['ch20']}', ch21='{$_POST['ch21']}', ch22='{$_POST['ch22']}', ch23='{$_POST['ch23']}', ch24='$x', ch28='$rand', ch26='$y' where STAFFID={$_POST['id']} ";
 $res=mysql_query($sql)or die(mysql_error());
 if($res){
 	echo "<div class='alert alert-success'>";

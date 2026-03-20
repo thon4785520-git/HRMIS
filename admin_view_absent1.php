@@ -1,6 +1,6 @@
-<?
+<?php
 session_start();
-if($_SESSION[ss_status]!="admin"){
+if($_SESSION['ss_status']!="admin"){
 	echo "<script>location='index.php';</script>";
 }
 ?>
@@ -86,29 +86,29 @@ font-size: 13px;
 			<!-- Top Menu Items -->
             <ul class="nav navbar-right top-nav">
                 <li class="dropdown">
-                    <a href="#"> <font color="#FFF"> <i class="fa fa-fw fa-user"></i> <?=$_SESSION[ss_name]?> </font> </a>                    
+                    <a href="#"> <font color="#FFF"> <i class="fa fa-fw fa-user"></i> <?=$_SESSION['ss_name']?> </font> </a>                    
                 </li>
 			</ul>
             <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">					
                     <li>
-                        <a href="admin.php"><i class="fa fa-fw fa-home"></i> หน้าแรก </a>
+                        <a href="admin.php"><i class="fa fa-fw fa-home"></i> หนรก </a>
                     </li>	
 					<li>
-                        <a href="admin_view_staff.php"><i class="fa fa-fw fa-user"></i> จัดการข้อมูลบุคลากร </a>
+                        <a href="admin_view_staff.php"><i class="fa fa-fw fa-user"></i> ัดรขลบุคาก </a>
                     </li>				
                     <li>
-                        <a href="admin_view_work.php"><i class="fa fa-fw fa-desktop"></i> จัดการข้อมูลการปฏิบัติงาน </a>
+                        <a href="admin_view_work.php"><i class="fa fa-fw fa-desktop"></i> ัดรขลกรปิบัติงาน </a>
                     </li>
                     <li>
-                        <a href="admin_view_absent.php"><i class="fa fa-fw fa-edit"></i> จัดการข้อมูลการลา </a>
+                        <a href="admin_view_absent.php"><i class="fa fa-fw fa-edit"></i> ัดรขลก </a>
                     </li>
                     <li>
-                        <a href="admin_report.php"><i class="fa fa-fw fa-table"></i> รายงานผลข้อมูล </a>
+                        <a href="admin_report.php"><i class="fa fa-fw fa-table"></i> ยงานลข </a>
                     </li> 
 					<li>
-                        <a href="logout.php"><i class="fa fa-fw fa-lock"></i> ออกจากระบบ </a>
+                        <a href="logout.php"><i class="fa fa-fw fa-lock"></i> อกากะบ </a>
                     </li>                    
                 </ul>
             </div>
@@ -123,27 +123,27 @@ font-size: 13px;
 
 <!--Header-->
 <div class="page-header">
-        <h3> <i class="fa fa-edit"></i> จัดการข้อมูลการลา </h3>
+        <h3> <i class="fa fa-edit"></i> ัดรขลก </h3>
 </div>
 
-<a href="admin_add_absent.php" class="btn btn-sm btn-success"><i class="fa fa-plus"></i> เพิ่มข้อมูลการลา</a> 
-<a href="admin_search_absent.php" class="btn btn-sm btn-primary"><i class="fa fa-search"></i> ค้นหาข้อมูลการลา</a> <br><br> 
+<a href="admin_add_absent.php" class="btn btn-sm btn-success"><i class="fa fa-plus"></i> ลก</a> 
+<a href="admin_search_absent.php" class="btn btn-sm btn-primary"><i class="fa fa-search"></i> าขลก</a> <br><br> 
 
 <table class="table table-hover" id="datatable">
 <tr class="success">
-	<th>ชื่อ - สกุล</th>
-	<th>วันที่ลา</th>
-	<th>ประเภทการลา</th>
-	<th>สถานะ</th>
+	<th> - สก</th>
+	<th>ัน</th>
+	<th></th>
+	<th>สถาน</th>
 	<th width="100">Option</th>
 </tr>
-<?
+<?php
 include"config.php";
 
-if($_GET[start]==''){
+if($_GET['start']==''){
 	$start=0;
 }else{
-	$start=$_GET[start];
+	$start=$_GET['start'];
 }
 
 $sql="select * from absent A,staff B where A.STAFFID=B.STAFFID order by date1 DESC";
@@ -155,35 +155,35 @@ $res=mysql_query($sql);
 while($ln=mysql_fetch_array($res)){
 ?>
 <tr>
-	<td> <?=$ln[PREFIXNAME]?><?=$ln[STAFFNAME]?> <?=$ln[STAFFSURNAME]?> </td>
-	<td> <?=DateThai($ln[date1])?> - <?=DateThai($ln[date2])?> </td>
+	<td> <?=$ln['PREFIXNAME']?><?=$ln['STAFFNAME']?> <?=$ln['STAFFSURNAME']?> </td>
+	<td> <?=DateThai($ln['date1'])?> - <?=DateThai($ln['date2'])?> </td>
 	<td> 
-		<?
-			$x=array("","ลาป่วย","ลากิจ","ลาพักผ่อน","ไปราชการ","ลาคลอด","ลาอุปสมบท","ช่วยเหลือภริยาเลี้ยงดูบุตร");
-			echo $x[$ln[type]];
+		<?php
+			$x=array("","าป","ากิจ","าพักอน","าช","าคอด","ุป","ยงูบุต");
+			echo $x[$ln['type']];
 		?> 
 	</td>
 	<td>
-		<?
-		if($ln[approve]==1) echo "<p class='text-success'>อนุมัติ (ผู้บังคับบัญชาระดับต้น)</p>";
-		if($ln[approve]==2) echo "<p class='text-danger'>ไม่อนุมัติ (ผู้บังคับบัญชาระดับต้น)</p>";
+		<?php
+		if($ln['approve']==1) echo "<p class='text-success'>อนัต (ังับัญะดับ)</p>";
+		if($ln['approve']==2) echo "<p class='text-danger'>อนัต (ังับัญะดับ)</p>";
 		?>
-		<?
-		if($ln[approve1]==1) echo "<p class='text-info'>อนุมัติ (ผู้บังคับบัญชาระดับสูง)</p>";
-		if($ln[approve1]==2) echo "<p class='text-danger'>ไม่อนุมัติ (ผู้บังคับบัญชาระดับสูง)</p>";
+		<?php
+		if($ln['approve1']==1) echo "<p class='text-info'>อนัต (ังับัญะดับูง)</p>";
+		if($ln['approve1']==2) echo "<p class='text-danger'>อนัต (ังับัญะดับูง)</p>";
 		?>
 	</td>
 	<td> 
-		<a href="form1.php?id=<?=$ln[id]?>" class="btn btn-xs btn-info" title="ส่งออกแบบฟอร์ม" target="_blank"><i class="fa fa-file-text"></i></a>  
-		<a href="admin_edit_absent.php?id=<?=base64_encode($ln[id])?>" class="btn btn-xs btn-warning" title="แก้ไข"><i class="fa fa-pencil"></i></a>
-		<a href="admin_del_absent.php?id=<?=base64_encode($ln[id])?>" class="btn btn-xs btn-danger" title="ลบ" onClick="return confirm('แน่ใจว่ายกเลิก?')"><i class="fa fa-close"></i></a>
+		<a href="form1.php?id=<?=$ln['id']?>" class="btn btn-xs btn-info" title="อกแบบ" target="_blank"><i class="fa fa-file-text"></i></a>  
+		<a href="admin_edit_absent.php?id=<?=base64_encode($ln['id'])?>" class="btn btn-xs btn-warning" title=""><i class="fa fa-pencil"></i></a>
+		<a href="admin_del_absent.php?id=<?=base64_encode($ln['id'])?>" class="btn btn-xs btn-danger" title="ลบ" onClick="return confirm('ยกิก?')"><i class="fa fa-close"></i></a>
 	</td>
 </tr>
-<? }?>
+<?php }?>
 </table>
 
 Page
-<?
+<?php
 	for($i=0;$i<=$rows;$i+=70){
 		$c++;
 		if($start==$i)

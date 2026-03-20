@@ -1,9 +1,9 @@
 <?php
-// กำหนด Header ให้เป็น Windows-874 เพื่อรองรับภาษาไทยในระบบเดิม
+// หน Header  Windows-874 องับะบ
 header('Content-Type: text/html; charset=windows-874');
 session_start();
 
-// ตรวจสอบสถานะ Admin
+// วจอบสถาน Admin
 if($_SESSION['ss_status'] != "admin"){
 	echo "<script>location='index.php';</script>";
     exit();
@@ -158,7 +158,7 @@ include "config.php";
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="logout.php">
-                        <i class="fas fa-sign-out-alt"></i> ออกจากระบบ
+                        <i class="fas fa-sign-out-alt"></i> อกากะบ
                     </a>
                 </li>
             </ul>
@@ -172,12 +172,12 @@ include "config.php";
             <div class="col-md-3 col-lg-2 d-md-block sidebar collapse" id="sidebarMenu">
                 <div class="position-sticky">
                     <div class="list-group list-group-flush">
-                        <a href="admin.php"><i class="fas fa-home"></i> หน้าแรก</a>
-                        <a href="admin_view_staff.php"><i class="fas fa-users"></i> ข้อมูลบุคลากร</a>
-                        <a href="admin_view_work.php"><i class="fas fa-desktop"></i> ข้อมูลการปฏิบัติงาน</a>
-                        <a href="admin_view_absent.php"><i class="fas fa-edit"></i> จัดการข้อมูลการลา</a>
-                        <a href="admin_report.php"><i class="fas fa-chart-bar"></i> รายงานผลข้อมูล</a>
-                        <a href="logout.php" class="text-danger"><i class="fas fa-lock"></i> ออกจากระบบ</a>
+                        <a href="admin.php"><i class="fas fa-home"></i> หนรก</a>
+                        <a href="admin_view_staff.php"><i class="fas fa-users"></i> ลบุคาก</a>
+                        <a href="admin_view_work.php"><i class="fas fa-desktop"></i> ลกรปิบัติงาน</a>
+                        <a href="admin_view_absent.php"><i class="fas fa-edit"></i> ัดรขลก</a>
+                        <a href="admin_report.php"><i class="fas fa-chart-bar"></i> ยงานลข</a>
+                        <a href="logout.php" class="text-danger"><i class="fas fa-lock"></i> อกากะบ</a>
                     </div>
                 </div>
             </div>
@@ -186,89 +186,89 @@ include "config.php";
             <main class="col-md-9 ml-sm-auto col-lg-10 px-md-4 py-4">
                 
                 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 page-header">
-                    <h1 class="h2"><i class="fas fa-user-plus text-success"></i> เพิ่มข้อมูลบุคลากรใหม่</h1>
+                    <h1 class="h2"><i class="fas fa-user-plus text-success"></i> ลบุคาก</h1>
                 </div>
 
                 <div class="row justify-content-center">
                     <div class="col-lg-10">
                         <div class="card card-custom">
                             <div class="card-header card-header-custom">
-                                <i class="fas fa-address-card"></i> แบบฟอร์มลงทะเบียนบุคลากร
+                                <i class="fas fa-address-card"></i> แบบลงยนุคาก
                             </div>
                             <div class="card-body">
                                 <form method="POST" action="admin_add_staff2.php" id="form1">
                                     
-                                    <div class="form-section-title"><i class="fas fa-building"></i> ข้อมูลสังกัดและเข้าสู่ระบบ</div>
+                                    <div class="form-section-title"><i class="fas fa-building"></i> ังัดะบ</div>
                                     <div class="form-row">
                                         <div class="form-group col-md-6">
-                                            <label>หน่วยงาน <span class="text-danger">*</span></label>
+                                            <label>หนยงาน <span class="text-danger">*</span></label>
                                             <select name="DEPARTMENTID" class="form-control required">
-                                                <option value="">--- เลือกหน่วยงาน ---</option>
+                                                <option value="">--- อกหนยงาน ---</option>
                                                 <?php
                                                 $sql="select * from department";
                                                 $res=mysql_query($sql);
                                                 while($ln=mysql_fetch_array($res)){
-                                                    echo "<option value='$ln[0]'>$ln[1]</option>";
+                                                    echo "<option value='{$ln[0]}'>{$ln[1]}</option>";
                                                 }
                                                 ?>
                                             </select>
                                         </div>
                                         <div class="form-group col-md-6">
-                                            <label>Username (ตามระบบ MIS) <span class="text-danger">*</span></label>
+                                            <label>Username (ะบ MIS) <span class="text-danger">*</span></label>
                                             <div class="input-group">
                                                 <div class="input-group-prepend"><span class="input-group-text"><i class="fas fa-user-lock"></i></span></div>
-                                                <input class="form-control required" type="text" name="USERLOGIN" placeholder="กรอก Username">
+                                                <input class="form-control required" type="text" name="USERLOGIN" placeholder="อก Username">
                                             </div>
                                         </div>
                                     </div>
 
-                                    <div class="form-section-title"><i class="fas fa-id-card"></i> ข้อมูลส่วนตัว</div>
+                                    <div class="form-section-title"><i class="fas fa-id-card"></i> วน</div>
                                     <div class="form-row">
                                         <div class="form-group col-md-2">
-                                            <label>คำนำหน้า <span class="text-danger">*</span></label>
-                                            <input class="form-control required" type="text" name="PREFIXNAME" placeholder="นาย/นาง/นางสาว">
+                                            <label>ำนหน <span class="text-danger">*</span></label>
+                                            <input class="form-control required" type="text" name="PREFIXNAME" placeholder="/าง/าง">
                                         </div>
                                         <div class="form-group col-md-5">
-                                            <label>ชื่อ <span class="text-danger">*</span></label>
-                                            <input class="form-control required" type="text" name="STAFFNAME" placeholder="ระบุชื่อจริง">
+                                            <label> <span class="text-danger">*</span></label>
+                                            <input class="form-control required" type="text" name="STAFFNAME" placeholder="ะบุชอจิง">
                                         </div>
                                         <div class="form-group col-md-5">
-                                            <label>นามสกุล <span class="text-danger">*</span></label>
-                                            <input class="form-control required" type="text" name="STAFFSURNAME" placeholder="ระบุนามสกุล">
+                                            <label>สก <span class="text-danger">*</span></label>
+                                            <input class="form-control required" type="text" name="STAFFSURNAME" placeholder="ะบุนสก">
                                         </div>
                                     </div>
 
-                                    <div class="form-section-title"><i class="fas fa-briefcase"></i> ข้อมูลตำแหน่งงาน</div>
+                                    <div class="form-section-title"><i class="fas fa-briefcase"></i> ลตหน่งงาน</div>
                                     <div class="form-group">
-                                        <label>ตำแหน่ง <span class="text-danger">*</span></label>
-                                        <input class="form-control required" type="text" name="POSITIONNAME" placeholder="ระบุตำแหน่งงาน">
+                                        <label>หน <span class="text-danger">*</span></label>
+                                        <input class="form-control required" type="text" name="POSITIONNAME" placeholder="ะบุตหน่งงาน">
                                     </div>
                                     
                                     <div class="form-row">
                                         <div class="form-group col-md-6">
-                                            <label>ประเภทบุคลากร</label>
+                                            <label>ุคาก</label>
                                             <select name="STAFFTYPE" class="form-control">
                                                 <?php
                                                 $sql_type="select * from type";
                                                 $res_type=mysql_query($sql_type);
                                                 while($ln=mysql_fetch_array($res_type)){
-                                                    echo "<option value='$ln[0]'>$ln[1]</option>";
+                                                    echo "<option value='{$ln[0]}'>{$ln[1]}</option>";
                                                 }
                                                 ?>
                                             </select>
                                         </div>
                                         <div class="form-group col-md-6">
-                                            <label>สายปฏิบัติการ</label>
+                                            <label>ยปิบัติก</label>
                                             <select name="STAFFGROUP" class="form-control">
-                                                <option value="1">อาจารย์</option>
+                                                <option value="1">าจ</option>
                                                 <option value="2">สนับสนุน</option>
                                             </select>
                                         </div>
                                     </div>
 
                                     <div class="text-center mt-4">
-                                        <button type="submit" class="btn btn-success btn-lg shadow px-5"><i class="fas fa-save"></i> บันทึกข้อมูล</button>
-                                        <button type="reset" class="btn btn-warning btn-lg shadow px-5 text-white ml-3"><i class="fas fa-undo"></i> รีเซ็ต</button>
+                                        <button type="submit" class="btn btn-success btn-lg shadow px-5"><i class="fas fa-save"></i> ันึก</button>
+                                        <button type="reset" class="btn btn-warning btn-lg shadow px-5 text-white ml-3"><i class="fas fa-undo"></i> </button>
                                     </div>
 
                                 </form>

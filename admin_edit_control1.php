@@ -1,6 +1,6 @@
-<?
+<?php
 session_start();
-if($_SESSION[ss_status]!="admin"){
+if($_SESSION['ss_status']!="admin"){
 	echo "<script>location='index.php';</script>";
 }
 ?>
@@ -61,15 +61,15 @@ font-size: 13px;
 
 <!--Header-->
 <div class="page-header">
-        <h3> <i class="fa fa-pencil text-success"></i> 6 เดือนครั้งที่ 1 </h3>
+        <h3> <i class="fa fa-pencil text-success"></i> 6 อน้งท 1 </h3>
 </div>
 
-<?
+<?php
 include"config.php";
 
-$_GET[id]=base64_decode($_GET[id]);
+$_GET['id']=base64_decode($_GET['id']);
 
-$sql="select * from controls where STAFFID=$_GET[id]";
+$sql="select * from controls where STAFFID={$_GET['id']}";
 $res=mysql_query($sql);
 $rs=mysql_fetch_array($res);
 ?>
@@ -78,27 +78,27 @@ $rs=mysql_fetch_array($res);
 <FORM METHOD="POST" ACTION="admin_edit_control12.php" id="form1" class="well jumbotron">
 
 <div class="form-group">
-         <label>วันที่ครบ</label>
-         <input class="form-control required" type="date" name="ch1" value="<?=$rs[ch1]?>">
+         <label>ันรบ</label>
+         <input class="form-control required" type="date" name="ch1" value="<?=$rs['ch1']?>">
 </div>
 <div class="form-group">
-         <label>คำสั่งที่</label>
-         <input class="form-control required number" type="text" name="ch2" value="<?=$rs[ch2]?>">
+         <label>่งท</label>
+         <input class="form-control required number" type="text" name="ch2" value="<?=$rs['ch2']?>">
 </div>
 <div class="form-group">
-         <label>สั่ง ณ วันที่</label>
-         <input class="form-control required" type="date" name="ch3" value="<?=$rs[ch3]?>">
+         <label>  ัน</label>
+         <input class="form-control required" type="date" name="ch3" value="<?=$rs['ch3']?>">
 </div>
 <div class="form-group">
-         <label>ตั้งแต่</label>
-         <input class="form-control required" type="date" name="ch4" value="<?=$rs[ch4]?>">
+         <label></label>
+         <input class="form-control required" type="date" name="ch4" value="<?=$rs['ch4']?>">
 </div>
 <div class="form-group">
-         <label>สิ้นสุด</label>
-         <input class="form-control required" type="date" name="ch5" value="<?=$rs[ch5]?>">
+         <label>ุด</label>
+         <input class="form-control required" type="date" name="ch5" value="<?=$rs['ch5']?>">
 </div>
 
-<INPUT TYPE="hidden" name="id" value="<?=$_GET[id]?>">
+<INPUT TYPE="hidden" name="id" value="<?=$_GET['id']?>">
 <INPUT TYPE="submit" class="btn btn-success" value="Save">
 <INPUT TYPE="reset" class="btn btn-warning" value="Reset">
 

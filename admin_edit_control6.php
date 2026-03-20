@@ -1,6 +1,6 @@
-<?
+<?php
 session_start();
-if($_SESSION[ss_status]!="admin"){
+if($_SESSION['ss_status']!="admin"){
 	echo "<script>location='index.php';</script>";
 }
 ?>
@@ -61,15 +61,15 @@ font-size: 13px;
 
 <!--Header-->
 <div class="page-header">
-        <h3> <i class="fa fa-pencil text-success"></i> ระยะการจ้างครั้งที่ 5 </h3>
+        <h3> <i class="fa fa-pencil text-success"></i> ะกรจาง้งท 5 </h3>
 </div>
 
-<?
+<?php
 include"config.php";
 
-$_GET[id]=base64_decode($_GET[id]);
+$_GET['id']=base64_decode($_GET['id']);
 
-$sql="select * from controls where STAFFID=$_GET[id]";
+$sql="select * from controls where STAFFID={$_GET['id']}";
 $res=mysql_query($sql);
 $rs=mysql_fetch_array($res);
 ?>
@@ -78,51 +78,51 @@ $rs=mysql_fetch_array($res);
 <FORM METHOD="POST" ACTION="admin_edit_control62.php" id="form1" class="well jumbotron" enctype="multipart/form-data">
 
 <div class="form-group">
-         <label>วันที่ครบ</label>
-         <input class="form-control required" type="date" name="ch35" value="<?=$rs[ch35]?>">
+         <label>ันรบ</label>
+         <input class="form-control required" type="date" name="ch35" value="<?=$rs['ch35']?>">
 </div>
 <div class="form-group">
-         <label>คำสั่งที่</label>
-         <input class="form-control required number" type="text" name="ch36" value="<?=$rs[ch36]?>">
+         <label>่งท</label>
+         <input class="form-control required number" type="text" name="ch36" value="<?=$rs['ch36']?>">
 </div>
 <div class="form-group">
-         <label>สั่ง ณ วันที่</label>
-         <input class="form-control required" type="date" name="ch37" value="<?=$rs[ch37]?>">
+         <label>  ัน</label>
+         <input class="form-control required" type="date" name="ch37" value="<?=$rs['ch37']?>">
 </div>
 <div class="form-group">
-         <label>ตั้งแต่</label>
-         <input class="form-control required" type="date" name="ch38" value="<?=$rs[ch38]?>">
+         <label></label>
+         <input class="form-control required" type="date" name="ch38" value="<?=$rs['ch38']?>">
 </div>
 <div class="form-group">
-         <label>สิ้นสุด</label>
-         <input class="form-control required" type="date" name="ch39" value="<?=$rs[ch39]?>">
+         <label>ุด</label>
+         <input class="form-control required" type="date" name="ch39" value="<?=$rs['ch39']?>">
 </div>
 <div class="form-group">
-         <label>เอกสารประกอบการประเมิน</label><br>
-         <?
+         <label>อกรปะกอบรปิน</label><br>
+         <?php
 		 $x=explode(",", $rs[40]);
 		 ?>
-		<input type="checkbox" name="ch40[]" value="1" <? if(in_array(1,$x))echo"checked";?>> MOU สองรอบประเมิน<br>
-		<input type="checkbox" name="ch40[]" value="2" <? if(in_array(2,$x))echo"checked";?>> ผลการประเมินตนเองด้านภาษาอังกฤษ<br>
- 		<input type="checkbox" name="ch40[]" value="3" <? if(in_array(3,$x))echo"checked";?>> หลักฐานการพิมพ์ลายนิ้วมือ<br>
-		<input type="checkbox" name="ch40[]" value="4" <? if(in_array(4,$x))echo"checked";?>> ผลงานทางวิชาการ<br>
-		<input type="checkbox" name="ch40[]" value="5" <? if(in_array(5,$x))echo"checked";?>> คู่มือการปฏิบัติงาน<br>
+		<input type="checkbox" name="ch40[]" value="1" <?php if(in_array(1,$x))echo"checked";?>> MOU องอบิน<br>
+		<input type="checkbox" name="ch40[]" value="2" <?php if(in_array(2,$x))echo"checked";?>> ลกรปินองานัง<br>
+ 		<input type="checkbox" name="ch40[]" value="3" <?php if(in_array(3,$x))echo"checked";?>> ักานรพยน<br>
+		<input type="checkbox" name="ch40[]" value="4" <?php if(in_array(4,$x))echo"checked";?>> ลงานางิชาก<br>
+		<input type="checkbox" name="ch40[]" value="5" <?php if(in_array(5,$x))echo"checked";?>> อกรปิบัติงาน<br>
 </div>
 <div class="form-group">
-         <label>ไฟล์คำสั่งจ้าง</label>
-         <input class="form-control" type="file" name="ch41" value="<?=$rs[ch41]?>">         
+         <label>่งจาง</label>
+         <input class="form-control" type="file" name="ch41" value="<?=$rs['ch41']?>">         
 </div>
-        <?
-		 $y=explode(",", $rs[ch42]);
+        <?php
+		 $y=explode(",", $rs['ch42']);
 		 ?>
 <div class="form-group">
-         <label>สถานะ</label><br>
-		<input type="checkbox" name="ch42[]" value="1" <? if(in_array(1,$y))echo"checked";?>> ส่งงานคลัง<br>
-		<input type="checkbox" name="ch42[]" value="2" <? if(in_array(2,$y))echo"checked";?>> ส่งนิติกร<br>
+         <label>สถาน</label><br>
+		<input type="checkbox" name="ch42[]" value="1" <?php if(in_array(1,$y))echo"checked";?>> ่งงานัง<br>
+		<input type="checkbox" name="ch42[]" value="2" <?php if(in_array(2,$y))echo"checked";?>> ่งนิติก<br>
 </div>
 
-<INPUT TYPE="hidden" name="id" value="<?=$_GET[id]?>">
-<INPUT TYPE="hidden" name="old" value="<?=$rs[ch41]?>">
+<INPUT TYPE="hidden" name="id" value="<?=$_GET['id']?>">
+<INPUT TYPE="hidden" name="old" value="<?=$rs['ch41']?>">
 <INPUT TYPE="submit" class="btn btn-success" value="Save">
 <INPUT TYPE="reset" class="btn btn-warning" value="Reset">
 

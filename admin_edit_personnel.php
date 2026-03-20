@@ -1,6 +1,6 @@
-<?
+<?php
 session_start();
-if($_SESSION[ss_status]!="admin"){
+if($_SESSION['ss_status']!="admin"){
 	echo "<script>location='index.php';</script>";
 }
 ?>
@@ -61,15 +61,15 @@ font-size: 13px;
 
 <!--Header-->
 <div class="page-header">
-        <h3> <i class="fa fa-pencil text-success"></i> แก้ไขข้อมูลส่วนบุคคล </h3>
+        <h3> <i class="fa fa-pencil text-success"></i> ไขขวนุค </h3>
 </div>
 
-<?
+<?php
 include"config.php";
 
-$_GET[id]=base64_decode($_GET[id]);
+$_GET['id']=base64_decode($_GET['id']);
 
-$sql="select * from staff where STAFFID=$_GET[id]";
+$sql="select * from staff where STAFFID={$_GET['id']}";
 $res=mysql_query($sql);
 $rs=mysql_fetch_array($res);
 ?>
@@ -78,20 +78,20 @@ $rs=mysql_fetch_array($res);
 <FORM METHOD="POST" ACTION="admin_edit_personnel2.php" id="form1" class="well jumbotron">
 
 <div class="form-group">
-         <label>หมายเลขบัตรประชาชน</label>
-         <input class="form-control required" type="text" name="CITIZENID" value="<?=$rs[CITIZENID]?>">
+         <label>ลขัตรปะชาช</label>
+         <input class="form-control required" type="text" name="CITIZENID" value="<?=$rs['CITIZENID']?>">
 </div>
 <div class="form-group">
-         <label>เลขที่ตำแหน่ง</label>
-         <input class="form-control required" type="text" name="STAFFNO" value="<?=$rs[STAFFNO]?>">
+         <label>ลขหน</label>
+         <input class="form-control required" type="text" name="STAFFNO" value="<?=$rs['STAFFNO']?>">
 </div>
 <div class="form-group">
-         <label>วันที่เริ่มทำงาน</label>
-         <input class="form-control required" type="date" name="STARTDATE" value="<?=$rs[STARTDATE]?>">
+         <label>ันำงาน</label>
+         <input class="form-control required" type="date" name="STARTDATE" value="<?=$rs['STARTDATE']?>">
 </div>
 <div class="form-group">
-         <label>วันที่บรรจุ</label>
-         <input class="form-control required" type="date" name="PACKDATE" value="<?=$rs[PACKDATE]?>">
+         <label>ันรจ</label>
+         <input class="form-control required" type="date" name="PACKDATE" value="<?=$rs['PACKDATE']?>">
 </div>
 
 <INPUT TYPE="hidden" name="STAFFID" value="<?=$rs[0]?>">

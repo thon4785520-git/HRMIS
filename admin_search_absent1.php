@@ -1,9 +1,9 @@
 <?php
-// กำหนด Header ให้เป็น Windows-874 เพื่อรองรับภาษาไทยในระบบเดิม
+// หน Header  Windows-874 องับะบ
 header('Content-Type: text/html; charset=windows-874');
 session_start();
 
-// ตรวจสอบสถานะ Admin
+// วจอบสถาน Admin
 if($_SESSION['ss_status'] != "admin"){
 	echo "<script>location='index.php';</script>";
     exit();
@@ -175,7 +175,7 @@ include "config.php";
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="logout.php">
-                        <i class="fas fa-sign-out-alt"></i> ออกจากระบบ
+                        <i class="fas fa-sign-out-alt"></i> อกากะบ
                     </a>
                 </li>
             </ul>
@@ -189,13 +189,13 @@ include "config.php";
             <div class="col-md-3 col-lg-2 d-md-block sidebar collapse" id="sidebarMenu">
                 <div class="position-sticky">
                     <div class="list-group list-group-flush">
-                        <a href="admin.php"><i class="fas fa-home"></i> หน้าแรก</a>
-                        <a href="admin_view_staff.php"><i class="fas fa-users"></i> ข้อมูลบุคลากร</a>
-                        <a href="admin_view_control.php"><i class="fas fa-file-contract"></i> ทะเบียนคุมสัญญา พม.</a>
-                        <a href="admin_view_work.php"><i class="fas fa-desktop"></i> ข้อมูลการปฏิบัติงาน</a>
-                        <a href="admin_view_absent.php"><i class="fas fa-edit"></i> จัดการข้อมูลการลา</a>
-                        <a href="admin_report.php"><i class="fas fa-chart-bar"></i> รายงานผลข้อมูล</a>
-                        <a href="logout.php" class="text-danger"><i class="fas fa-lock"></i> ออกจากระบบ</a>
+                        <a href="admin.php"><i class="fas fa-home"></i> หนรก</a>
+                        <a href="admin_view_staff.php"><i class="fas fa-users"></i> ลบุคาก</a>
+                        <a href="admin_view_control.php"><i class="fas fa-file-contract"></i> ยนัญ .</a>
+                        <a href="admin_view_work.php"><i class="fas fa-desktop"></i> ลกรปิบัติงาน</a>
+                        <a href="admin_view_absent.php"><i class="fas fa-edit"></i> ัดรขลก</a>
+                        <a href="admin_report.php"><i class="fas fa-chart-bar"></i> ยงานลข</a>
+                        <a href="logout.php" class="text-danger"><i class="fas fa-lock"></i> อกากะบ</a>
                     </div>
                 </div>
             </div>
@@ -204,7 +204,7 @@ include "config.php";
             <main class="col-md-9 ml-sm-auto col-lg-10 px-md-4 py-4">
                 
                 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 page-header">
-                    <h1 class="h2"><i class="fas fa-search text-primary"></i> ค้นหาข้อมูลการลา</h1>
+                    <h1 class="h2"><i class="fas fa-search text-primary"></i> าขลก</h1>
                 </div>
 
                 <!-- Search Form -->
@@ -213,25 +213,25 @@ include "config.php";
                         <form method="POST" action="" id="form1">
                             <div class="form-row align-items-end">
                                 <div class="col-md-3 mb-3">
-                                    <label class="font-weight-bold">ค้นหาโดย</label>
+                                    <label class="font-weight-bold"></label>
                                     <select name="search" class="form-control custom-select">
-                                        <option value="B.STAFFNAME">ชื่อ - สกุล ผู้ลา</option>
-                                        <option value="A.date1">วันที่ลา (YYYY-MM-DD)</option>
+                                        <option value="B.STAFFNAME"> - สก </option>
+                                        <option value="A.date1">ัน (YYYY-MM-DD)</option>
                                     </select>
                                 </div>
                                 <div class="col-md-6 mb-3">
-                                    <label class="font-weight-bold">คำค้นหา (Keyword)</label>
+                                    <label class="font-weight-bold">ำค (Keyword)</label>
                                     <div class="input-group">
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"><i class="fas fa-keyboard"></i></span>
                                         </div>
-                                        <input type="text" name="key" class="form-control required" placeholder="ระบุคำค้นหา..." required>
+                                        <input type="text" name="key" class="form-control required" placeholder="ะบุคำค..." required>
                                     </div>
                                 </div>
                                 <div class="col-md-3 mb-3">
                                     <div class="btn-group w-100" role="group">
-                                        <button type="submit" class="btn btn-primary shadow-sm"><i class="fas fa-search"></i> ค้นหา</button>
-                                        <button type="reset" class="btn btn-warning text-white shadow-sm"><i class="fas fa-undo"></i> รีเซ็ต</button>
+                                        <button type="submit" class="btn btn-primary shadow-sm"><i class="fas fa-search"></i> </button>
+                                        <button type="reset" class="btn btn-warning text-white shadow-sm"><i class="fas fa-undo"></i> </button>
                                     </div>
                                 </div>
                             </div>
@@ -252,30 +252,30 @@ include "config.php";
 
                 <div class="card card-custom">
                     <div class="card-header card-header-custom d-flex justify-content-between align-items-center">
-                        <span><i class="fas fa-list"></i> ผลการค้นหา</span>
-                        <span class="badge badge-primary p-2">พบ <?php echo $num_rows; ?> รายการ</span>
+                        <span><i class="fas fa-list"></i> ลกรค</span>
+                        <span class="badge badge-primary p-2"> <?php echo $num_rows; ?> ยก</span>
                     </div>
                     <div class="card-body p-0">
                         <div class="table-responsive">
                             <table class="table table-hover mb-0">
                                 <thead>
                                     <tr>
-                                        <th width="20%">ชื่อ - สกุล</th>
-                                        <th width="20%">ช่วงวันที่ลา</th>
-                                        <th width="15%">ประเภทการลา</th>
-                                        <th width="30%">สถานะการอนุมัติ</th>
-                                        <th width="15%" class="text-center">จัดการ</th>
+                                        <th width="20%"> - สก</th>
+                                        <th width="20%">วงัน</th>
+                                        <th width="15%"></th>
+                                        <th width="30%">สถานะกอนัต</th>
+                                        <th width="15%" class="text-center">ัด</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <?php
                                     $i=0;
-                                    $type_arr = array("","ลาป่วย","ลากิจ","ลาพักผ่อน","ไปราชการ","ลาคลอด","ลาอุปสมบท","ช่วยเหลือภริยาเลี้ยงดูบุตร","กักตัว (ผู้เสี่ยงโควิด-19)","ประกอบพิธีฮัจญ์");
+                                    $type_arr = array("","าป","ากิจ","าพักอน","าช","าคอด","ุป","ยงูบุต","ัก (ยงิด-19)","ะกอบิธัจ");
 
                                     if($num_rows > 0) {
                                         while($ln=mysql_fetch_array($res)){
                                             $i++;
-                                            $absent_type = isset($type_arr[$ln['type']]) ? $type_arr[$ln['type']] : "ไม่ระบุ";
+                                            $absent_type = isset($type_arr[$ln['type']]) ? $type_arr[$ln['type']] : "ะบ";
                                     ?>
                                     <tr>
                                         <td class="font-weight-bold text-primary">
@@ -283,35 +283,35 @@ include "config.php";
                                         </td>
                                         <td>
                                             <i class="far fa-calendar-alt text-muted"></i> <?php echo DateThai($ln['date1']); ?> <br>
-                                            <small>ถึง <?php echo DateThai($ln['date2']); ?></small>
+                                            <small>ึง <?php echo DateThai($ln['date2']); ?></small>
                                         </td>
                                         <td>
                                             <span class="badge badge-light border text-dark"><?php echo $absent_type; ?></span>
-                                            <div class="small text-danger mt-1 font-weight-bold">(<?php echo $ln['amount']; ?> วัน)</div>
+                                            <div class="small text-danger mt-1 font-weight-bold">(<?php echo $ln['amount']; ?> ัน)</div>
                                         </td>
                                         <td>
                                             <?php
                                             // HR Advise
-                                            if($ln['advise']==1) echo "<div class='status-badge badge-soft-purple'><i class='fas fa-user-tie'></i> งานบุคลากร: <span class='text-success font-weight-bold'>เห็นควร</span></div>";
-                                            if($ln['advise']==2) echo "<div class='status-badge badge-soft-purple'><i class='fas fa-user-tie'></i> งานบุคลากร: <span class='text-danger font-weight-bold'>ไม่เห็นควร</span></div>";
+                                            if($ln['advise']==1) echo "<div class='status-badge badge-soft-purple'><i class='fas fa-user-tie'></i> านุคาก: <span class='text-success font-weight-bold'>็นค</span></div>";
+                                            if($ln['advise']==2) echo "<div class='status-badge badge-soft-purple'><i class='fas fa-user-tie'></i> านุคาก: <span class='text-danger font-weight-bold'>็นค</span></div>";
                                             
                                             // Head Approve
-                                            if($ln['approve']==1) echo "<div class='status-badge badge-soft-green'><i class='fas fa-check-circle'></i> ผบ.ต้น: <span class='font-weight-bold'>อนุมัติ</span></div>";
-                                            if($ln['approve']==2) echo "<div class='status-badge badge-soft-red'><i class='fas fa-times-circle'></i> ผบ.ต้น: <span class='font-weight-bold'>ไม่อนุมัติ</span></div>";
+                                            if($ln['approve']==1) echo "<div class='status-badge badge-soft-green'><i class='fas fa-check-circle'></i> .: <span class='font-weight-bold'>อนัต</span></div>";
+                                            if($ln['approve']==2) echo "<div class='status-badge badge-soft-red'><i class='fas fa-times-circle'></i> .: <span class='font-weight-bold'>อนัต</span></div>";
                                             
                                             // Top Approve
-                                            if($ln['approve1']==1) echo "<div class='status-badge badge-soft-blue'><i class='fas fa-signature'></i> ผบ.สูง: <span class='font-weight-bold'>อนุมัติ</span></div>";
-                                            if($ln['approve1']==2) echo "<div class='status-badge badge-soft-red'><i class='fas fa-times-circle'></i> ผบ.สูง: <span class='font-weight-bold'>ไม่อนุมัติ</span></div>";
+                                            if($ln['approve1']==1) echo "<div class='status-badge badge-soft-blue'><i class='fas fa-signature'></i> .ูง: <span class='font-weight-bold'>อนัต</span></div>";
+                                            if($ln['approve1']==2) echo "<div class='status-badge badge-soft-red'><i class='fas fa-times-circle'></i> .ูง: <span class='font-weight-bold'>อนัต</span></div>";
                                             ?>
                                         </td>
                                         <td class="text-center"> 
-                                            <a href="form1.php?id=<?php echo $ln['id']; ?>" class="btn btn-info action-btn shadow-sm" title="พิมพ์แบบฟอร์ม" target="_blank">
+                                            <a href="form1.php?id=<?php echo $ln['id']; ?>" class="btn btn-info action-btn shadow-sm" title="แบบ" target="_blank">
                                                 <i class="fas fa-print" style="font-size: 0.8rem;"></i>
                                             </a>  
-                                            <a href="admin_edit_absent.php?id=<?php echo base64_encode($ln['id']); ?>" class="btn btn-warning action-btn text-white shadow-sm" title="แก้ไข">
+                                            <a href="admin_edit_absent.php?id=<?php echo base64_encode($ln['id']); ?>" class="btn btn-warning action-btn text-white shadow-sm" title="">
                                                 <i class="fas fa-pencil-alt" style="font-size: 0.8rem;"></i>
                                             </a>
-                                            <a href="admin_del_absent.php?id=<?php echo base64_encode($ln['id']); ?>" class="btn btn-danger action-btn shadow-sm" title="ลบ" onClick="return confirm('ยืนยันการลบข้อมูลนี้หรือไม่?');">
+                                            <a href="admin_del_absent.php?id=<?php echo base64_encode($ln['id']); ?>" class="btn btn-danger action-btn shadow-sm" title="ลบ" onClick="return confirm('ืนันลบลน?');">
                                                 <i class="fas fa-trash-alt" style="font-size: 0.8rem;"></i>
                                             </a>
                                         </td>
@@ -319,7 +319,7 @@ include "config.php";
                                     <?php 
                                         }
                                     } else {
-                                        echo "<tr><td colspan='5' class='text-center py-4 text-muted'>ไม่พบข้อมูลที่ค้นหา</td></tr>";
+                                        echo "<tr><td colspan='5' class='text-center py-4 text-muted'>่พบลท</td></tr>";
                                     }
                                     ?>
                                 </tbody>

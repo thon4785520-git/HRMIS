@@ -1,6 +1,6 @@
-<?
+<?php
 session_start();
-if($_SESSION[ss_status]!="admin"){
+if($_SESSION['ss_status']!="admin"){
 	echo "<script>location='index.php';</script>";
 }
 ?>
@@ -79,26 +79,26 @@ font-size: 13px;
 			<!-- Top Menu Items -->
             <ul class="nav navbar-right top-nav">
                 <li class="dropdown">
-                    <a href="#"> <font color="#FFF"> <i class="fa fa-fw fa-user"></i> <?=$_SESSION[ss_name]?> </font> </a>                    
+                    <a href="#"> <font color="#FFF"> <i class="fa fa-fw fa-user"></i> <?=$_SESSION['ss_name']?> </font> </a>                    
                 </li>
 			</ul>
             <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">					
                     <li>
-                        <a href="admin.php"><i class="fa fa-fw fa-home"></i> หน้าแรก </a>
+                        <a href="admin.php"><i class="fa fa-fw fa-home"></i> หนรก </a>
                     </li>					
                     <li>
-                        <a href="admin_view_work.php"><i class="fa fa-fw fa-desktop"></i> จัดการข้อมูลการปฏิบัติงาน </a>
+                        <a href="admin_view_work.php"><i class="fa fa-fw fa-desktop"></i> ัดรขลกรปิบัติงาน </a>
                     </li>
                     <li>
-                        <a href="admin_view_absent.php"><i class="fa fa-fw fa-edit"></i> จัดการข้อมูลการลา </a>
+                        <a href="admin_view_absent.php"><i class="fa fa-fw fa-edit"></i> ัดรขลก </a>
                     </li>
                     <li>
-                        <a href="admin_report.php"><i class="fa fa-fw fa-table"></i> รายงานผลข้อมูล </a>
+                        <a href="admin_report.php"><i class="fa fa-fw fa-table"></i> ยงานลข </a>
                     </li> 
 					<li>
-                        <a href="logout.php"><i class="fa fa-fw fa-lock"></i> ออกจากระบบ </a>
+                        <a href="logout.php"><i class="fa fa-fw fa-lock"></i> อกากะบ </a>
                     </li>                    
                 </ul>
             </div>
@@ -113,27 +113,27 @@ font-size: 13px;
 
 <!--Header-->
 <div class="page-header">
-        <h3> ลงชื่อการมาปฏิบัติงาน </h3>
+        <h3> ลงอกาปิบัติงาน </h3>
 </div>
 
-<?
+<?php
 include"config.php";
 
 // convert day
-$d1=explode("-",$_POST[dated]);
-$_POST[dated]=$d1[2]-543 ."-$d1[1]-$d1[0]";
+$d1=explode("-",$_POST['dated']);
+$_POST['dated']=$d1[2]-543 ."-{$d1[1]}-{$d1[0]}";
 
-for($i=1;$i<=count($_POST[STAFFID]);$i++){
-	if($_POST[level][$i]!=""){
+for($i=1;$i<=count($_POST['STAFFID']);$i++){
+	if($_POST['level'][$i]!=""){
 		//echo "{$_POST[STAFFID][$i]} <br>";
-		$sql="INSERT INTO work (STAFFID, dated, level) VALUES ({$_POST[STAFFID][$i]}, '$_POST[dated]', {$_POST[level][$i]})";
+		$sql="INSERT INTO work (STAFFID, dated, level) VALUES ({{$_POST['STAFFID']}[$i]}, '{$_POST['dated']}', {{$_POST['level']}[$i]})";
 		$res=mysql_query($sql);
 	}
 }
 
 echo "<div class='alert alert-success'>";
-echo "<strong>ลงชื่อมาปฏิบัติงานสำเร็จ</strong><br>";
-echo "<a href='admin_view_work.php' class='btn btn-sm btn-info'>กลับหน้าหลัก</a>";
+echo "<strong>ลงาปิบัติงาน</strong><br>";
+echo "<a href='admin_view_work.php' class='btn btn-sm btn-info'>ับหนัก</a>";
 echo "</div>";
 
 ?>

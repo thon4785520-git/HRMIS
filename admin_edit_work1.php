@@ -28,12 +28,12 @@
 <body style="background:#FFF;padding:10px;">
 <!--Header-->
 <div class="page-header">
-        <h4> แก้ไขวันปฏิบัติงาน </h4>
+        <h4> ันิบัติงาน </h4>
 </div>
 
-<?
+<?php
 include"config.php";
-$sql="select * from work1 A,staff B where A.STAFFID=B.STAFFID and A.dated='$_GET[dated]' and A.STAFFID=$_GET[id]";
+$sql="select * from work1 A,staff B where A.STAFFID=B.STAFFID and A.dated='{$_GET['dated']}' and A.STAFFID={$_GET['id']}";
 //echo $sql;
 $res=mysql_query($sql);
 $rs=mysql_fetch_array($res);
@@ -43,32 +43,32 @@ $rs=mysql_fetch_array($res);
 <FORM METHOD="POST" ACTION="" id="form1" class="well jumbotron">
 
 <div class="form-group">
-         <label>ชื่อ - สกุล บุคลากร</label>
-         <input class="form-control required" type="text" name="xxx" value="<?=$rs[STAFFNAME]?> <?=$rs[STAFFSURNAME]?>">
+         <label> - สก ุคาก</label>
+         <input class="form-control required" type="text" name="xxx" value="<?=$rs['STAFFNAME']?> <?=$rs['STAFFSURNAME']?>">
 </div>
 <div class="form-group">
-         <label>วันที่ปฏิบัติงาน</label>
-         <input class="form-control required" type="date" name="dated" value="<?=$rs[dated]?>">		 
+         <label>ัน่ปฏิบัติงาน</label>
+         <input class="form-control required" type="date" name="dated" value="<?=$rs['dated']?>">		 
 </div>
 <div class="form-group">
-         <label>เวลาปฏิบัติงาน</label>
-         <input class="required" type="text" name="timein" value="<?=$rs[timein]?>">	- 	
-		 <input class="required" type="text" name="timeout" value="<?=$rs[timeout]?>">
+         <label>าปิบัติงาน</label>
+         <input class="required" type="text" name="timein" value="<?=$rs['timein']?>">	- 	
+		 <input class="required" type="text" name="timeout" value="<?=$rs['timeout']?>">
 </div>
 <div class="form-group">
-         <label>เหตุผล</label>
-         <input class="form-control required" type="text" name="reason" value="<?=$rs[reason]?>">		 
+         <label>หตุผ</label>
+         <input class="form-control required" type="text" name="reason" value="<?=$rs['reason']?>">		 
 </div>
 
 <INPUT TYPE="submit" class="btn btn-success" value="Save" name="submit">
 <INPUT TYPE="reset" class="btn btn-warning" value="Reset">
-<INPUT TYPE="hidden" class="btn btn-warning" value="<?=$_GET[id]?>" name="id">
+<INPUT TYPE="hidden" class="btn btn-warning" value="<?=$_GET['id']?>" name="id">
 </FORM>
 </body>
 </html>
-<?
-if($_POST[submit]){
-	$sql="update work1 set reason='$_POST[reason]', timein='$_POST[timein]', timeout='$_POST[timeout]' where STAFFID=$_POST[id] and dated='$_POST[dated]' ";
+<?php
+if($_POST['submit']){
+	$sql="update work1 set reason='{$_POST['reason']}', timein='{$_POST['timein']}', timeout='{$_POST['timeout']}' where STAFFID={$_POST['id']} and dated='{$_POST['dated']}' ";
 	$res=mysql_query($sql);
 	echo "<div class='alert alert-success'>Save OK</div>";
 }

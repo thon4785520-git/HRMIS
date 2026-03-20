@@ -1,6 +1,6 @@
-<?
+<?php
 session_start();
-if($_SESSION[ss_status]!="admin"){
+if($_SESSION['ss_status']!="admin"){
 	echo "<script>location='index.php';</script>";
 }
 ?>
@@ -86,29 +86,29 @@ window.onload = function () {
 			<!-- Top Menu Items -->
             <ul class="nav navbar-right top-nav">
                 <li class="dropdown">
-                    <a href="#"> <font color="#FFF"> <i class="fa fa-fw fa-user"></i> <?=$_SESSION[ss_name]?> </font> </a>                    
+                    <a href="#"> <font color="#FFF"> <i class="fa fa-fw fa-user"></i> <?=$_SESSION['ss_name']?> </font> </a>                    
                 </li>
 			</ul>
             <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">					
                     <li>
-                        <a href="admin.php"><i class="fa fa-fw fa-home"></i> หน้าแรก </a>
+                        <a href="admin.php"><i class="fa fa-fw fa-home"></i> หนรก </a>
                     </li>	
 					<li>
-                        <a href="admin_view_staff.php"><i class="fa fa-fw fa-user"></i> จัดการข้อมูลบุคลากร </a>
+                        <a href="admin_view_staff.php"><i class="fa fa-fw fa-user"></i> ัดรขลบุคาก </a>
                     </li>				
                     <li>
-                        <a href="admin_view_work.php"><i class="fa fa-fw fa-desktop"></i> จัดการข้อมูลการปฏิบัติงาน </a>
+                        <a href="admin_view_work.php"><i class="fa fa-fw fa-desktop"></i> ัดรขลกรปิบัติงาน </a>
                     </li>
                     <li>
-                        <a href="admin_view_absent.php"><i class="fa fa-fw fa-edit"></i> จัดการข้อมูลการลา </a>
+                        <a href="admin_view_absent.php"><i class="fa fa-fw fa-edit"></i> ัดรขลก </a>
                     </li>
                     <li>
-                        <a href="admin_report.php"><i class="fa fa-fw fa-table"></i> รายงานผลข้อมูล </a>
+                        <a href="admin_report.php"><i class="fa fa-fw fa-table"></i> ยงานลข </a>
                     </li> 
 					<li>
-                        <a href="logout.php"><i class="fa fa-fw fa-lock"></i> ออกจากระบบ </a>
+                        <a href="logout.php"><i class="fa fa-fw fa-lock"></i> อกากะบ </a>
                     </li>                    
                 </ul>
             </div>
@@ -123,40 +123,40 @@ window.onload = function () {
 
 <!--Header-->
 <div class="page-header">
-        <h3> แก้ไขการมาปฏิบัติงาน </h3>
+        <h3> ไขกาปิบัติงาน </h3>
 </div>
 
-<?
+<?php
 include"config.php";
-$sql="select * from abwork where dated='$_GET[id]' ";
+$sql="select * from abwork where dated='{$_GET['id']}' ";
 $res=mysql_query($sql);
 $data=mysql_fetch_array($res);
-$x=explode(",",$data[researcher]);
+$x=explode(",",$data['researcher']);
 ?>
 
 <form action="admin_edit_abwork2.php" method="post" name="form1" id="form1">
 
 <div class="form-group">
-         <label>วันที่ปฏิบัติงาน</label>
-         <input class="form-control required" type="text" name="dated" id="dated" value="<?=$data[dated]?>">
+         <label>ัน่ปฏิบัติงาน</label>
+         <input class="form-control required" type="text" name="dated" id="dated" value="<?=$data['dated']?>">
 </div>
 
 <table class="table table-hover">
 <tr class="success">
-	<th>ชื่อ - สกุล</th>
-	<th>ลงชื่อ</th>
+	<th> - สก</th>
+	<th>ลง</th>
 </tr>
-<?
+<?php
 //include"config.php";
 $sql="select * from researcher where department_id=9 order by name_th";
 $res=mysql_query($sql);
 while($ln=mysql_fetch_array($res)){
 ?>
 <tr>
-	<td><?=$ln[name_th]?></td>
-	<td><input type="checkbox" name="ch[]" value="<?=$ln[0]?>" <? if(in_array($ln[0],$x)) echo "checked";?>></td>
+	<td><?=$ln['name_th']?></td>
+	<td><input type="checkbox" name="ch[]" value="<?=$ln[0]?>" <?php if(in_array($ln[0],$x)) echo "checked";?>></td>
 </tr>
-<? }?>
+<?php }?>
 </table>
 
 <INPUT TYPE="submit" class="btn btn-success" value="Save">

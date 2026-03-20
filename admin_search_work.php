@@ -1,9 +1,9 @@
 <?php
-// กำหนด Header ให้เป็น Windows-874 เพื่อรองรับภาษาไทยในระบบเดิม
+// หน Header  Windows-874 องับะบ
 header('Content-Type: text/html; charset=windows-874');
 session_start();
 
-// ตรวจสอบสถานะ Admin
+// วจอบสถาน Admin
 if($_SESSION['ss_status'] != "admin"){
 	echo "<script>location='index.php';</script>";
     exit();
@@ -173,7 +173,7 @@ include "config.php";
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="logout.php">
-                        <i class="fas fa-sign-out-alt"></i> ออกจากระบบ
+                        <i class="fas fa-sign-out-alt"></i> อกากะบ
                     </a>
                 </li>
             </ul>
@@ -187,12 +187,12 @@ include "config.php";
             <div class="col-md-3 col-lg-2 d-md-block sidebar collapse" id="sidebarMenu">
                 <div class="position-sticky">
                     <div class="list-group list-group-flush">
-                        <a href="admin.php"><i class="fas fa-home"></i> หน้าแรก</a>
-                        <a href="admin_view_staff.php"><i class="fas fa-users"></i> ข้อมูลบุคลากร</a>
-                        <a href="admin_view_work.php"><i class="fas fa-desktop"></i> ข้อมูลการปฏิบัติงาน</a>
-                        <a href="admin_view_absent.php"><i class="fas fa-edit"></i> จัดการข้อมูลการลา</a>
-                        <a href="admin_report.php"><i class="fas fa-chart-bar"></i> รายงานผลข้อมูล</a>
-                        <a href="logout.php" class="text-danger"><i class="fas fa-lock"></i> ออกจากระบบ</a>
+                        <a href="admin.php"><i class="fas fa-home"></i> หนรก</a>
+                        <a href="admin_view_staff.php"><i class="fas fa-users"></i> ลบุคาก</a>
+                        <a href="admin_view_work.php"><i class="fas fa-desktop"></i> ลกรปิบัติงาน</a>
+                        <a href="admin_view_absent.php"><i class="fas fa-edit"></i> ัดรขลก</a>
+                        <a href="admin_report.php"><i class="fas fa-chart-bar"></i> ยงานลข</a>
+                        <a href="logout.php" class="text-danger"><i class="fas fa-lock"></i> อกากะบ</a>
                     </div>
                 </div>
             </div>
@@ -201,7 +201,7 @@ include "config.php";
             <main class="col-md-9 ml-sm-auto col-lg-10 px-md-4 py-4">
                 
                 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 page-header">
-                    <h1 class="h2"><i class="fas fa-search text-primary"></i> ค้นหาข้อมูลการมาปฏิบัติงาน</h1>
+                    <h1 class="h2"><i class="fas fa-search text-primary"></i> าขลกาปิบัติงาน</h1>
                 </div>
 
                 <!-- Search Form -->
@@ -210,24 +210,24 @@ include "config.php";
                         <form method="POST" action="" id="form1">
                             <div class="form-row align-items-end">
                                 <div class="col-md-3 mb-3">
-                                    <label class="font-weight-bold">ค้นหาโดย</label>
+                                    <label class="font-weight-bold"></label>
                                     <select name="search" class="form-control custom-select">
-                                        <option value="STAFFNAME">ชื่อ - สกุล บุคลากร</option>
+                                        <option value="STAFFNAME"> - สก ุคาก</option>
                                     </select>
                                 </div>
                                 <div class="col-md-6 mb-3">
-                                    <label class="font-weight-bold">คำค้นหา (Keyword)</label>
+                                    <label class="font-weight-bold">ำค (Keyword)</label>
                                     <div class="input-group">
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"><i class="fas fa-keyboard"></i></span>
                                         </div>
-                                        <input type="text" name="key" class="form-control required" placeholder="ระบุคำค้นหา..." required>
+                                        <input type="text" name="key" class="form-control required" placeholder="ะบุคำค..." required>
                                     </div>
                                 </div>
                                 <div class="col-md-3 mb-3">
                                     <div class="btn-group w-100" role="group">
-                                        <button type="submit" class="btn btn-primary shadow-sm"><i class="fas fa-search"></i> ค้นหา</button>
-                                        <button type="reset" class="btn btn-warning text-white shadow-sm"><i class="fas fa-undo"></i> รีเซ็ต</button>
+                                        <button type="submit" class="btn btn-primary shadow-sm"><i class="fas fa-search"></i> </button>
+                                        <button type="reset" class="btn btn-warning text-white shadow-sm"><i class="fas fa-undo"></i> </button>
                                     </div>
                                 </div>
                             </div>
@@ -244,17 +244,17 @@ include "config.php";
                 <!-- Result 1: Support Staff (Work1) -->
                 <div class="card card-custom">
                     <div class="card-header card-header-blue">
-                        <i class="fas fa-user-cog"></i> สายสนับสนุน (ลงเวลาปฏิบัติงาน)
+                        <i class="fas fa-user-cog"></i> สนับสนุน (ลงาปิบัติงาน)
                     </div>
                     <div class="card-body p-0">
                         <div class="table-responsive">
                             <table class="table table-hover mb-0">
                                 <thead>
                                     <tr>
-                                        <th width="25%">ชื่อ - สกุล</th>
-                                        <th width="20%">หน่วยงาน</th>
-                                        <th width="20%">วันที่/เวลา</th>
-                                        <th width="35%">สถานะ</th>
+                                        <th width="25%"> - สก</th>
+                                        <th width="20%">หนยงาน</th>
+                                        <th width="20%">ัน/</th>
+                                        <th width="35%">สถาน</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -265,9 +265,9 @@ include "config.php";
                                     if(mysql_num_rows($res) > 0) {
                                         while($ln=mysql_fetch_array($res)){
                                             $A=explode(":",$ln['timein']);
-                                            $A1=(float)"$A[0].$A[1]";
+                                            $A1=(float)"{$A[0]}.{$A[1]}";
                                             $B=explode(":",$ln['timeout']);
-                                            $B1=(float)"$B[0].$B[1]";
+                                            $B1=(float)"{$B[0]}.{$B[1]}";
                                     ?>
                                     <tr>
                                         <td class="font-weight-bold text-primary">
@@ -280,18 +280,18 @@ include "config.php";
                                         </td>
                                         <td>
                                             <?php
-                                            if($A1 != 0.0 && $A1<=8.30 && $B1>=16.30 && $B1 != 0.0) echo "<span class='badge badge-status badge-soft-success'><i class='fas fa-check-circle'></i> มาปกติ</span>";			
-                                            if($A1>8.30) echo "<span class='badge badge-status badge-soft-danger'><i class='fas fa-exclamation-circle'></i> สาย</span>";
-                                            if($A1==0.0 && $B1!=0.0) echo "<span class='badge badge-status badge-soft-warning'>ไม่ลงชื่อเข้า</span>";
-                                            if($A1==0.0 && $B1==0.0) echo "<span class='badge badge-status badge-soft-secondary'>ขาดงาน</span>";
-                                            if($A1!=0.0 && $B1<16.30 && $B1!=0.0) echo "<span class='badge badge-status badge-soft-info'>ลงชื่อออกก่อน</span>";
-                                            if($A1!=0.0 && $B1==0.0) echo "<span class='badge badge-status badge-soft-info'>ไม่ลงชื่อออก</span>";			
+                                            if($A1 != 0.0 && $A1<=8.30 && $B1>=16.30 && $B1 != 0.0) echo "<span class='badge badge-status badge-soft-success'><i class='fas fa-check-circle'></i> าป</span>";			
+                                            if($A1>8.30) echo "<span class='badge badge-status badge-soft-danger'><i class='fas fa-exclamation-circle'></i> </span>";
+                                            if($A1==0.0 && $B1!=0.0) echo "<span class='badge badge-status badge-soft-warning'>ลง</span>";
+                                            if($A1==0.0 && $B1==0.0) echo "<span class='badge badge-status badge-soft-secondary'>าดาน</span>";
+                                            if($A1!=0.0 && $B1<16.30 && $B1!=0.0) echo "<span class='badge badge-status badge-soft-info'>ลงอกอน</span>";
+                                            if($A1!=0.0 && $B1==0.0) echo "<span class='badge badge-status badge-soft-info'>ลงอก</span>";			
                                             
                                             // Check Absent Record
-                                            $sql1="select * from absent where STAFFID=$ln[STAFFID] and '$ln[dated]' between date1 and date2";
+                                            $sql1="select * from absent where STAFFID={$ln['STAFFID']} and '{$ln['dated']}' between date1 and date2";
                                             $res1=mysql_query($sql1);
                                             if(mysql_num_rows($res1) > 0) {
-                                                echo "<div class='mt-1'><span class='badge badge-status badge-soft-purple'><i class='fas fa-briefcase'></i> ลา/ราชการ/WFH</span></div>";
+                                                echo "<div class='mt-1'><span class='badge badge-status badge-soft-purple'><i class='fas fa-briefcase'></i> /าช/WFH</span></div>";
                                             }
                                             if($ln['reason'] != "") echo "<div class='small text-muted mt-1'><i class='fas fa-comment'></i> " . $ln['reason'] . "</div>";
                                             ?>
@@ -300,7 +300,7 @@ include "config.php";
                                     <?php 
                                         } 
                                     } else {
-                                        echo "<tr><td colspan='4' class='text-center py-3 text-muted'>ไม่พบข้อมูล</td></tr>";
+                                        echo "<tr><td colspan='4' class='text-center py-3 text-muted'>่พบ</td></tr>";
                                     }
                                     ?>
                                 </tbody>
@@ -312,17 +312,17 @@ include "config.php";
                 <!-- Result 2: Academic Staff (Work - Level Based) -->
                 <div class="card card-custom">
                     <div class="card-header card-header-green">
-                        <i class="fas fa-chalkboard-teacher"></i> สายวิชาการ (ลงนามปฏิบัติงาน)
+                        <i class="fas fa-chalkboard-teacher"></i> ิชาก (ลงิบัติงาน)
                     </div>
                     <div class="card-body p-0">
                         <div class="table-responsive">
                             <table class="table table-hover mb-0">
                                 <thead>
                                     <tr>
-                                        <th width="25%">ชื่อ - สกุล</th>
-                                        <th width="20%">หน่วยงาน</th>
-                                        <th width="20%">วันที่ปฏิบัติงาน</th>
-                                        <th width="35%">สถานะ</th>
+                                        <th width="25%"> - สก</th>
+                                        <th width="20%">หนยงาน</th>
+                                        <th width="20%">ัน่ปฏิบัติงาน</th>
+                                        <th width="35%">สถาน</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -340,22 +340,22 @@ include "config.php";
                                         <td><?php echo $ln['DEPARTMENTNAME']; ?></td>
                                         <td>
                                             <h6 class="mb-0 font-weight-bold"><?php echo DateThai($ln['dated']); ?></h6>
-                                            <a href="javascript:thon('boss_cog_work.php?id=<?php echo base64_encode($ln['STAFFID']); ?>&di=<?php echo base64_encode($ln['dated']); ?>')" class="btn btn-sm btn-outline-warning mt-1 py-0 px-2" title="แก้ไขสถานะ">
-                                                <i class="fas fa-edit"></i> แก้ไข
+                                            <a href="javascript:thon('boss_cog_work.php?id=<?php echo base64_encode($ln['STAFFID']); ?>&di=<?php echo base64_encode($ln['dated']); ?>')" class="btn btn-sm btn-outline-warning mt-1 py-0 px-2" title="สถาน">
+                                                <i class="fas fa-edit"></i> 
                                             </a>
                                         </td>
                                         <td>
                                             <?php 
-                                            if($ln['level']==1) echo "<span class='badge badge-status badge-soft-success'><i class='fas fa-check-circle'></i> มาปกติ</span>";
-                                            if($ln['level']==2) echo "<span class='badge badge-status badge-soft-danger'><i class='fas fa-exclamation-circle'></i> มาสาย</span>";
-                                            if($ln['level']==3) echo "<span class='badge badge-status badge-soft-secondary'><i class='fas fa-times-circle'></i> ไม่มาปฏิบัติงาน</span>";
-                                            if($ln['level']==5) echo "<span class='badge badge-status badge-soft-info'><i class='fas fa-question-circle'></i> ไม่เซ็นชื่อเข้า</span>";
+                                            if($ln['level']==1) echo "<span class='badge badge-status badge-soft-success'><i class='fas fa-check-circle'></i> าป</span>";
+                                            if($ln['level']==2) echo "<span class='badge badge-status badge-soft-danger'><i class='fas fa-exclamation-circle'></i> </span>";
+                                            if($ln['level']==3) echo "<span class='badge badge-status badge-soft-secondary'><i class='fas fa-times-circle'></i> าปิบัติงาน</span>";
+                                            if($ln['level']==5) echo "<span class='badge badge-status badge-soft-info'><i class='fas fa-question-circle'></i> ็นช</span>";
                                             
                                             // Check Absent Record
-                                            $sql1="select * from absent where STAFFID=$ln[STAFFID] and '$ln[dated]' between date1 and date2";
+                                            $sql1="select * from absent where STAFFID={$ln['STAFFID']} and '{$ln['dated']}' between date1 and date2";
                                             $res1=mysql_query($sql1);
                                             if(mysql_num_rows($res1) > 0) {
-                                                echo "<div class='mt-1'><span class='badge badge-status badge-soft-purple'><i class='fas fa-briefcase'></i> ลา/ราชการ</span></div>";
+                                                echo "<div class='mt-1'><span class='badge badge-status badge-soft-purple'><i class='fas fa-briefcase'></i> /าช</span></div>";
                                             }
                                             if($ln['reason'] != "") echo "<div class='small text-muted mt-1'><i class='fas fa-comment'></i> " . $ln['reason'] . "</div>";
                                             ?>
@@ -364,7 +364,7 @@ include "config.php";
                                     <?php 
                                         }
                                     } else {
-                                        echo "<tr><td colspan='4' class='text-center py-3 text-muted'>ไม่พบข้อมูล</td></tr>";
+                                        echo "<tr><td colspan='4' class='text-center py-3 text-muted'>่พบ</td></tr>";
                                     }
                                     ?>
                                 </tbody>
